@@ -1,4 +1,5 @@
--- Insert 15 users into the USERS table. [RIGHT CLICK ON EMPTY USERS TABLE AND CLICK ‘EXECUTE COMMAND’]
+-- TO ADD DATA TO EACH TABLE, RIGHT CLICK ON DESIRED TABLE AND CLICK ‘EXECUTE COMMAND’ THEN COPY AND PASTE THE FOLLOWING SQL QUERY. RIGHT CLICK ON QUERY AND SELECT 'RUN STATEMENT.'
+-- Add data to USERS table.
 
 INSERT INTO USERS(email, name, password, gender, address)
 VALUES 
@@ -20,3 +21,16 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES
 ('sarah.wilson@example.com', 'Sarah Wilson', 'qwerty', 'female', '101 Maple Drive, Riverside, USA'),
 ('david.lee@example.com', 'David Lee', 'letmein', 'male', '202 Pine Road, Hilltop, USA');
 
+-- Add data to CUSTOMERS table:
+
+-- Add data to ORDERS table:
+
+-- Add data to ORDERLINES table:
+
+-- Add data to DEVICES table:
+
+-- Add data to PAYMENTMETHODS table:
+
+-- Add data to PRODUCTCATEGORIES table:
+
+-- Set up FOREIGNKEYS:
