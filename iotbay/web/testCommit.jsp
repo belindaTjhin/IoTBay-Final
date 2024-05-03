@@ -12,6 +12,6 @@
         <title>Zoe GitHub Page</title>
     </head>
     <body>
-        <h1>Hello GitHub!</h1>
+        <h1>Changing code to test commit</h1>
     </body>
 </html>
