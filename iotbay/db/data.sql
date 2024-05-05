@@ -1,4 +1,14 @@
 -- TO ADD DATA TO EACH TABLE, RIGHT CLICK ON DESIRED TABLE AND CLICK ‘EXECUTE COMMAND’ THEN COPY AND PASTE THE FOLLOWING SQL QUERY. RIGHT CLICK ON QUERY AND SELECT 'RUN STATEMENT.'
+-- Create USERS table.
+
+CREATE TABLE users (
+    email VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(100),
+    password VARCHAR(255),
+    gender VARCHAR(10),
+    address VARCHAR(255)
+);
+
 -- Add data to USERS table.
 
 INSERT INTO USERS(email, name, password, gender, address)
@@ -27,7 +37,23 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES
 
 -- Add data to ORDERLINES table:
 
+-- Create DEVICES table:
+
+CREATE TABLE devices (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    description TEXT,
+    price DECIMAL(10, 2),
+    supplier VARCHAR(100)
+);
+
 -- Add data to DEVICES table:
+
+INSERT INTO devices (id, name, description, price, supplier) 
+VALUES 
+(1, 'Smart Thermostat', 'A smart thermostat for efficient temperature control', 129.99, 'Smart Home Co.'),
+(2, 'Security Camera', 'An IoT security camera with motion detection and night vision', 199.99, 'SecureTech Inc.'),
+(3, 'Smart Lock', 'A smart lock for keyless entry with remote access control', 149.99, 'Tech Innovations Ltd.');
 
 -- Add data to PAYMENTMETHODS table:
 
