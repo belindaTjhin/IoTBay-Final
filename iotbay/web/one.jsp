@@ -33,7 +33,7 @@
                         User user = new User(email, name, password, gender, address);
 
                         // Store User JavaBean into session
-                        session.setAttribute("user", user);
+                        session.setAttribute("user", user);       
                     %>
                     <a href="index.jsp">
                         <button class="button">Proceed to Main Page</button>
@@ -45,21 +45,29 @@
                     </a>
                 <% }
             } else { %>
-                <h1>Sign Up</h1>
-                <form action="one.jsp" method="post">
+            <% 
+            String existErr = (String) session.getAttribute("existErr");
+            String emailErr = (String) session.getAttribute("emailErr");
+            String passErr = (String) session.getAttribute("passErr");
+            String nameErr = (String) session.getAttribute("nameErr");
+            String addressErr = (String) session.getAttribute("addressErr");
+            String genderErr = (String) session.getAttribute("genderErr");
+            %>
+            <h1>Sign Up<span class="message"> <%= (existErr != null ? existErr : "") %> </span></h1>
+                <form action="RegisterServlet" method="post">
                     <div class="form-container"> <!-- This div wraps the form contents and centers them -->
                         <table>
-                            <tr><td>Full Name: </td><td><input type="text" class="input-field" placeholder="Enter Name" name="name" required="true"></td></tr>
-                            <tr><td>Email: </td><td><input type="email" class="input-field" placeholder="Enter Email" name="email"></td></tr>
-                            <tr><td>Password: </td><td><input type="password" class="input-field" placeholder="Enter Password" name="password"></td></tr>
-                            <tr><td>Gender: </td><td><input type="text" class="input-field" placeholder="Enter Gender" name="gender"></td></tr>
-                            <tr><td>Address:</td><td><input type="text" class="input-field" placeholder="Enter Address" name="address"></td></tr>
+                            <tr><td>Full Name: </td><td><input type="text" class="input-field" placeholder="<%=(nameErr != null ? nameErr : "Enter Name")%>" name="name" required="true"></td></tr>
+                            <tr><td>Email: </td><td><input type="email" class="input-field" placeholder="<%=(emailErr != null ? nameErr : "Enter Email")%>" name="email"></td></tr>
+                            <tr><td>Password: </td><td><input type="password" class="input-field" placeholder="<%=(passErr != null ? nameErr : "Enter Password")%>" name="password"></td></tr>
+                            <tr><td>Gender: </td><td><input type="text" class="input-field" placeholder="<%=(genderErr != null ? nameErr : "Enter Gender")%>" name="gender"></td></tr>
+                            <tr><td>Address:</td><td><input type="text" class="input-field" placeholder="<%=(addressErr != null ? nameErr : "Enter Address")%>" name="address"></td></tr>
                             <tr><td>Agree to TOS:</td><td><input type="checkbox" name="tos"></td></tr>
                         </table>
                         <input type="hidden" name="submitted" value="yes">
                         <div class="buttons">
                             <input class="button" type="submit" value="Register">
-                            <a class="button" href="index.html">Cancel</a>
+                            <a class="button" href="CancelServlet">Cancel</a>
                         </div>
                     </div>
                 </form>

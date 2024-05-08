@@ -20,8 +20,8 @@
             <div class="user-info">
                 <p>Your email is <%= user.getEmail()%></p>
                 <div class="buttons">
-                    <a href="logout.jsp" class="button">Logout</a>
-                    <a href="edit_user.jsp" class="button">My Account</a>
+                    <a href="LogoutController" class="button">Logout</a>
+                    <a class="button" href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'">My Account</a>
                 </div>  
             </div>
         </div>

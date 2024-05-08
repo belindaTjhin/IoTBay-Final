@@ -27,32 +27,34 @@
 </head>
 <body>
     <div class="login-box">
-        <h1>Edit Account</h1>
         
         <% 
-            User user = (User) session.getAttribute("user"); 
+            User user = (User) session.getAttribute("user");
+            String updated = (String)session.getAttribute("updated");
             if (user != null) { 
         %>
-            <form action="update_user.jsp" method="post">
+        
+        <h1>Edit Account<span class = "message"> <%=(updated !=null ? updated : "")%></span></h1>
+            <form action="UpdateServlet" method="post">
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value="<%= user.getName() %>" required>
+                    <input type="text" id="name" name="name" value="${user.name}" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="<%= user.getEmail() %>" required>
+                    <input type="email" id="email" name="email" value="${user.email}" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" value="<%= user.getPassword() %>" required>
+                    <input type="password" id="password" name="password" value="${user.password}" required>
                 </div>
                 <div class="form-group">
                     <label for="gender">Gender:</label>
-                    <input type="text" id="gender" name="gender" value="<%= user.getGender() %>">
+                    <input type="text" id="gender" name="gender" value="${user.gender}">
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" value="<%= user.getAddress() %>">
+                    <input type="text" id="address" name="address" value="${user.address}">
                 </div>
                 <input type="submit" class="button" value="Update">
             </form>
@@ -60,9 +62,12 @@
             <p>No user logged in.</p>
         <% } %>
         
-        <a href="index.jsp" class="button-link">
+        <div class ="panel_div">
+            <a class="button" href="MainServlet?email=<%= user.getEmail() %>&password=<%= user.getPassword() %>">Main Page</a>
+        </div> 
+        <%--<a href="index.jsp" class="button-link">
             <button class="button">Back to Main Page</button>
-        </a>
+        </a>--%>
     </div>
 </body>
 </html>

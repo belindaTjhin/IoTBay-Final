@@ -5,20 +5,71 @@
         <servlet-class>uts.isd.controller.ConnServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
     </servlet-mapping>
-        <servlet>
+    
+    <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>uts.isd.controller.LoginServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>   
+    
+   <servlet>
+        <servlet-name>EditServlet</servlet-name>
+        <servlet-class>uts.isd.controller.EditServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditServlet</servlet-name>
+        <url-pattern>/EditServlet</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.UpdateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/UpdateServlet</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>uts.isd.controller.MainServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>uts.isd.controller.RegisterServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping> 
+    
+    <servlet>
+        <servlet-name>CancelServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CancelServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancelServlet</servlet-name>
+        <url-pattern>/CancelServlet</url-pattern>
+    </servlet-mapping> 
+    
     <session-config>
         <session-timeout>
             30

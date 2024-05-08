@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet{
        DBManager manager = (DBManager) session.getAttribute("manager");
        User user = null;
        validator.clear(session);
-       
+        
        if(!validator.validateEmail(email)){
            session.setAttribute("emailErr", "Error: Email format incorrect");
            request.getRequestDispatcher("login.jsp").include(request, response);
