@@ -8,14 +8,10 @@ import java.sql.*;
 
 import java.util.ArrayList; 
 
-
-
 /*  
 * DBManager is the primary DAO class to interact with the database.  
 * Complete the existing methods of this classes to perform CRUD operations with the db. 
 */ 
-
-
 
 public class DBManager { 
 
