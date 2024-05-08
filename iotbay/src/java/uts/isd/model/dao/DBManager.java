@@ -1,6 +1,6 @@
 package uts.isd.model.dao; 
 
- 
+
 
 import uts.isd.model.User; 
 
@@ -8,17 +8,14 @@ import java.sql.*;
 
 import java.util.ArrayList; 
 
- 
+
 
 /*  
-
 * DBManager is the primary DAO class to interact with the database.  
-
 * Complete the existing methods of this classes to perform CRUD operations with the db. 
-
 */ 
 
- 
+
 
 public class DBManager { 
 
@@ -42,7 +39,7 @@ public class DBManager {
        while(rs.next()){ // reads every row in USERS table 
            String userEmail = rs.getString(1); 
            String userPass = rs.getString(3); 
-           
+
            if(userEmail.equals(email) && userPass.equals(password)){ 
                String userName = rs.getString(2); 
                String userGender = rs.getString(4); 
@@ -54,7 +51,7 @@ public class DBManager {
        return null;    
     } 
 
- 
+
 
     //Add a user-data into the database    
     public void addUser(String email, String name, String password, String gender, String address) throws SQLException {                   
@@ -62,7 +59,7 @@ public class DBManager {
       st.executeUpdate("INSERT INTO IOTUSER.USERS " + "VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + address + "')");    
     } 
 
- 
+
     //update a user details in the database    
     public void updateUser( String email, String name, String password, String gender, String address) throws SQLException {        
        //code for update-operation  
@@ -76,7 +73,7 @@ public class DBManager {
 
     } 
 
-     
+
     public ArrayList<User> fetchUser() throws SQLException{ 
         String fetch = "select * from USERS"; 
         ResultSet rs = st.executeQuery(fetch); 
@@ -93,11 +90,11 @@ public class DBManager {
         return temp; 
     } 
 
-   
+
     public boolean checkUser(String email, String password) throws SQLException{ 
         String fetch = "select * from IOTUSER.USERS where EMAIL= '" + email + "' and PASSWORD='" + password + "'"; 
         ResultSet rs = st.executeQuery(fetch); 
-        
+
         while(rs.next()){ 
             String userEmail = rs.getString(1); 
             String userPass = rs.getString(3); 
@@ -107,5 +104,4 @@ public class DBManager {
         } 
         return false; 
     } 
-
-} 
+}
