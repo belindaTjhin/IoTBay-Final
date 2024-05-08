@@ -1,9 +1,5 @@
-<%-- 
-    Document   : login
-    Created on : 05/04/2024, 1:47:21 PM
---%>
-
 <%@page import="uts.isd.model.User"%>
+<%@page import="uts.isd.controller.Validator"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,20 +8,20 @@
         <link rel="stylesheet" href="css/democss.css">
         <title>Login</title>
     </head>
-    <body>
+    <body onload="startTime()">
         <% 
             String existErr = (String) session.getAttribute("existErr");
             String emailErr = (String) session.getAttribute("emailErr");
-            String passErr = (String) session.getAttribute("PassErr");
+            String passErr = (String) session.getAttribute("passErr");
         %>
         <div class="login-box">
-            <h1>Enter your sign-in details: <span> <%=(existErr != null ? existErr : "")%></span></h1>
-            <div class="form-container"> <!-- Use this to wrap your form and center its contents -->
+            <h1>Sign In: <span> <%=(existErr != null ? existErr : "")%></span></h1>
+            <div class="form-container">
                 <form action="LoginServlet" method="post">
                     <table>
                         <tr>
                             <td>Email:</td>
-                            <td><input type="text" placeholder="<%=(emailErr != null ? emailErr: "Enter email")%>" name="email" required></td>
+                            <td><input type="text" placeholder="<%=(emailErr != null ? emailErr : "Enter email")%>" name="email" required></td>
                         </tr>
                         <tr>
                             <td>Password:</td>

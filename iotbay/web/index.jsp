@@ -12,8 +12,7 @@
         <title>Main Page</title>
         <link rel="stylesheet" href="css/democss.css">
     </head>
-    <body>
-        <% User user = (User) session.getAttribute("user"); %>
+       <% User user = (User) session.getAttribute("user"); %>
         <% if (user != null) {%>
         <div class="login-box"> <!-- Apply the light blue box styling when user is logged in -->
             <h1>Welcome, <%= user.getName()%>!</h1>
@@ -31,5 +30,5 @@
             <a class="button" href="login.jsp">Login</a>
         </div>
         <% }%>
-    </body>
+    
 </html>

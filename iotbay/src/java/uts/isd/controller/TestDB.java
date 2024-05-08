@@ -99,7 +99,7 @@ public class TestDB {
     private void testUpdate(){
         System.out.print("User email: ");
         String email = in.nextLine();
-        System.out.print("PasswordL ");
+        System.out.print("Password: ");
         String password = in.nextLine();
         
         try{
