@@ -8,6 +8,7 @@ import java.sql.*;
 
 import java.util.ArrayList; 
 import uts.isd.model.Admin;
+import uts.isd.model.Product;
 
 /*  
 * DBManager is the primary DAO class to interact with the database.  
@@ -175,6 +176,81 @@ public class DBManager {
             String adminEmail = rs.getString(1); 
             String adminPass = rs.getString(3); 
             if(adminEmail.equals(email) && adminPass.equals(password)){ 
+                return true; 
+            } 
+        } 
+        return false; 
+    } 
+    
+    //Find PRODUCT by name in the database 
+     public Product findDevice(String name) throws SQLException {        
+
+       //setup the select sql query string 
+       String fetch = "select * from IOTUSER.DEVICES where NAME = '" + name + "'"; 
+
+       //execute this query using the statement field 
+       ResultSet rs = st.executeQuery(fetch); 
+
+       //add the results to a ResultSet  
+       while(rs.next()){ // reads every row in ADMIN table 
+           String deviceName = rs.getString(2);  
+
+           if(deviceName.equals(name)){ 
+               int deviceID = rs.getInt(1); 
+               String description = rs.getString(3); 
+               double price = rs.getDouble(4); 
+               String supplier = rs.getString(5);
+               int stock = rs.getInt(6);
+               return new Product(deviceID, deviceName, description, price, supplier, stock); 
+           } 
+       } 
+       //search the ResultSet for a admin using the parameters                
+       return null;    
+    } 
+     
+    //Add a device into the database    
+    public void addDevice(int id, String name, String description, double price, String supplier, int stock) throws SQLException {                   
+      //code for add-operation        
+      st.executeUpdate("INSERT INTO IOTUSER.DEVICES " + "VALUES ('" + id + "', '" + name + "', '" + description + "', '" + price + "', '" + supplier + "', '" + stock + "')");    
+    } 
+    
+    //update a device details in the database    
+    public void updateDevice(int id, String name, String description, double price, String supplier, int stock) throws SQLException {        
+       //code for update-operation  
+       st.executeUpdate("UPDATE IOTUSER.DEVICES SET ID='" + id + "', DESCRIPTION='" + description + "', PRICE='" + price + "', SUPPLIER='" + supplier + "', STOCK=" + stock + "' WHERE NAME='" + name + "'"); 
+    }        
+
+    //delete a PRODUCT from the database    
+    public void deleteDevice(String name) throws SQLException{        
+       //code for delete-operation    
+       st.executeUpdate("DELETE FROM IOTUSER.DEVICES WHERE NAME='" + name + "'"); 
+
+    } 
+    
+    public ArrayList<Product> fetchDevice() throws SQLException{ 
+        String fetch = "select * from DEVICES"; 
+        ResultSet rs = st.executeQuery(fetch); 
+        ArrayList<Product> temp = new ArrayList(); 
+
+        while(rs.next()){ 
+            int id = rs.getInt(1); 
+            String name = rs.getString(2); 
+            String description = rs.getString(3); 
+            double price = rs.getDouble(4); 
+            String supplier = rs.getString(5); 
+            int stock = rs.getInt(6);
+            temp.add(new Product(id, name, description, price, supplier, stock)); 
+        }
+        return temp; 
+    }
+    
+    public boolean checkDevice(String name) throws SQLException{ 
+        String fetch = "select * from IOTUSER.DEVICES where NAME= '" + name + "'"; 
+        ResultSet rs = st.executeQuery(fetch); 
+
+        while(rs.next()){ 
+            String deviceName = rs.getString(1);  
+            if(deviceName.equals(name)){ 
                 return true; 
             } 
         } 
