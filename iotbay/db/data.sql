@@ -21,7 +21,28 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES
 ('sarah.wilson@example.com', 'Sarah Wilson', 'qwerty', 'female', '101 Maple Drive, Riverside, USA'),
 ('david.lee@example.com', 'David Lee', 'letmein', 'male', '202 Pine Road, Hilltop, USA');
 
--- Add data to CUSTOMERS table:
+-- Add data to ADMIN table:
+INSERT INTO ADMIN(email, name, password, gender, address) VALUES
+('john.doe@example.com', 'John Doe', 'john123', 'Male', '123 Main St'),
+('jane_smith12@gmail.com', 'Jane Smith', 'smith2020', 'Female', '456 Elm St'),
+('mike_smith@gmail.com', 'Mike Smith', 'mike1234', 'Male', '789 Oak St'),
+('sara_jones22@hotmail.com', 'Sara Jones', 'jones456', 'Female', '101 Pine St'),
+('chris123@yahoo.com', 'Chris Brown', 'chris789', 'Male', '234 Maple St'),
+('amy.roberts34@gmail.com', 'Amy Roberts', 'amy2021', 'Female', '567 Cedar St'),
+('mark.thomas@example.com', 'Mark Thomas', 'mark456', 'Male', '890 Birch St'),
+('lisa_johnson@gmail.com', 'Lisa Johnson', 'lisa1234', 'Female', '111 Oak St'),
+('kevin_smith23@yahoo.com', 'Kevin Smith', 'kevin2021', 'Male', '222 Elm St'),
+('emily.davis@example.com', 'Emily Davis', 'emily456', 'Female', '333 Cedar St'),
+('matt.robinson@gmail.com', 'Matt Robinson', 'matt789', 'Male', '444 Pine St'),
+('sophia.james@yahoo.com', 'Sophia James', 'sophia2022', 'Female', '555 Maple St'),
+('david.brown@example.com', 'David Brown', 'david1234', 'Male', '666 Elm St'),
+('olivia_wilson@hotmail.com', 'Olivia Wilson', 'olivia567', 'Female', '777 Oak St'),
+('jason.smith@example.com', 'Jason Smith', 'jason2023', 'Male', '888 Cedar St'),
+('mia_johnson@gmail.com', 'Mia Johnson', 'mia1234', 'Female', '999 Pine St'),
+('ryan.miller@yahoo.com', 'Ryan Miller', 'ryan567', 'Male', '1010 Birch St'),
+('kelly_williams@example.com', 'Kelly Williams', 'kelly2024', 'Female', '1111 Maple St'),
+('steven_taylor@gmail.com', 'Steven Taylor', 'steven789', 'Male', '1212 Elm St'),
+('jessica_adams@example.com', 'Jessica Adams', 'jessica1234', 'Female', '1313 Cedar St');
 
 -- Add data to ORDERS table:
 
