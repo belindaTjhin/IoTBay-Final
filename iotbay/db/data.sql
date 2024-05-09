@@ -50,11 +50,28 @@ INSERT INTO ADMIN(email, name, password, gender, address) VALUES
 
 -- Add data to DEVICES table:
 
-INSERT INTO devices (id, name, description, price, supplier) 
-VALUES 
-(1, 'Smart Thermostat', 'A smart thermostat for efficient temperature control', 129.99, 'Smart Home Co.'),
-(2, 'Security Camera', 'An IoT security camera with motion detection and night vision', 199.99, 'SecureTech Inc.'),
-(3, 'Smart Lock', 'A smart lock for keyless entry with remote access control', 149.99, 'Tech Innovations Ltd.');
+INSERT INTO devices (id, name, description, price, supplier, stock)
+VALUES
+(1, 'Smart Thermostat', 'A smart thermostat for efficient temperature control', 129.99, 'Smart Home Co.', 120),
+(2, 'Security Camera', 'An IoT security camera with motion detection and night vision', 199.99, 'SecureTech Inc.', 50),
+(3, 'Smart Lock', 'A smart lock for keyless entry with remote access control', 149.99, 'Tech Innovations Ltd.', 80),
+(4, 'Smart Bulb', 'A WiFi-enabled smart bulb with adjustable brightness and color', 19.99, 'IlluminateTech', 100),
+(5, 'Smart Plug', 'A plug that turns any device into a smart device', 24.99, 'PowerTech Solutions', 150),
+(6, 'Smart Speaker', 'A voice-controlled smart speaker with built-in virtual assistant', 99.99, 'SoundTech Inc.', 75),
+(7, 'Fitness Tracker', 'A wearable device that tracks fitness metrics like steps and heart rate', 79.99, 'FitTech Ltd.', 200),
+(8, 'Smartwatch', 'A wearable device with touchscreen display and various smart features', 199.99, 'TechWear', 50),
+(9, 'Smart Scale', 'A scale that measures weight and body composition and syncs with mobile apps', 49.99, 'HealthTech Solutions', 120),
+(10, 'Robot Vacuum', 'An autonomous vacuum cleaner with mapping and scheduling capabilities', 299.99, 'CleanTech Robotics', 30),
+(11, 'Smart Mirror', 'A mirror with built-in display for showing weather, news, and calendar', 149.99, 'Reflective Technologies', 60),
+(12, 'Smart Garden', 'An automated system for monitoring and watering indoor plants', 79.99, 'GreenTech Innovations', 90),
+(13, 'Smart Coffee Maker', 'A coffee maker that can be controlled remotely via smartphone', 69.99, 'BrewTech Co.', 80),
+(14, 'Smart Refrigerator', 'A refrigerator with touchscreen display and food inventory management', 999.99, 'ColdTech Appliances', 15),
+(15, 'Air Quality Monitor', 'A device that measures indoor air quality and provides real-time data', 59.99, 'AirTech Sensors', 100),
+(16, 'Smart Doorbell', 'A video doorbell with two-way audio and motion detection', 129.99, 'Ring Technologies', 45),
+(17, 'Smart Pet Feeder', 'A feeder that dispenses pet food based on schedule or remotely via app', 89.99, 'PetTech Solutions', 70),
+(18, 'Smart Humidifier', 'A humidifier that adjusts humidity levels automatically for optimal comfort', 79.99, 'HumidifyTech Inc.', 55),
+(19, 'Smart Air Purifier', 'An air purifier that removes allergens and pollutants from indoor air', 149.99, 'PureAir Technologies', 40),
+(20, 'Smart Ceiling Fan', 'A ceiling fan that can be controlled via smartphone or voice commands', 129.99, 'BreezeTech Co.', 65);
 
 -- Add data to PAYMENTMETHODS table:
 
