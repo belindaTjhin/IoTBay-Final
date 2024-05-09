@@ -21,6 +21,14 @@ LOGOUT_TIME TIMESTAMP);
 -- Create ORDERLINES table:
 
 -- Create DEVICES table:
+CREATE TABLE devices (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    description TEXT,
+    price DECIMAL(10, 2),
+    supplier VARCHAR(100)
+    stock INT;
+);
 
 -- Create PAYMENTMETHODS table:
 
