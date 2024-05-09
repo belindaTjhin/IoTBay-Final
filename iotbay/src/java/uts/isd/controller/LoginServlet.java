@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                user = manager.findUser(email, password);
                if(user != null){
                    session.setAttribute("user", user);
-                   request.getRequestDispatcher("index.jsp").include(request, response);
+                   request.getRequestDispatcher("one.jsp").include(request, response);
                } else {
                    session.setAttribute("existErr", "User does not exist in the Database!");
                    request.getRequestDispatcher("login.jsp").include(request, response);

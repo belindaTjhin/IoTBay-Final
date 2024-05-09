@@ -58,10 +58,10 @@
                     <div class="form-container"> <!-- This div wraps the form contents and centers them -->
                         <table>
                             <tr><td>Full Name: </td><td><input type="text" class="input-field" placeholder="<%=(nameErr != null ? nameErr : "Enter Name")%>" name="name" required="true"></td></tr>
-                            <tr><td>Email: </td><td><input type="email" class="input-field" placeholder="<%=(emailErr != null ? nameErr : "Enter Email")%>" name="email"></td></tr>
-                            <tr><td>Password: </td><td><input type="password" class="input-field" placeholder="<%=(passErr != null ? nameErr : "Enter Password")%>" name="password"></td></tr>
-                            <tr><td>Gender: </td><td><input type="text" class="input-field" placeholder="<%=(genderErr != null ? nameErr : "Enter Gender")%>" name="gender"></td></tr>
-                            <tr><td>Address:</td><td><input type="text" class="input-field" placeholder="<%=(addressErr != null ? nameErr : "Enter Address")%>" name="address"></td></tr>
+                            <tr><td>Email: </td><td><input type="email" class="input-field" placeholder="<%=(emailErr != null ? emailErr : "Enter Email")%>" name="email"></td></tr>
+                            <tr><td>Password: </td><td><input type="password" class="input-field" placeholder="<%=(passErr != null ? passErr : "Enter Password")%>" name="password"></td></tr>
+                            <tr><td>Gender: </td><td><input type="text" class="input-field" placeholder="<%=(genderErr != null ? genderErr : "Enter Gender")%>" name="gender"></td></tr>
+                            <tr><td>Address:</td><td><input type="text" class="input-field" placeholder="<%=(addressErr != null ? addressErr : "Enter Address")%>" name="address"></td></tr>
                             <tr><td>Agree to TOS:</td><td><input type="checkbox" name="tos"></td></tr>
                         </table>
                         <input type="hidden" name="submitted" value="yes">

@@ -12,10 +12,6 @@
 </head>
 <body>
     <div class="login-box"> <!-- Use the class that applies the light blue box styling -->
-        <% 
-            // Invalidate session to log out the user
-            session.invalidate(); 
-        %>
         <h1>You have been logged out.</h1>
         <p>Click <a href="index.jsp">here</a> to return to the main page.</p>
     </div>
