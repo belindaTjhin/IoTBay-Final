@@ -1,14 +1,4 @@
 -- TO ADD DATA TO EACH TABLE, RIGHT CLICK ON DESIRED TABLE AND CLICK ‘EXECUTE COMMAND’ THEN COPY AND PASTE THE FOLLOWING SQL QUERY. RIGHT CLICK ON QUERY AND SELECT 'RUN STATEMENT.'
--- Create USERS table.
-
-CREATE TABLE users (
-    email VARCHAR(255) PRIMARY KEY,
-    name VARCHAR(100),
-    password VARCHAR(255),
-    gender VARCHAR(10),
-    address VARCHAR(255)
-);
-
 -- Add data to USERS table.
 
 INSERT INTO USERS(email, name, password, gender, address)
@@ -36,16 +26,6 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES
 -- Add data to ORDERS table:
 
 -- Add data to ORDERLINES table:
-
--- Create DEVICES table:
-
-CREATE TABLE devices (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    description TEXT,
-    price DECIMAL(10, 2),
-    supplier VARCHAR(100)
-);
 
 -- Add data to DEVICES table:
 
