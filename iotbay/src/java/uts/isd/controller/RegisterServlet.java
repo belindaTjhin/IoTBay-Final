@@ -19,10 +19,6 @@ import javax.servlet.http.HttpSession;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
-/**
- *
- * @author zoe10
- */
 @WebServlet(name = "RegisterServlet", urlPatterns = {"/RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
 
@@ -90,7 +86,7 @@ public class RegisterServlet extends HttpServlet {
         if(!validator.validateEmail(email)){
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
             request.getRequestDispatcher("one.jsp").include(request, response);
-        }else if(!validator.validateEmail(email)){
+        }else if(!validator.validateName(name)){
             session.setAttribute("nameErr", "Error: Name format is incorrect.");
             request.getRequestDispatcher("one.jsp").include(request, response);
         }else if(!validator.validatePassword(password)){
