@@ -30,5 +30,5 @@
             <a class="button" href="login.jsp">Login</a>
         </div>
         <% }%>
-    
+
 </html>
