@@ -63,7 +63,7 @@
         <% } %>
         
         <div class ="panel_div">
-        <a class="button" href="MainServlet?email=<%= user.getEmail() %>&password=<%= user.getPassword() %>">Main Page</a>
+        <a class="button" href="index.jsp">Main Page</a>
         </div> 
         <!--<a href="index.jsp" class="button-link">
             <button class="button">Back to Main Page</button>

@@ -21,6 +21,7 @@
                 <div class="buttons">                    
                     <a href="${pageContext.request.contextPath}/LogoutServlet" class="button">Logout</a>
                     <a class="button" href="EditAdminServlet?email='<%=admin.getEmail()%>'&password='<%=admin.getPassword()%>'">My Account</a>
+                    <a href="delete_admin.jsp" class="button">Delete Account</a>
                 </div>  
             </div>
         </div>

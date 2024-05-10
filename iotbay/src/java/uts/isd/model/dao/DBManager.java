@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.ArrayList; 
 import uts.isd.model.Admin;
 import uts.isd.model.Product;
+import uts.isd.model.AccessLog;
 
 /*  
 * DBManager is the primary DAO class to interact with the database.  
@@ -255,5 +256,16 @@ public class DBManager {
             } 
         } 
         return false; 
+    } 
+    
+    //Add admin access log into the database    
+    public void addAdminLog(String email, String login_time, String logout_time) throws SQLException {                   
+      //code for add-operation        
+      st.executeUpdate("INSERT INTO IOTUSER.ADMIN_ACCESS_LOG " + "VALUES ('" + email + "', '" + login_time + "', '" + logout_time +"')");    
+    } 
+        //Add user access log into the database    
+    public void addUserLog(String email, String login_time, String logout_time) throws SQLException {                   
+      //code for add-operation        
+      st.executeUpdate("INSERT INTO IOTUSER.USER_ACCESS_LOG " + "VALUES ('" + email + "', '" + login_time + "', '" + logout_time+ "')");    
     } 
 }
