@@ -2,6 +2,7 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import uts.isd.model.User;
@@ -30,7 +31,13 @@ public class LoginServlet extends HttpServlet{
                user = manager.findUser(email, password);
                if(user != null){
                    session.setAttribute("user", user);
-                   request.getRequestDispatcher("index.jsp").include(request, response);
+                    // Log user access
+                    String loginTime = new Timestamp(System.currentTimeMillis()).toString();
+                    session.setAttribute("loginTime", loginTime);
+                    session.setAttribute("email", email);
+                    session.setAttribute("password", password);
+
+                    request.getRequestDispatcher("index.jsp").include(request, response);
                } else {
                    session.setAttribute("existErr", "User does not exist in the Database!");
                    request.getRequestDispatcher("login.jsp").include(request, response);

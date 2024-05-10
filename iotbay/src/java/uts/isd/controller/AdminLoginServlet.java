@@ -2,6 +2,7 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import uts.isd.model.Admin;
@@ -30,6 +31,12 @@ public class AdminLoginServlet extends HttpServlet{
                admin = manager.findAdmin(email, password);
                if(admin != null){
                    session.setAttribute("admin", admin);
+                   // Log admin access
+                    String loginTime = new Timestamp(System.currentTimeMillis()).toString();
+                    session.setAttribute("loginTime", loginTime);
+                    session.setAttribute("email", email);
+                    session.setAttribute("password", password);
+
                    request.getRequestDispatcher("admin_index.jsp").include(request, response);
                } else {
                    session.setAttribute("existErr", "Admin does not exist in the Database!");

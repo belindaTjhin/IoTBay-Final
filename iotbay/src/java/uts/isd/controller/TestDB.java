@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.*;
+import uts.isd.model.AccessLog;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DBManager;
@@ -41,7 +42,7 @@ public class TestDB {
         while ((c = readChoice()) != '*'){
             switch(c){
                 case 'C':
-                    testAdd();
+                    testAddLog();
                     break;
                 case 'R':
                     testRead();
@@ -75,6 +76,24 @@ public class TestDB {
         
         try{
             db.addUser(email, name, password, gender, address);
+        } catch (SQLException ex){
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("User is added to the database.");
+    }
+    
+    // Testing add accesslog database function
+        private void testAddLog(){
+        System.out.print("email: ");
+        String email = in.nextLine();
+        System.out.print("login time ");
+        String login_time = new Timestamp(System.currentTimeMillis()).toString();
+        System.out.print("logout time");
+        String logout_time = new Timestamp(System.currentTimeMillis()).toString();
+        
+        try{
+            db.addUserLog(email, login_time, logout_time);
         } catch (SQLException ex){
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }

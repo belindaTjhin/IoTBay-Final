@@ -8,6 +8,7 @@ package uts.isd.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -94,6 +95,9 @@ public class RegisterAdminServlet extends HttpServlet {
                     manager.addAdmin(email, name, password, gender, address);
                     Admin admin = new Admin(email, name, password, gender, address);
                     session.setAttribute("admin",admin);
+                    // Log user access
+                    String loginTime = new Timestamp(System.currentTimeMillis()).toString();
+                    session.setAttribute("loginTime", loginTime);
                     request.getRequestDispatcher("admin_one.jsp").include(request, response);
                 }
             }catch(SQLException ex){

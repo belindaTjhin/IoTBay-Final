@@ -8,6 +8,7 @@ package uts.isd.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -88,12 +89,16 @@ public class RegisterServlet extends HttpServlet {
             try{
                 User exist = manager.findUser(email,password);
                 if(exist!=null){
+                    // ISSUE: SCREEN GOES BLANK
                     session.setAttribute("existErr", "User already exists in the database.");
                 }
                 else{
                     manager.addUser(email, name, password, gender, address);
                     User user = new User(email, name, password, gender, address);
                     session.setAttribute("user",user);
+                    // Log user access
+                    String loginTime = new Timestamp(System.currentTimeMillis()).toString();
+                    session.setAttribute("loginTime", loginTime);
                     request.getRequestDispatcher("one.jsp").include(request, response);
                 }
             }catch(SQLException ex){
