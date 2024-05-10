@@ -12,19 +12,18 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import uts.isd.model.User;
+import uts.isd.model.Admin;
 import uts.isd.model.dao.DBManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uts.isd.model.Admin;
 
 
 /**
  *
  * @author zoe10
  */
-@WebServlet(name = "UpdateAdminServlet", urlPatterns = {"/UpdateAdminServlet"})
+@WebServlet(name = "UpdateAdminServlet", urlPatterns = {"/UpdateServlet"})
 public class UpdateAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,13 +35,13 @@ public class UpdateAdminServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
         Admin admin = new Admin(email, name, password, gender, address);
-       
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
             admin = manager.findAdmin(email, password);
             if(admin != null){
+                manager.updateAdmin(email, name, password, gender, address);
+                request.getRequestDispatcher("update_admin.jsp").include(request, response);
                 session.setAttribute("updated", "Update was successful");
-                request.getRequestDispatcher("edit_admin.jsp").include(request, response);
             } else{
                 session.setAttribute("updated", "Update was not successful");
                 request.getRequestDispatcher("edit_admin.jsp").include(request,response);

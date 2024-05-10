@@ -23,7 +23,7 @@ import uts.isd.model.dao.DBManager;
  *
  * @author zoe10
  */
-@WebServlet(name = "EditAdminServlet", urlPatterns = {"/EditAdminServlet"})
+@WebServlet(name = "EditAdminServlet", urlPatterns = {"/EditServlet"})
 public class EditAdminServlet extends HttpServlet {
 
     /**
@@ -75,7 +75,7 @@ public class EditAdminServlet extends HttpServlet {
                 session.setAttribute("admin", admin);
                 request.getRequestDispatcher("edit_admin.jsp").include(request, response);
             } else{
-                session.setAttribute("existErr", "admin does not exist in the Database!");
+                session.setAttribute("existErr", "Admin does not exist in the Database!");
                 request.getRequestDispatcher("edit_admin.jsp");
             }
         } catch(SQLException ex){

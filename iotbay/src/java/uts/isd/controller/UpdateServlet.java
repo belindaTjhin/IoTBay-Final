@@ -35,13 +35,13 @@ public class UpdateServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
         User user = new User(email, name, password, gender, address);
-       
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
             user = manager.findUser(email, password);
             if(user != null){
+                manager.updateUser(email, name, password, gender, address);
+                request.getRequestDispatcher("update_user.jsp").include(request, response);
                 session.setAttribute("updated", "Update was successful");
-                request.getRequestDispatcher("edit_user.jsp").include(request, response);
             } else{
                 session.setAttribute("updated", "Update was not successful");
                 request.getRequestDispatcher("edit_user.jsp").include(request,response);
