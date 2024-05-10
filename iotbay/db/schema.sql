@@ -29,13 +29,14 @@ CREATE TABLE ADMIN (EMAIL VARCHAR(50) NOT NULL,
 -- Create ORDERLINES table:
 
 -- Create DEVICES table:
+
 CREATE TABLE devices (
     id INT PRIMARY KEY,
     name VARCHAR(100),
-    description TEXT,
+    description VARCHAR(100),
     price DECIMAL(10, 2),
-    supplier VARCHAR(100)
-    stock INT;
+    supplier VARCHAR(100),
+    stock INT
 );
 
 -- Create PAYMENTMETHODS table:
