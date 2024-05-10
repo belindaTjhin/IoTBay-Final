@@ -13,11 +13,12 @@
         <link rel="stylesheet" href="css/democss.css">
     </head>
     <body>
-        <div class="form-container">
+        <div class="centered-content">
             <div class='login-box'>
-                <h1>Search:</h1>
-                <input class='text'>
-                <button class='button' type="submit">Submit</button>
+                <h1>IoT Device Catalogue</h1>
+                <a href="index.html">
+                    <button class="button">Back</button>
+                </a>
             </div>
         </div>
         <jsp:include page="/ConnServlet" flush="true"/>

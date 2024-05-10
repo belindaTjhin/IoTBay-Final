@@ -29,6 +29,10 @@
         <servlet-name>DeleteAdminServlet</servlet-name>
         <servlet-class>uts.isd.controller.DeleteAdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CatalogueViewServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CatalogueViewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -112,6 +116,10 @@
     <servlet-mapping>
         <servlet-name>DeleteAdminServlet</servlet-name>
         <url-pattern>/DeleteAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CatalogueViewServlet</servlet-name>
+        <url-pattern>/CatalogueViewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
