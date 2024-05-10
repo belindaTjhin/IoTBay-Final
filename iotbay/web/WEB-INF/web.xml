@@ -17,6 +17,10 @@
         <servlet-name>UpdateAdminServlet</servlet-name>
         <servlet-class>uts.isd.controller.UpdateAdminServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <servlet-class>uts.isd.controller.RegisterAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -88,6 +92,10 @@
     <servlet-mapping>
         <servlet-name>UpdateAdminServlet</servlet-name>
         <url-pattern>/UpdateAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <url-pattern>/RegisterAdminServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

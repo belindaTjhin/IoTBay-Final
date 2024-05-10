@@ -18,7 +18,7 @@
             <h1>Welcome, <%= admin.getName()%>!</h1>
             <div class="admin-info">
                 <p>Your email is <%= admin.getEmail()%></p>
-                <div class="buttons">
+                <div class="buttons">                    
                     <a href="${pageContext.request.contextPath}/LogoutServlet" class="button">Logout</a>
                     <a class="button" href="EditAdminServlet?email='<%=admin.getEmail()%>'&password='<%=admin.getPassword()%>'">My Account</a>
                 </div>  

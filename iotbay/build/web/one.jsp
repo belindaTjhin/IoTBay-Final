@@ -10,7 +10,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="css/democss.css">
-    <title>Registration Page</title>
+    <title>Customer Registration Page</title>
 </head>
 <body>
     <div class="login-box"> <!-- Use the same class as the login page for consistency -->

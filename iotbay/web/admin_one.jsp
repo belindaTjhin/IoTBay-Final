@@ -3,14 +3,14 @@
     Created on : 20/03/2024, 7:10:05 PM
 --%>
 
-<%@page import="uts.isd.model.User"%>
+<%@page import="uts.isd.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="css/democss.css">
-    <title>Customer Registration Page</title>
+    <title>Admin Registration Page</title>
 </head>
 <body>
     <div class="login-box"> <!-- Use the same class as the login page for consistency -->
@@ -27,20 +27,20 @@
                     <p>Your password is: <%= password %>.</p>
                     <p>Your gender is: <%= gender %>.</p>
                     <p>Your address: <%= address %>.</p>
-                    <%-- Creating and storing User JavaBean into session --%>
+                    <%-- Creating and storing Admin JavaBean into session --%>
                     <%
-                        // Create User JavaBean instance
-                        User user = new User(email, name, password, gender, address);
+                        // Create Admin JavaBean instance
+                        Admin admin = new Admin(email, name, password, gender, address);
 
-                        // Store User JavaBean into session
-                        session.setAttribute("user", user);       
+                        // Store Admin JavaBean into session
+                        session.setAttribute("admin", admin);       
                     %>
-                    <a href="index.jsp">
+                    <a href="admin_index.jsp">
                         <button class="button">Proceed to Main Page</button>
                     </a>
                 <% } else { %>
                     <p>To register, you must agree to the terms of service.</p>
-                    <a href="one.jsp">
+                    <a href="admin_one.jsp">
                         <button class="button">Register</button>
                     </a>
                 <% }
@@ -54,7 +54,7 @@
             String genderErr = (String) session.getAttribute("genderErr");
             %>
             <h1>Sign Up<span class="message"> <%= (existErr != null ? existErr : "") %> </span></h1>
-                <form action="RegisterServlet" method="post">
+                <form action="RegisterAdminServlet" method="post">
                     <div class="form-container"> <!-- This div wraps the form contents and centers them -->
                         <table>
                             <tr><td>Full Name: </td><td><input type="text" class="input-field" placeholder="<%=(nameErr != null ? nameErr : "Enter Name")%>" name="name" required="true"></td></tr>
