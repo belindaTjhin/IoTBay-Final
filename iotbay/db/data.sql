@@ -21,6 +21,13 @@ INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES
 ('sarah.wilson@example.com', 'Sarah Wilson', 'qwerty', 'female', '101 Maple Drive, Riverside, USA'),
 ('david.lee@example.com', 'David Lee', 'letmein', 'male', '202 Pine Road, Hilltop, USA');
 
+INSERT INTO USERS (EMAIL, NAME, PASSWORD, GENDER, ADDRESS) VALUES 
+('aaa@aaa.com', 'Liam Anderson', 'aaa', 'male', '118 Park Road, St Kilda, VIC'),
+('mia.thompson@example.com', 'Mia Thompson', 'letmein123', 'female', '24 Ocean Drive, Byron Bay, NSW'),
+('ethan.harris@example.com', 'Ethan Harris', 'qwerty123', 'male', '101 Harbour Street, Darling Harbour, NSW'),
+('ava.jackson@example.com', 'Ava Jackson', 'password456', 'female', '69 Hillside Avenue, Noosa Heads, QLD'),
+('noah.martin@example.com', 'Noah Martin', 'welcome123', 'male', '456 Lakeside Drive, Lake Macquarie, NSW');
+
 -- Add data to ADMIN table:
 INSERT INTO ADMIN(email, name, password, gender, address) VALUES
 ('john.doe@example.com', 'John Doe', 'john123', 'Male', '123 Main St'),
