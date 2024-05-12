@@ -28,6 +28,6 @@ body {
     width: 100%; /* Make the form container take up all the available width */
 }
 
-table {
+table{
     margin: auto; /* This will center the table within the .form-container */
 }

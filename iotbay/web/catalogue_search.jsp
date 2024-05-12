@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="uts.isd.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,13 +13,23 @@
         <title>Search Catalogue</title>
         <link rel="stylesheet" href="css/democss.css">
     </head>
+    <% 
+        Product product = (Product) session.getAttribute("product");
+        String found = (String) session.getAttribute("found");
+    %>
     <body>
         <div class="form-container">
             <div class='login-box'>
                 <h1>Search:</h1>
-                <input class='text'>
-                <button class='button' type="submit">Submit</button>
+                <form action="CatalogueSearchServlet" method="post" autocomplete="off">
+                    <input type='text'name="deviceName">
+                    <input type="submit" value="Search Item">
+                </form>
             </div>
+        </div>
+        
+        <div class='login-box'>
+            <span><%=(found != null ? found : "")%></span>
         </div>
     </body>
 </html>

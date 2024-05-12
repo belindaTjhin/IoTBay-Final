@@ -229,7 +229,7 @@ public class DBManager {
     } 
     
     public ArrayList<Product> fetchDevice() throws SQLException{ 
-        String fetch = "select * from DEVICES"; 
+        String fetch = "select * from IOTUSER.DEVICES"; 
         ResultSet rs = st.executeQuery(fetch); 
         ArrayList<Product> temp = new ArrayList(); 
 

@@ -33,6 +33,10 @@
         <servlet-name>CatalogueViewServlet</servlet-name>
         <servlet-class>uts.isd.controller.CatalogueViewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CatalogueSearchServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CatalogueSearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -120,6 +124,10 @@
     <servlet-mapping>
         <servlet-name>CatalogueViewServlet</servlet-name>
         <url-pattern>/CatalogueViewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CatalogueSearchServlet</servlet-name>
+        <url-pattern>/CatalogueSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
