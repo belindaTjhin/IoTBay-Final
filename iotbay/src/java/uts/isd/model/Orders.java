@@ -2,7 +2,7 @@
 package uts.isd.model;
 import java.io.Serializable;
 
-public class Order implements Serializable{
+public class Orders implements Serializable{
     private static int numberOfOrders = 0;
     private int orderID;
     private String useremail;
@@ -11,17 +11,17 @@ public class Order implements Serializable{
     private String shippingAddress;
     
     
-    public Order() {
+    public Orders() {
     
     }
 
-    public Order(String useremail) {
+    public Orders(String useremail) {
         
-        this.orderID = Order.numberOfOrders;
-        Order.numberOfOrders++;
+        this.orderID = Orders.numberOfOrders;
+        Orders.numberOfOrders++;
     }
 
-    public Order(int orderID, String useremail, String orderDate, double tax, double totalPrice, String shippingAddress, String billingAddress) {
+    public Orders(int orderID, String useremail, String orderDate, double tax, double totalPrice, String shippingAddress, String billingAddress) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
