@@ -11,17 +11,16 @@ public class Orders implements Serializable{
     private String shippingAddress;
     
     
-    public Orders(int orderID, String useremail1, String orderDate1, double totalPrice1, String shippingAddress1) {
-    
+    public Orders() {
+
     }
 
     public Orders(String useremail) {
-        
         this.orderID = Orders.numberOfOrders;
         Orders.numberOfOrders++;
     }
 
-    public Orders(int orderID, String useremail, String orderDate, double tax, double totalPrice, String shippingAddress, String billingAddress) {
+    public Orders(int orderID, String useremail, String orderDate, double totalPrice, String shippingAddress){
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.totalPrice = totalPrice;
