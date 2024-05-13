@@ -20,6 +20,18 @@ body {
     align-items: center; /* Center-align the flex items horizontally */
     justify-content: center; /* Center-align the flex items vertically */
 }
+
+.accessLog-box {
+    background-color: #ADD8E6; /* Light blue background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center-align the flex items horizontally */
+    justify-content: center; /* Center-align the flex items vertically */
+}
 .buttons {
     text-align: center;
 }

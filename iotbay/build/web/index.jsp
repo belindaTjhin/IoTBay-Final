@@ -17,11 +17,12 @@
         <div class="login-box"> <!-- Apply the light blue box styling when user is logged in -->
             <h1>Welcome, <%= user.getName()%>!</h1>
             <div class="user-info">
-                <p>Your email is <%= user.getEmail()%></p>
                 <div class="buttons">
-                    <a href="${pageContext.request.contextPath}/LogoutServlet" class="button">Logout</a>
-                    <a class="button" href="EditServlet?email='<%=user.getEmail()%>'&password='<%=user.getPassword()%>'">My Account</a>
+                    <a href="LogoutServlet" class="button">Logout</a>
+                    <a class="button" href="edit_user.jsp">Edit Account</a>
                     <a href="delete_user.jsp" class="button">Delete Account</a>
+                    <a href="user_access_logs.jsp" class="button">View Access Logs</a>
+
 
                 </div>  
             </div>

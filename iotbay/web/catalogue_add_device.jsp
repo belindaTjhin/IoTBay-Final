@@ -1,3 +1,4 @@
+<%@page import="uts.isd.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.Product"%>
 <!DOCTYPE html>
@@ -9,10 +10,12 @@
 </head>
 <body>
 <%
+    Admin admin = (Admin) session.getAttribute("admin");
     String added = (String) session.getAttribute("added");
     String existErr = (String) session.getAttribute("existErr");
     Product newProduct = (Product) session.getAttribute("newProduct");
 %>
+<% if (admin != null) {%>
 <div class="login-box">
     <h1>Adding a Device <span class="message"><%= (existErr != null ? existErr : added) %></span></h1>
     <form action="AddDeviceServlet" method="POST">
@@ -34,5 +37,11 @@
         </div>
     </form>
 </div>
+<% } else { %>
+<div class="login-box">
+    <p>Unauthorized access. Please log in if you are an admin.</p>
+    <a class="button" href="admin_login.jsp">Login</a>
+</div>
+<% }%>
 </body>
 </html>

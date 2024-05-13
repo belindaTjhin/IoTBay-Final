@@ -1,41 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>IoTBay</title>
-        <meta http-equiv="ContentType" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/HomePage.css"> 
-    </head>
-    <body>
-        <div class="centered-content">
-            <h1>IoTBay</h1>
-            <div class="button-group">
-                <a href="one.jsp">
-                    <button class="button">Customer Register</button>
-                </a>
-                <a href="login.jsp">
-                    <button class="button">Customer Login</button>
-                </a>
-                <!-- add links to other features (e.g. device catalogue, order) -->
-                <!-- feature 1: -->
-                <a href="admin_one.jsp">
-                    <button class="button">Admin Register</button>
-                </a>
-                <a href="admin_login.jsp">
-                    <button class="button">Admin Login</button>
-                </a>
-                <!-- feature device catalogue: -->
-                <a href="catalogue_main.jsp">
-                    <button class="button">Device Catalogue</button>
-                </a>
-                <a href="order.jsp">
-                    <button class="button">Make Order</button>
-                </a>
-                <a href="system_login.jsp">
-                    <button class="button">System Admin login</button>
-                </a>
-            </div>
-        </div>
+<head>
+    <title>IoTBay</title>
+    <meta http-equiv="ContentType" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/HomePage.css"> 
+    <style>
+        .button-table {
+            display: inline-block;
+            margin: 10px;
+        }
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
 
-    </body>
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-right">
+       <div class="button-group">
+           <table class="button-table" style="background-color: #ADD8E6; border-radius: 10px;">
+               <tr>
+                   <td colspan="2" style="text-align: center;">
+                       <label style="display: block;">Customer:</label>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <a href="one.jsp">
+                           <button class="button">Customer Register</button>
+                       </a>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <a href="login.jsp">
+                           <button class="button">Customer Login</button>
+                       </a>
+                   </td>
+               </tr>
+           </table>
+
+           <table class="button-table" style="background-color: #ADD8E6; border-radius: 10px;">
+               <tr>
+                   <td colspan="2" style="text-align: center;">
+                       <label style="display: block;">Admin:</label>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <a href="admin_login.jsp">
+                           <button class="button">Staff Login</button>
+                       </a>
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                       <a href="system_login.jsp">
+                        <button class="button">System Admin Login</button>
+                        </a>
+                   </td>
+                    
+               </tr>
+                    
+           </table>
+       </div>
+   </div>
+
+
+    <div class="centered-content">
+        <h1>IoTBay</h1>
+        <div class="button-group">
+            <a href="catalogue_main.jsp">
+                <button class="button">Device Catalogue</button>
+            </a>
+            <a href="order.jsp">
+                <button class="button">Make Order</button>
+            </a>
+        </div>
+    </div>
+
+</body>
 </html>

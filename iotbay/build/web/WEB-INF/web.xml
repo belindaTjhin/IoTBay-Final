@@ -41,6 +41,18 @@
         <servlet-name>AddDeviceServlet</servlet-name>
         <servlet-class>uts.isd.controller.AddDeviceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccessLogsServlet</servlet-name>
+        <servlet-class>uts.isd.controller.AccessLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccessLogsServlet</servlet-name>
+        <servlet-class>uts.isd.controller.AdminAccessLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -133,6 +145,10 @@
         <servlet-name>CatalogueSearchServlet</servlet-name>
         <url-pattern>/CatalogueSearchServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDeviceServlet</servlet-name>
+        <url-pattern>/AddDeviceServlet</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>SystemLoginServlet</servlet-name>
         <servlet-class>uts.isd.controller.SystemLoginServlet</servlet-class>
@@ -164,14 +180,6 @@
     <servlet-mapping>
         <servlet-name>ViewUsersServlet</servlet-name>
         <url-pattern>/ViewUsersServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>EditUserServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EditUserServlet</servlet-name>
-        <url-pattern>/EditUserServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>DeleteUserServlet</servlet-name>
@@ -206,8 +214,16 @@
         <url-pattern>/ViewAdminsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddDeviceServlet</servlet-name>
-        <url-pattern>/AddDeviceServlet</url-pattern>
+        <servlet-name>AccessLogsServlet</servlet-name>
+        <url-pattern>/AccessLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccessLogsServlet</servlet-name>
+        <url-pattern>/AdminAccessLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/EditUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
