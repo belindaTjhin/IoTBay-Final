@@ -8,6 +8,7 @@ import java.sql.*;
 
 import java.util.ArrayList; 
 import uts.isd.model.Admin;
+import uts.isd.model.System;
 import uts.isd.model.Product;
 import uts.isd.model.AccessLog;
 
@@ -267,5 +268,27 @@ public class DBManager {
     public void addUserLog(String email, String login_time, String logout_time) throws SQLException {                   
       //code for add-operation        
       st.executeUpdate("INSERT INTO IOTUSER.USER_ACCESS_LOG " + "VALUES ('" + email + "', '" + login_time + "', '" + logout_time+ "')");    
+    } 
+    
+     //Find SYSTEM by email and password in the database    
+    public uts.isd.model.System findSystem(String email, String password) throws SQLException {        
+
+       //setup the select sql query string 
+       String fetch = "select * from IOTUSER.SYSTEMADMIN where EMAIL = '" + email + "' and PASSWORD='" + password + "'"; 
+
+       //execute this query using the statement field 
+       ResultSet rs = st.executeQuery(fetch); 
+
+       //add the results to a ResultSet  
+       while(rs.next()){ // reads every row in SYSTEM table 
+           String systemEmail = rs.getString(1); 
+           String systemPass = rs.getString(2); 
+
+           if(systemEmail.equals(email) && systemPass.equals(password)){ 
+               return new uts.isd.model.System(systemEmail, systemPass); 
+           } 
+       } 
+       //search the ResultSet for a admin using the parameters                
+       return null;    
     } 
 }
