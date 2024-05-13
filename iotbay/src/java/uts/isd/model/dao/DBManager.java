@@ -220,7 +220,7 @@ public class DBManager {
     //Add a device into the database    
     public void addDevice(int id, String name, String description, double price, String supplier, int stock) throws SQLException {                   
       //code for add-operation        
-      st.executeUpdate("INSERT INTO IOTUSER.DEVICES " + "VALUES ('" + id + "', '" + name + "', '" + description + "', '" + price + "', '" + supplier + "', '" + stock + "')");    
+        st.executeUpdate("INSERT INTO IOTUSER.DEVICES (ID, NAME, DESCRIPTION, PRICE, SUPPLIER, STOCK) VALUES (" + id + ", '" + name + "', '" + description + "', " + price + ", '" + supplier + "', " + stock + ")");
     } 
     
     //update a device details in the database    

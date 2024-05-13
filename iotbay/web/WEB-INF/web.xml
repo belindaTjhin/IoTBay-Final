@@ -41,6 +41,18 @@
         <servlet-name>AddDeviceServlet</servlet-name>
         <servlet-class>uts.isd.controller.AddDeviceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AccessLogsServlet</servlet-name>
+        <servlet-class>uts.isd.controller.AccessLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminAccessLogsServlet</servlet-name>
+        <servlet-class>uts.isd.controller.AdminAccessLogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -70,6 +82,14 @@
         <url-pattern>/UpdateServlet</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>uts.isd.controller.MainServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>uts.isd.controller.RegisterServlet</servlet-class>
     </servlet>
@@ -84,6 +104,14 @@
     <servlet-mapping>
         <servlet-name>CancelServlet</servlet-name>
         <url-pattern>/CancelServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>uts.isd.controller.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
@@ -116,6 +144,10 @@
     <servlet-mapping>
         <servlet-name>CatalogueSearchServlet</servlet-name>
         <url-pattern>/CatalogueSearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDeviceServlet</servlet-name>
+        <url-pattern>/AddDeviceServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>SystemLoginServlet</servlet-name>
@@ -150,14 +182,6 @@
         <url-pattern>/ViewUsersServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>EditUserServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EditUserServlet</servlet-name>
-        <url-pattern>/EditUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>DeleteUserServlet</servlet-name>
         <servlet-class>uts.isd.controller.DeleteUserServlet</servlet-class>
     </servlet>
@@ -190,8 +214,16 @@
         <url-pattern>/ViewAdminsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddDeviceServlet</servlet-name>
-        <url-pattern>/AddDeviceServlet</url-pattern>
+        <servlet-name>AccessLogsServlet</servlet-name>
+        <url-pattern>/AccessLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminAccessLogsServlet</servlet-name>
+        <url-pattern>/AdminAccessLogsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/EditUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

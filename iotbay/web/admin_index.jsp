@@ -22,7 +22,7 @@
             <h1>Welcome, <%= admin.getName()%>!</h1>
             <div class="admin-info">
                 <div class="buttons">                    
-                    <a href="logout.jsp" class="button">Logout</a>
+                    <a href="LogoutServlet" class="button">Logout</a>
                     <a class="button" href="edit_admin.jsp">Edit Account</a>
                     <a class="button" href="catalogue_main.jsp">IoT Catalogue</a>
                     <a href="delete_admin.jsp" class="button">Delete Account</a>

@@ -100,7 +100,7 @@ public class TestDB {
         
         System.out.println("User is added to the database.");
     }
-    
+       
     private void testRead() throws SQLException{
         System.out.print("User email: ");
         String email = in.nextLine();

@@ -18,7 +18,7 @@
             <h1>Welcome, <%= user.getName()%>!</h1>
             <div class="user-info">
                 <div class="buttons">
-                    <a href="logout.jsp" class="button">Logout</a>
+                    <a href="LogoutServlet" class="button">Logout</a>
                     <a class="button" href="edit_user.jsp">Edit Account</a>
                     <a href="delete_user.jsp" class="button">Delete Account</a>
                     <a href="user_access_logs.jsp" class="button">View Access Logs</a>
