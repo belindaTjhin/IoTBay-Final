@@ -25,26 +25,13 @@ import uts.isd.model.dao.DBManager;
  */
 public class CatalogueSearchServlet extends HttpServlet {
     
-    private DBManager manager;
-    private DBConnector connector;
-    
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-        try{
-            connector = new DBConnector();
-        } catch (ClassNotFoundException | SQLException ex){
-            java.util.logging.Logger.getLogger(CatalogueSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
         
-        try{
-            manager = new DBManager(connector.openConnection());
-        } catch (SQLException ex){
-            java.util.logging.Logger.getLogger(CatalogueSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        //session
         HttpSession session = request.getSession();
+        DBManager manager = (DBManager) session.getAttribute("manager");
+        
         
         session.setAttribute("product", null);
         session.setAttribute("found", null);
@@ -56,17 +43,18 @@ public class CatalogueSearchServlet extends HttpServlet {
             if(check){
                 Product product = manager.findDevice(deviceName);
                 session.setAttribute("product", product);
-                
+                session.setAttribute("found", "Product found");
                 request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
                 response.sendRedirect("catalogue_search_result.jsp");
             } else {
                 request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
                 session.setAttribute("found", "Item does NOT exist in the Inventory");                
-                response.sendRedirect("catalogue_search.jsp.jsp");
+                response.sendRedirect("catalogue_search.jsp");
             }
         } catch (SQLException ex){
             Logger.getLogger(CatalogueSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
     }
     
 }

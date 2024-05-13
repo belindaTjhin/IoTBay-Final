@@ -13,7 +13,7 @@
         <title>Device Search Result</title>
         <link rel="stylesheet" href="css/democss.css">
     </head>
-    <body>
+    <body action="CatalogueSearchServlet">
         <% 
             Product product = (Product) session.getAttribute("product");
             String found = (String) session.getAttribute("found");

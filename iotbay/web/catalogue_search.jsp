@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="uts.isd.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="css/democss.css">
     </head>
     <% 
+        ArrayList<Product> catalogue = (ArrayList<Product>) session.getAttribute("catalogue");
         Product product = (Product) session.getAttribute("product");
         String found = (String) session.getAttribute("found");
     %>
@@ -21,15 +23,13 @@
         <div class="form-container">
             <div class='login-box'>
                 <h1>Search:</h1>
-                <form action="CatalogueSearchServlet" method="post" autocomplete="off">
+                <form action="CatalogueSearchServlet" method='get' autocomplete="off">
                     <input type='text'name="deviceName">
                     <input type="submit" value="Search Item">
                 </form>
+                <br>
+                <span><%=(found != null ? found : "")%></span>
             </div>
-        </div>
-        
-        <div class='login-box'>
-            <span><%=(found != null ? found : "")%></span>
         </div>
     </body>
 </html>

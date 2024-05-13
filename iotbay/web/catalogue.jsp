@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="uts.isd.model.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uts.isd.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,6 +28,7 @@
         <% 
             ArrayList<Product> catalogue = (ArrayList<Product>) session.getAttribute("catalogue");
             String show = (String) session.getAttribute("show");
+            Admin admin = (Admin) session.getAttribute("user");
         %>
         <div class="centered-content">
             <div class='login-box'>
@@ -64,13 +66,14 @@
                                     <td><p><%=p.getId()%></p></td>
                                     <td><p><%=p.getName()%></p></td>
                                     <td><p><%=p.getDescription()%></p></td>
-                                    <td><p><%=p.getPrice()%></p></td>
+                                    <td><p>$<%=p.getPrice()%></p></td>
                                     <td><p><%=p.getSupplier()%></p></td>
                                     <td><p><%=p.getStock()%></p></td>
                                 </tr>
                             <%}%>
                 </table>
-                <a href="index.html">
+                <br>
+                <a href="catalogue_main.jsp">
                     <button class="button">Back</button>
                 </a>
                 <%} else { %>
