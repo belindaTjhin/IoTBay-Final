@@ -11,7 +11,7 @@ public class Orders implements Serializable{
     private String shippingAddress;
     
     
-    public Orders() {
+    public Orders(int orderID1, String useremail1, String orderDate1, double totalPrice1, String shippingAddress1) {
     
     }
 
