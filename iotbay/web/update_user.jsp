@@ -14,11 +14,11 @@
 </head>
 <body>
     <div class="login-box">
-        <h1>Update User Details</h1>
+        <h1>Updated User Details</h1>
 
         <% 
             String name = request.getParameter("name");
-            String email = request.getParameter("email");
+            String email = request.getParameter("newEmail");
             String password = request.getParameter("password");
             String gender = request.getParameter("gender");
             String address = request.getParameter("address");
@@ -26,14 +26,10 @@
             User user = (User) session.getAttribute("user");
 
             if (user != null) {
-                user.setName(name);
-                user.setEmail(email);
-                user.setPassword(password);
-                user.setGender(gender);
-                user.setAddress(address);
 
         %>
                 <p>User details updated successfully.</p>
+                <p>Your name is: <%= name %>.</p>
                 <p>Your email is: <%= email %>.</p>
                 <p>Your password is: <%= password %>.</p>
                 <p>Your gender is: <%= gender %>.</p>
@@ -44,10 +40,15 @@
                 <p>Error: No user logged in.</p>
         <% 
             } 
-        %>
-        <a href="index.jsp">
-            <button href="button">Back to Main Page</button>
+            %>
+    <div class="button-group">
+        <a href="index.jsp" class="button-link">
+            <button class="button">Main Page</button>
         </a>
+        <a href="edit_user.jsp" class="button-link">
+            <button class="button">Edit Account</button>
+        </a>
+    </div>
     </div>
 </body>
 </html>

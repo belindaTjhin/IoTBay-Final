@@ -13,7 +13,7 @@
 <body>
     <div class="login-box"> <!-- Use the class that applies the light blue box styling -->
         <h1>You have been logged out.</h1>
-        <p>Click <a href="index.jsp">here</a> to return to the main page.</p>
+        <p>Click <a href="index.html">here</a> to return to the main page.</p>
     </div>
 </body>
 </html>

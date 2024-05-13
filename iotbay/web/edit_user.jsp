@@ -13,15 +13,15 @@
     <title>Edit Account</title>
     <style>
         .form-group {
-            margin-bottom: 15px; /* Adds space below each form group */
+            margin-bottom: 15px; 
         }
         label, input, .button {
-            display: block; /* Makes each element take its own line */
-            margin-bottom: 5px; /* Adds space below each element */
+            display: block; 
+            margin-bottom: 5px; 
         }
         input, .button {
-            width: 100%; /* Makes input fields and button take full width of their container */
-            box-sizing: border-box; /* Ensures padding doesn't add to the width */
+            width: 100%; 
+            box-sizing: border-box; 
         }
     </style>
 </head>
@@ -56,6 +56,9 @@
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" value="${user.address}">
                 </div>
+                <!-- New inputs for old and new email -->
+                <input type="hidden" id="oldEmail" name="oldEmail" value="${user.email}">
+                <input type="email" id="newEmail" name="newEmail" placeholder="New Email" required>
                 <input type="submit" class="button" value="Update">
             </form>
         <% } else { %>

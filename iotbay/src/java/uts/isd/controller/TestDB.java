@@ -42,7 +42,7 @@ public class TestDB {
         while ((c = readChoice()) != '*'){
             switch(c){
                 case 'C':
-                    testAddLog();
+                    testAdd();
                     break;
                 case 'R':
                     testRead();
@@ -116,20 +116,23 @@ public class TestDB {
     }
     
     private void testUpdate(){
-        System.out.print("User email: ");
-        String email = in.nextLine();
+        System.out.print("Old email: ");
+        String oldEmail = in.nextLine();
         System.out.print("Password: ");
         String password = in.nextLine();
         
         try{
-          if(db.checkUser(email, password)){
+          if(db.checkUser(oldEmail, password)){
+              System.out.print("New email: ");
+              String newEmail = in.nextLine();
               System.out.print("User name: ");
               String name = in.nextLine();
               System.out.print("Gender: ");
               String gender = in.nextLine();
               System.out.print("Address: ");
               String address = in.nextLine();
-              db.updateUser(email, name, password, gender, address);
+              
+              db.updateUser(oldEmail, newEmail, name, password, gender, address);
           } else {
               System.out.println("User does not exist.");
           }
@@ -161,6 +164,21 @@ public class TestDB {
            System.out.println("USERS TABLE: ");
            users.stream().forEach((user) -> {
                System.out.printf("%-20s %-30s %-20s %-10s \n", user.getName(), user.getEmail(), user.getPassword(), user.getGender(), user.getAddress());
+           });
+           System.out.println();
+       } catch (SQLException ex){
+           Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
+    
+    // Testing show accesslog database function
+    private void showAllLog(){
+       
+        try{
+           ArrayList<AccessLog> accessLogs = db.fetchAccessLog("delete3@example.com", "2024-05-10");
+           System.out.println("AccessLog TABLE: ");
+           accessLogs.stream().forEach((user) -> {
+               System.out.printf("%-20s %-30s %-30s \n", user.getEmail(), user.getLoginTime(), user.getLogoutTime());
            });
            System.out.println();
        } catch (SQLException ex){

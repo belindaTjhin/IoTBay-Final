@@ -70,14 +70,6 @@
         <url-pattern>/UpdateServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>uts.isd.controller.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/MainServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>uts.isd.controller.RegisterServlet</servlet-class>
     </servlet>
@@ -92,14 +84,6 @@
     <servlet-mapping>
         <servlet-name>CancelServlet</servlet-name>
         <url-pattern>/CancelServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>uts.isd.controller.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>

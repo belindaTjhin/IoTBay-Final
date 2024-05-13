@@ -22,7 +22,7 @@ public class EditUserServlet extends HttpServlet {
     String address = request.getParameter("address");
     String password = request.getParameter("password"); // Get the new password
 
-    try {
+   /* try {
         // Assuming you have a method in your DBManager to update a user
         DBManager manager = (DBManager) getServletContext().getAttribute("manager");
         if (password != null && !password.isEmpty()) {
@@ -41,7 +41,7 @@ public class EditUserServlet extends HttpServlet {
         response.sendRedirect("system_viewusers.jsp"); // Redirect to user list or confirmation page
     } catch (SQLException e) {
         throw new ServletException("Error updating user", e);
-    }
+    }*/
 }
 
 }

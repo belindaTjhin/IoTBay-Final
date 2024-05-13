@@ -47,7 +47,7 @@ public class UpdateAdminServlet extends HttpServlet {
                 request.getRequestDispatcher("edit_admin.jsp").include(request,response);
             }
         } catch(SQLException ex){
-            Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateAdminServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         response.sendRedirect("edit_admin.jsp");
     }

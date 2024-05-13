@@ -61,10 +61,11 @@ public class DBManager {
 
 
     //update a user details in the database    
-    public void updateUser( String email, String name, String password, String gender, String address) throws SQLException {        
-       //code for update-operation  
-       st.executeUpdate("UPDATE IOTUSER.USERS SET NAME='" + name + "', PASSWORD='" + password + "', GENDER='" + gender + "', ADDRESS='" + address + "' WHERE EMAIL='" + email + "'"); 
-    }        
+    public void updateUser(String oldEmail, String newEmail, String name, String password, String gender, String address) throws SQLException {        
+        //code for update-operation  
+        st.executeUpdate("UPDATE IOTUSER.USERS SET EMAIL='" + newEmail + "', NAME='" + name + "', PASSWORD='" + password + "', GENDER='" + gender + "', ADDRESS='" + address + "' WHERE EMAIL='" + oldEmail + "'"); 
+    }
+      
 
     //delete a user from the database    
     public void deleteUser(String email) throws SQLException{        
@@ -270,8 +271,41 @@ public class DBManager {
       st.executeUpdate("INSERT INTO IOTUSER.USER_ACCESS_LOG " + "VALUES ('" + email + "', '" + login_time + "', '" + logout_time+ "')");    
     } 
     
-     //Find SYSTEM by email and password in the database    
-    public uts.isd.model.System findSystem(String email, String password) throws SQLException {        
+    public ArrayList<AccessLog> fetchAccessLog(String email, String date) throws SQLException{ 
+        
+        String fetch = "SELECT * FROM USER_ACCESS_LOG WHERE email = '" + email + "' AND DATE(LOGIN_TIME)='" + date + "'";
+        ResultSet rs = st.executeQuery(fetch); 
+        ArrayList<AccessLog> temp = new ArrayList(); 
+
+        while(rs.next()){ 
+            email = rs.getString(1); 
+            date = rs.getString(2); 
+            String logoutTime = rs.getString(3); 
+
+            temp.add(new AccessLog(email, date, logoutTime)); 
+        }
+        return temp; 
+    } 
+    
+     public ArrayList<AccessLog> fetchAdminAccessLog(String email, String date) throws SQLException{ 
+        
+        String fetch = "SELECT * FROM ADMIN_ACCESS_LOG WHERE email = '" + email + "' AND DATE(LOGIN_TIME)='" + date + "'";
+        ResultSet rs = st.executeQuery(fetch); 
+        ArrayList<AccessLog> temp = new ArrayList(); 
+
+        while(rs.next()){ 
+            email = rs.getString(1); 
+            date = rs.getString(2); 
+            String logoutTime = rs.getString(3); 
+
+            temp.add(new AccessLog(email, date, logoutTime)); 
+        }
+        return temp; 
+    } 
+
+    
+    //Find SYSTEM by email and password in the database    
+    public System findSystem(String email, String password) throws SQLException {        
 
        //setup the select sql query string 
        String fetch = "select * from IOTUSER.SYSTEMADMIN where EMAIL = '" + email + "' and PASSWORD='" + password + "'"; 
@@ -285,7 +319,7 @@ public class DBManager {
            String systemPass = rs.getString(2); 
 
            if(systemEmail.equals(email) && systemPass.equals(password)){ 
-               return new uts.isd.model.System(systemEmail, systemPass); 
+               return new System(systemEmail, systemPass); 
            } 
        } 
        //search the ResultSet for a admin using the parameters                

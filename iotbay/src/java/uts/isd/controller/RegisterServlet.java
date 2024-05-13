@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ */     
+
 package uts.isd.controller;
 
 import java.io.IOException;
@@ -75,37 +76,50 @@ public class RegisterServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
         DBManager manager = (DBManager) session.getAttribute("manager");
+
+        // Clear previous error messages
         validator.clear(session);
-        if(!validator.validateEmail(email)){
+
+        // Validate user input
+        if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
-            request.getRequestDispatcher("one.jsp").include(request, response);
-        }else if(!validator.validateName(name)){
+        } else if (!validator.validateName(name)) {
             session.setAttribute("nameErr", "Error: Name format is incorrect.");
-            request.getRequestDispatcher("one.jsp").include(request, response);
-        }else if(!validator.validatePassword(password)){
+        } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password format is incorrect.");
-            request.getRequestDispatcher("one.jsp").include(request, response);
-        }else{
-            try{
-                User exist = manager.findUser(email,password);
-                if(exist!=null){
-                    // ISSUE: SCREEN GOES BLANK
+        } else {
+            try {
+                User exist = manager.findUser(email, password);
+                if (exist != null) {
                     session.setAttribute("existErr", "User already exists in the database.");
-                }
-                else{
+                } else {
+                    // Add user to the database
                     manager.addUser(email, name, password, gender, address);
                     User user = new User(email, name, password, gender, address);
-                    session.setAttribute("user",user);
+                    session.setAttribute("user", user);
+
                     // Log user access
                     String loginTime = new Timestamp(System.currentTimeMillis()).toString();
                     session.setAttribute("loginTime", loginTime);
-                    request.getRequestDispatcher("one.jsp").include(request, response);
+                    session.setAttribute("email", email);
+                    session.setAttribute("password", password);
+
+                    // Redirect user to a different page after successful registration
+                    response.sendRedirect("index.jsp");
+                    return; // Exit method after redirecting
                 }
-            }catch(SQLException ex){
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE,null,ex);
+            } catch (SQLException ex) {
+                // Log SQL exceptions
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                // Redirect user to an error page
+                response.sendRedirect("Registration_error.jsp");
+                return; // Exit method after redirecting
             }
-            
         }
+
+        // If any validation or database error occurs, forward back to registration page
+        request.getRequestDispatcher("one.jsp").include(request, response);
     }
+
 
 }

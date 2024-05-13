@@ -21,12 +21,13 @@
         <div class="login-box"> <!-- Apply the light blue box styling when admin is logged in -->
             <h1>Welcome, <%= admin.getName()%>!</h1>
             <div class="admin-info">
-                <p>Your email is <%= admin.getEmail()%></p>
                 <div class="buttons">                    
-                    <a href="${pageContext.request.contextPath}/LogoutServlet" class="button">Logout</a>
-                    <a class="button" href="EditAdminServlet?email='<%=admin.getEmail()%>'&password='<%=admin.getPassword()%>'">My Account</a>
+                    <a href="logout.jsp" class="button">Logout</a>
+                    <a class="button" href="edit_admin.jsp">Edit Account</a>
                     <a class="button" href="catalogue_main.jsp">IoT Catalogue</a>
                     <a href="delete_admin.jsp" class="button">Delete Account</a>
+                    <a href="admin_access_logs.jsp" class="button">View Access Logs</a>
+                    <a href="admin_one.jsp" class="button">Create Staff Account</a>
                 </div>  
             </div>
         </div>

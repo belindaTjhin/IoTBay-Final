@@ -34,22 +34,32 @@ public class UpdateServlet extends HttpServlet {
         String password = request.getParameter("password");
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
-        User user = new User(email, name, password, gender, address);
+        String oldEmail = request.getParameter("oldEmail"); // Retrieve old email parameter
+        String newEmail = request.getParameter("newEmail"); // Retrieve new email parameter
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
-            user = manager.findUser(email, password);
+            User user = manager.findUser(email, password);
             if(user != null){
-                manager.updateUser(email, name, password, gender, address);
+                // Update user details in the database
+                manager.updateUser(oldEmail, newEmail, name, password, gender, address); // Pass old and new email
+                
+                // Update user object in the session
+                user.setName(name);
+                user.setEmail(newEmail);
+                user.setPassword(password);
+                user.setGender(gender);
+                user.setAddress(address);
+                session.setAttribute("user", user);
+                
+                session.setAttribute("updated", "");
                 request.getRequestDispatcher("update_user.jsp").include(request, response);
-                session.setAttribute("updated", "Update was successful");
             } else{
-                session.setAttribute("updated", "Update was not successful");
+                session.setAttribute("updated", "Error: Update was not successful");
                 request.getRequestDispatcher("edit_user.jsp").include(request,response);
             }
         } catch(SQLException ex){
-            Logger.getLogger(EditServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("edit_user.jsp");
     }
     
     @Override
@@ -58,5 +68,4 @@ public class UpdateServlet extends HttpServlet {
         // Implement any necessary logic for handling GET requests, or simply forward to the doPost method
         doPost(request, response);
     }
-    
 }

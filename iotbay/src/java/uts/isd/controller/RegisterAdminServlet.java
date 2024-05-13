@@ -2,7 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+ */     
+
 package uts.isd.controller;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class RegisterAdminServlet extends HttpServlet {
             out.println("<title>Servlet RegisterServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterAdminServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,36 +76,50 @@ public class RegisterAdminServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
         DBManager manager = (DBManager) session.getAttribute("manager");
+
+        // Clear previous error messages
         validator.clear(session);
-        if(!validator.validateEmail(email)){
+
+        // Validate user input
+        if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
-            request.getRequestDispatcher("admin_one.jsp").include(request, response);
-        }else if(!validator.validateName(name)){
+        } else if (!validator.validateName(name)) {
             session.setAttribute("nameErr", "Error: Name format is incorrect.");
-            request.getRequestDispatcher("admin_one.jsp").include(request, response);
-        }else if(!validator.validatePassword(password)){
+        } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password format is incorrect.");
-            request.getRequestDispatcher("admin_one.jsp").include(request, response);
-        }else{
-            try{
-                Admin exist = manager.findAdmin(email,password);
-                if(exist!=null){
-                    session.setAttribute("existErr", "Admin already exists in the database.");
-                }
-                else{
+        } else {
+            try {
+                Admin exist = manager.findAdmin(email, password);
+                if (exist != null) {
+                    session.setAttribute("existErr", "User already exists in the database.");
+                } else {
+                    // Add admin to the database
                     manager.addAdmin(email, name, password, gender, address);
                     Admin admin = new Admin(email, name, password, gender, address);
-                    session.setAttribute("admin",admin);
-                    // Log user access
+                    session.setAttribute("admin", admin);
+
+                    // Log admin access
                     String loginTime = new Timestamp(System.currentTimeMillis()).toString();
                     session.setAttribute("loginTime", loginTime);
-                    request.getRequestDispatcher("admin_one.jsp").include(request, response);
+                    session.setAttribute("email", email);
+                    session.setAttribute("password", password);
+
+                    // Redirect admin to a different page after successful registration
+                    response.sendRedirect("admin_index.jsp");
+                    return; // Exit method after redirecting
                 }
-            }catch(SQLException ex){
-                Logger.getLogger(RegisterAdminServlet.class.getName()).log(Level.SEVERE,null,ex);
+            } catch (SQLException ex) {
+                // Log SQL exceptions
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+                // Redirect user to an error page
+                response.sendRedirect("Registration_error.jsp");
+                return; // Exit method after redirecting
             }
-            
         }
+
+        // If any validation or database error occurs, forward back to registration page
+        request.getRequestDispatcher("admin_one.jsp").include(request, response);
     }
+
 
 }
