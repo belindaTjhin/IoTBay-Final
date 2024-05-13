@@ -1,5 +1,5 @@
 <%-- 
-    Document   : update_admin
+    Document   : update_user
     Created on : 05/04/2024, 11:36:03 AM
 --%>
 
@@ -9,31 +9,26 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Update Admin Details</title>
+    <title>Update Staff Details</title>
     <link rel="stylesheet" href="css/democss.css"> 
 </head>
 <body>
     <div class="login-box">
-        <h1>Update Admin Details</h1>
+        <h1>Updated Staff Details</h1>
 
         <% 
             String name = request.getParameter("name");
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            String email = request.getParameter("newEmail");
+            String password = request.getParameter("newPassword");
             String gender = request.getParameter("gender");
             String address = request.getParameter("address");
-
             Admin admin = (Admin) session.getAttribute("admin");
 
             if (admin != null) {
-                admin.setName(name);
-                admin.setEmail(email);
-                admin.setPassword(password);
-                admin.setGender(gender);
-                admin.setAddress(address);
 
         %>
-                <p>Admin details updated successfully.</p>
+                <p>User details updated successfully.</p>
+                <p>Your name is: <%= name %>.</p>
                 <p>Your email is: <%= email %>.</p>
                 <p>Your password is: <%= password %>.</p>
                 <p>Your gender is: <%= gender %>.</p>
@@ -41,13 +36,18 @@
         <% 
             } else {
         %>
-                <p>Error: No admin user logged in.</p>
+                <p>Error: No user logged in.</p>
         <% 
             } 
-        %>
-        <a href="admin_index.jsp">
-            <button href="button">Back to Main Page</button>
+            %>
+    <div class="button-group">
+        <a href="admin_index.jsp" class="button-link">
+            <button class="button">Main Page</button>
         </a>
+        <a href="edit_admin.jsp" class="button-link">
+            <button class="button">Edit Account</button>
+        </a>
+    </div>
     </div>
 </body>
 </html>

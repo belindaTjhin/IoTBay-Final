@@ -36,12 +36,14 @@ public class UpdateServlet extends HttpServlet {
         String address = request.getParameter("address");
         String oldEmail = request.getParameter("oldEmail"); // Retrieve old email parameter
         String newEmail = request.getParameter("newEmail"); // Retrieve new email parameter
+        String oldPassword = request.getParameter("oldPassword"); // Retrieve old email parameter
+        String newPassword = request.getParameter("newPassword"); // Retrieve new email parameter
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
             User user = manager.findUser(email, password);
             if(user != null){
                 // Update user details in the database
-                manager.updateUser(oldEmail, newEmail, name, password, gender, address); // Pass old and new email
+                manager.updateUser(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
                 
                 // Update user object in the session
                 user.setName(name);

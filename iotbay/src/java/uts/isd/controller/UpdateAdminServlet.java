@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author zoe10
  */
-@WebServlet(name = "UpdateAdminServlet", urlPatterns = {"/UpdateServlet"})
+@WebServlet(name = "UpdateAdminServlet", urlPatterns = {"/UpdateAdminServlet"})
 public class UpdateAdminServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -34,22 +34,34 @@ public class UpdateAdminServlet extends HttpServlet {
         String password = request.getParameter("password");
         String gender = request.getParameter("gender");
         String address = request.getParameter("address");
-        Admin admin = new Admin(email, name, password, gender, address);
+        String oldEmail = request.getParameter("oldEmail"); // Retrieve old email parameter
+        String newEmail = request.getParameter("newEmail"); // Retrieve new email parameter
+        String oldPassword = request.getParameter("oldPassword"); // Retrieve old email parameter
+        String newPassword = request.getParameter("newPassword"); // Retrieve new email parameter
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
-            admin = manager.findAdmin(email, password);
+            Admin admin = manager.findAdmin(email, password);
             if(admin != null){
-                manager.updateAdmin(email, name, password, gender, address);
+                // Update admin details in the database
+                manager.updateAdmin(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
+                
+                // Update admin object in the session
+                admin.setName(name);
+                admin.setEmail(newEmail);
+                admin.setPassword(password);
+                admin.setGender(gender);
+                admin.setAddress(address);
+                session.setAttribute("admin", admin);
+                
+                session.setAttribute("updated", "");
                 request.getRequestDispatcher("update_admin.jsp").include(request, response);
-                session.setAttribute("updated", "Update was successful");
             } else{
-                session.setAttribute("updated", "Update was not successful");
+                session.setAttribute("updated", "Error: Update was not successful");
                 request.getRequestDispatcher("edit_admin.jsp").include(request,response);
             }
         } catch(SQLException ex){
-            Logger.getLogger(UpdateAdminServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("edit_admin.jsp");
     }
     
     @Override
@@ -58,5 +70,4 @@ public class UpdateAdminServlet extends HttpServlet {
         // Implement any necessary logic for handling GET requests, or simply forward to the doPost method
         doPost(request, response);
     }
-    
 }

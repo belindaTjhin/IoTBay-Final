@@ -61,9 +61,15 @@ public class DBManager {
 
 
     //update a user details in the database    
-    public void updateUser(String oldEmail, String newEmail, String name, String password, String gender, String address) throws SQLException {        
+    public void updateUser(String oldEmail, String newEmail, String name, String oldPassword, String newPassword, String gender, String address) throws SQLException {        
         //code for update-operation  
-        st.executeUpdate("UPDATE IOTUSER.USERS SET EMAIL='" + newEmail + "', NAME='" + name + "', PASSWORD='" + password + "', GENDER='" + gender + "', ADDRESS='" + address + "' WHERE EMAIL='" + oldEmail + "'"); 
+        st.executeUpdate("UPDATE IOTUSER.USERS SET EMAIL='" + newEmail + "', NAME='" + name + "', PASSWORD='" + newPassword + "', GENDER='" + gender + "', ADDRESS='" + address + "' WHERE EMAIL='" + oldEmail + "'"); 
+    }
+    
+    //update a admin details in the database    
+    public void updateAdmin(String oldEmail, String newEmail, String name, String oldPassword, String newPassword, String gender, String address) throws SQLException {        
+        //code for update-operation  
+        st.executeUpdate("UPDATE IOTUSER.ADMIN SET EMAIL='" + newEmail + "', NAME='" + name + "', PASSWORD='" + newPassword + "', GENDER='" + gender + "', ADDRESS='" + address + "' WHERE EMAIL='" + oldEmail + "'"); 
     }
       
 

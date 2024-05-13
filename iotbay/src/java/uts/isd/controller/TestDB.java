@@ -119,10 +119,10 @@ public class TestDB {
         System.out.print("Old email: ");
         String oldEmail = in.nextLine();
         System.out.print("Password: ");
-        String password = in.nextLine();
+        String oldPassword = in.nextLine();
         
         try{
-          if(db.checkUser(oldEmail, password)){
+          if(db.checkUser(oldEmail, oldPassword)){
               System.out.print("New email: ");
               String newEmail = in.nextLine();
               System.out.print("User name: ");
@@ -131,8 +131,10 @@ public class TestDB {
               String gender = in.nextLine();
               System.out.print("Address: ");
               String address = in.nextLine();
+              System.out.print("New Password: ");
+              String newPassword = in.nextLine();
               
-              db.updateUser(oldEmail, newEmail, name, password, gender, address);
+              db.updateUser(oldEmail, newEmail, name, newPassword, oldPassword, gender, address);
           } else {
               System.out.println("User does not exist.");
           }

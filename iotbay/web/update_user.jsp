@@ -19,10 +19,9 @@
         <% 
             String name = request.getParameter("name");
             String email = request.getParameter("newEmail");
-            String password = request.getParameter("password");
+            String password = request.getParameter("newPassword");
             String gender = request.getParameter("gender");
             String address = request.getParameter("address");
-
             User user = (User) session.getAttribute("user");
 
             if (user != null) {

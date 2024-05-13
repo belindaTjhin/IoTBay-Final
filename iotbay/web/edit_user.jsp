@@ -41,14 +41,6 @@
                     <input type="text" id="name" name="name" value="${user.name}" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="${user.email}" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" value="${user.password}" required>
-                </div>
-                <div class="form-group">
                     <label for="gender">Gender:</label>
                     <input type="text" id="gender" name="gender" value="${user.gender}">
                 </div>
@@ -57,8 +49,27 @@
                     <input type="text" id="address" name="address" value="${user.address}">
                 </div>
                 <!-- New inputs for old and new email -->
-                <input type="hidden" id="oldEmail" name="oldEmail" value="${user.email}">
-                <input type="email" id="newEmail" name="newEmail" placeholder="New Email" required>
+                <div class="form-group">
+                    <label for="email">Current Email:</label>
+                    <input type="email" id="email" name="email" value="${user.email}" required>
+                </div>
+                <div class ="form-group">
+                    <label for="email">New Email:</label>
+                    <input type="hidden" id="oldEmail" name="oldEmail" value="${user.email}">
+                    <input type="email" id="newEmail" name="newEmail" placeholder="Enter New Email">
+                </div>
+                
+                <!-- New inputs for old and new password -->
+                <div class="form-group">
+                    <label for="password">Current Password:</label>
+                    <input type="password" id="password" name="password" value="${user.password}" required>
+                </div><!-- comment -->
+                <div class ="form-group">
+                    <label for="password">New Password:</label>
+                    <input type="hidden" id="oldPassword" name="oldPassword" value="${user.password}">
+                    <input type="password" id="newPassword" name="newPassword" placeholder="Enter New Password">
+                </div>
+                
                 <input type="submit" class="button" value="Update">
             </form>
         <% } else { %>
