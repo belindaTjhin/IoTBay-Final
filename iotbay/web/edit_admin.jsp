@@ -3,70 +3,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Staff Registration</title>
-    <link rel="stylesheet" type="text/css" href="css/democss.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/democss.css"> 
+    <title>Edit Staff Account</title>
+    <style>
+        .form-group {
+            margin-bottom: 15px; 
+        }
+        label, input, .button {
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input, .button {
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+    </style>
 </head>
 <body>
     <div class="login-box">
-        <h1>Staff Registration</h1>
-        <%-- Display error messages --%>
-        <% String emailErr = (String) session.getAttribute("emailErr"); %>
-        <% String nameErr = (String) session.getAttribute("nameErr"); %>
-        <% String passErr = (String) session.getAttribute("passErr"); %>
-        <% String existErr = (String) session.getAttribute("existErr"); %>
+        
+        <% 
+            Admin admin = (Admin) session.getAttribute("admin");
+            String updated = (String)session.getAttribute("updated");
+            if (admin != null) { 
+        %>
+        
+        <h1>Edit Account<span class = "message"> <%=(updated !=null ? updated : "")%></span></h1>
+            <%-- Display error messages --%>
+            <% String emailErr = (String) session.getAttribute("emailErr"); %>
+            <% String nameErr = (String) session.getAttribute("nameErr"); %>
+            <% String passErr = (String) session.getAttribute("passErr"); %>
+            <% String existErr = (String) session.getAttribute("existErr"); %>
 
-        <% if (existErr != null && emailErr.equals("Enter email") && nameErr.equals("Enter name") && passErr.equals("Enter password")){ %>
-            <p class="error-message"><%= existErr %></p>
+            <% if (existErr != null && emailErr.equals("Enter email") && nameErr.equals("Enter name") && passErr.equals("Enter password")){ %>
+                <p class="error-message"><%= existErr %></p>
+            <% } %>
+            <% if (emailErr != null && !emailErr.equals("Enter email")) { %>
+                <p class="error-message"><%= emailErr %></p>
+            <% } %>
+
+            <% if (nameErr != null && !nameErr.equals("Enter name")) { %>
+                <p class="error-message"><%= nameErr %></p>
+            <% } %>
+
+            <% if (passErr != null && !passErr.equals("Enter password")) { %>
+                <p class="error-message"><%= passErr %></p>
+            <% } %>
+
+            <form action="UpdateAdminServlet" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="${admin.name}" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" value="${admin.gender}">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" value="${admin.address}">
+                </div>
+                <!-- New inputs for old and new email -->
+                <div class="form-group">
+                    <label for="email">Current Email:</label>
+                    <input type="email" id="email" name="email" value="${admin.email}" required>
+                </div>
+                <div class ="form-group">
+                    <label for="email">New Email:</label>
+                    <input type="hidden" id="oldEmail" name="oldEmail" value="${admin.email}" required>
+                    <input type="email" id="newEmail" name="newEmail" value="${admin.email}" required>
+                </div>
+                
+                <!-- New inputs for old and new password -->
+                <div class="form-group">
+                    <label for="password">Current Password:</label>
+                    <input type="password" id="password" name="password" value="${admin.password}" required>
+                </div><!-- comment -->
+                <div class ="form-group">
+                    <label for="password">New Password:</label>
+                    <input type="hidden" id="oldPassword" name="oldPassword" value="${admin.password}" required>
+                    <input type="password" id="newPassword" name="newPassword" value="${admin.password}" required>
+                </div>
+                
+                <input type="submit" class="button" value="Update">
+            </form>
+        <% } else { %>
+            <p>No staff account logged in.</p>
         <% } %>
-        <% if (emailErr != null && !emailErr.equals("Enter email")) { %>
-            <p class="error-message"><%= emailErr %></p>
-        <% } %>
-
-        <% if (nameErr != null && !nameErr.equals("Enter name")) { %>
-            <p class="error-message"><%= nameErr %></p>
-        <% } %>
-
-        <% if (passErr != null && !passErr.equals("Enter password")) { %>
-            <p class="error-message"><%= passErr %></p>
-        <% } %>
-
-
-
-        <form action="RegisterAdminServlet" method="post">
-            <table>
-                <tr>
-                    <td>Full Name:</td>
-                    <td><input type="text" class="input-field" name="name" value="<%= (nameErr == null && existErr == null) ? (request.getParameter("name") != null ? request.getParameter("name") : "") : "" %>" required></td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="email" class="input-field" name="email" value="<%= (emailErr == null && existErr == null) ? (request.getParameter("email") != null ? request.getParameter("email") : "") : "" %>" required></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" class="input-field" name="password" required></td>
-                </tr>
-                <tr>
-                    <td>Gender:</td>
-                    <td><input type="text" class="input-field" name="gender" value="<%= request.getParameter("gender") != null ? request.getParameter("gender") : "" %>"></td>
-                </tr>
-                <tr>
-                    <td>Address:</td>
-                    <td><input type="text" class="input-field" name="address" value="<%= request.getParameter("address") != null ? request.getParameter("address") : "" %>"></td>
-                </tr>
-                <tr>
-                    <td>Agree to TOS:</td>
-                    <td><input type="checkbox" name="tos" required> I agree to the terms of service</td>
-                </tr>
-            </table>
-
-            <input type="hidden" name="submitted" value="yes">
-            <div class="buttons">
-                <input type="submit" class="button" value="Register">
-                <a href="index.html" class="button">Cancel</a>
-            </div>
-        </form>
+        
+        <div class ="panel_div">
+        <a class="button" href="admin_index.jsp">Main Page</a>
+        </div> 
     </div>
     <jsp:include page="/ConnServlet" flush="true"/> 
 </body>

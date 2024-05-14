@@ -27,7 +27,9 @@
         }
         .button-table td a {
             display: block; /* Make buttons fill the whole cell */
-            padding: 8px 16px; /* Adjust padding to make buttons slightly smaller */
+
+            padding: 6px 20px; /* Adjust padding to make buttons slightly smaller */
+
             text-align: center; /* Center align button text */
             background-color: #00008B; /* Dark blue background for the button */
             color: white;

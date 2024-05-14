@@ -85,6 +85,7 @@ public class RegisterAdminServlet extends HttpServlet {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
         } else if (!validator.validateName(name)) {
             session.setAttribute("nameErr", "Error: First and last name need to be capitalised.");
+
         } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password format is incorrect.");
         } else {

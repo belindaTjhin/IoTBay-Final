@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
         if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
         } else if (!validator.validateName(name)) {
-            session.setAttribute("nameErr", "Error: First and last name need to be capitalised.");
+            session.setAttribute("nameErr", "Error: First name needs to be capitalised and/or need to enter a last name.");
         } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
         } else {

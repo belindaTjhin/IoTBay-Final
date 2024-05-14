@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title>Admin Management</title>
     <!-- Internal CSS styles -->
     <style>
@@ -73,12 +74,12 @@
             color: black;
         }
     </style>
-    
     <!-- JavaScript function to open edit modal -->
     <script>
     function openEditModal(email, name, gender, address, password) {
         // Display the modal
         document.getElementById('editAdminModal').style.display = 'block';
+
 
         // Set existing user information in the form
         document.getElementById('userEmail').value = email;
@@ -108,12 +109,15 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Address</th>
+
                 <th>Password</th>
+
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
+
             <% // Java code for iterating over admins and populating the table
                 ArrayList<Admin> admins = (ArrayList<Admin>) session.getAttribute("adminsList");
                 if (admins != null && !admins.isEmpty()) {
@@ -128,17 +132,19 @@
                             + "', '" + admin.getGender()
                             + "', '" + admin.getAddress().replace("'", "\\'")
                             + "', '" + admin.getPassword().replace("'", "\\'")
+
                             + "')\">Edit</button></td>"
                             + "<td><a href='DeleteUserAdminServlet?email=" + admin.getEmail()
                             + "' onclick='return confirm(\"Are you sure you want to delete this admin?\");'>Delete</a></td></tr>");
                     }
                 } else {
+
                     out.println("<tr><td colspan='7'>No admins found.</td></tr>");
+
                 }
             %>
         </tbody>
     </table>
-
     <!-- The Modal for Search Admin -->
     <div id="searchAdminModal" class="modal">
         <div class="modal-content">

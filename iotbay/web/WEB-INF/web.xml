@@ -307,8 +307,11 @@
 </servlet-mapping>
 
     <servlet>
+
+
         <servlet-name>SearchUserServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchUserServlet</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchUserServlet</servlet-name>
@@ -323,8 +326,10 @@
         <servlet-name>SearchAdminServlet</servlet-name>
         <url-pattern>/SearchAdminServlet</url-pattern>
     </servlet-mapping>
+
 <session-config>
 <session-timeout>
+
             30
 </session-timeout>
 </session-config>
