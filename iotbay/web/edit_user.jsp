@@ -95,13 +95,14 @@
                     <a class="button">
                         <input type="submit" class="button" value="Update">
                     </a>
-                    <a href="delete_user.jsp" class="button-link">
-                        <button class="button">Delete Account</button>
-                    </a>
+
                 </div>
                 
 
             </form>
+            <a href="delete_user.jsp" class="button-link">
+                <button class="button">Delete Account</button>
+            </a>
         <% } else { %>
             <p>No user logged in.</p>
         <% } %>
