@@ -24,17 +24,15 @@ import uts.isd.model.dao.DBManager;
  * @author btjhi
  */
 public class CatalogueSearchServlet extends HttpServlet {
+    private DBManager manager = null;
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         
+        //session
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager) session.getAttribute("manager");
-        
-        
-        session.setAttribute("product", null);
-        session.setAttribute("found", null);
+        manager = (DBManager) session.getAttribute("manager");
         
         String deviceName = request.getParameter("deviceName");
         
@@ -43,18 +41,14 @@ public class CatalogueSearchServlet extends HttpServlet {
             if(check){
                 Product product = manager.findDevice(deviceName);
                 session.setAttribute("product", product);
-                session.setAttribute("found", "Product found");
-                request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
-                response.sendRedirect("catalogue_search_result.jsp");
+                session.setAttribute("found", "Item was found");
             } else {
-                request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
-                session.setAttribute("found", "Item does NOT exist in the Inventory");                
-                response.sendRedirect("catalogue_search.jsp");
+                session.setAttribute("found", "Item does NOT exist in the Inventory");
             }
         } catch (SQLException ex){
             Logger.getLogger(CatalogueSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        request.getRequestDispatcher("catalogue_search.jsp").include(request, response);
+        response.sendRedirect("catalogue_search.jsp");
     }
     
 }
