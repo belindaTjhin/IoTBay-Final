@@ -16,11 +16,6 @@
         <% String passErr = (String) session.getAttribute("passErr"); %>
         <% String existErr = (String) session.getAttribute("existErr"); %>
 
-        <!-- Debugging output -->
-        <p>existErr: <%= existErr %></p>
-        <p>emailErr: <%= emailErr %></p>
-        <p>nameErr: <%= nameErr %></p>
-        <p>passErr: <%= passErr %></p>
         <% if (existErr != null && emailErr.equals("Enter email") && nameErr.equals("Enter name") && passErr.equals("Enter password")){ %>
             <p class="error-message"><%= existErr %></p>
         <% } %>
