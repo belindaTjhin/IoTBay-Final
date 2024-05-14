@@ -80,11 +80,11 @@ public class RegisterAdminServlet extends HttpServlet {
         // Clear previous error messages
         validator.clear(session);
 
-        // Validate user input
+        // Validate staff input
         if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
         } else if (!validator.validateName(name)) {
-            session.setAttribute("nameErr", "Error: Name format is incorrect.");
+            session.setAttribute("nameErr", "Error: First and last name need to be capitalised.");
         } else if (!validator.validatePassword(password)) {
             session.setAttribute("passErr", "Error: Password format is incorrect.");
         } else {
@@ -111,13 +111,11 @@ public class RegisterAdminServlet extends HttpServlet {
             } catch (SQLException ex) {
                 // Log SQL exceptions
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                // Redirect user to an error page
-                response.sendRedirect("Registration_error.jsp");
-                return; // Exit method after redirecting
             }
         }
 
         // If any validation or database error occurs, forward back to registration page
+        session.setAttribute("existErr", "Email already exists in database.");
         request.getRequestDispatcher("admin_one.jsp").include(request, response);
     }
 

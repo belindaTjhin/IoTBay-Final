@@ -1,326 +1,313 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>ConnServlet</servlet-name>
-        <servlet-class>uts.isd.controller.ConnServlet</servlet-class>
-        <load-on-startup>0</load-on-startup>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminLoginServlet</servlet-name>
-        <servlet-class>uts.isd.controller.AdminLoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.UpdateAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RegisterAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.RegisterAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteServlet</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteAdminServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CatalogueViewServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CatalogueViewServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CatalogueSearchServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CatalogueSearchServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddDeviceServlet</servlet-name>
-        <servlet-class>uts.isd.controller.AddDeviceServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AccessLogsServlet</servlet-name>
-        <servlet-class>uts.isd.controller.AccessLogsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminAccessLogsServlet</servlet-name>
-        <servlet-class>uts.isd.controller.AdminAccessLogsServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditUserServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ConnServlet</servlet-name>
-        <url-pattern>/ConnServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>uts.isd.controller.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>EditServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EditServlet</servlet-name>
-        <url-pattern>/EditServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>UpdateServlet</servlet-name>
-        <servlet-class>uts.isd.controller.UpdateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UpdateServlet</servlet-name>
-        <url-pattern>/UpdateServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>uts.isd.controller.MainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/MainServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>uts.isd.controller.RegisterServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/RegisterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CancelServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CancelServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CancelServlet</servlet-name>
-        <url-pattern>/CancelServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>uts.isd.controller.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminLoginServlet</servlet-name>
-        <url-pattern>/AdminLoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditAdminServlet</servlet-name>
-        <url-pattern>/EditAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateAdminServlet</servlet-name>
-        <url-pattern>/UpdateAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegisterAdminServlet</servlet-name>
-        <url-pattern>/RegisterAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteServlet</servlet-name>
-        <url-pattern>/DeleteServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteAdminServlet</servlet-name>
-        <url-pattern>/DeleteAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CatalogueViewServlet</servlet-name>
-        <url-pattern>/CatalogueViewServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CatalogueSearchServlet</servlet-name>
-        <url-pattern>/CatalogueSearchServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddDeviceServlet</servlet-name>
-        <url-pattern>/AddDeviceServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>SystemLoginServlet</servlet-name>
-        <servlet-class>uts.isd.controller.SystemLoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SystemLoginServlet</servlet-name>
-        <url-pattern>/SystemLoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CreateUserServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CreateUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CreateUserServlet</servlet-name>
-        <url-pattern>/CreateUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CreateAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CreateAdminServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CreateAdminServlet</servlet-name>
-        <url-pattern>/CreateAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ViewUsersServlet</servlet-name>
-        <servlet-class>uts.isd.controller.ViewUsersServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ViewUsersServlet</servlet-name>
-        <url-pattern>/ViewUsersServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>DeleteUserServlet</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteUserServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteUserServlet</servlet-name>
-        <url-pattern>/DeleteUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>DeleteUserAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteUserAdminServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteUserAdminServlet</servlet-name>
-        <url-pattern>/DeleteUserAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>EditUserAdminServlet</servlet-name>
-        <servlet-class>uts.isd.controller.EditUserAdminServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EditUserAdminServlet</servlet-name>
-        <url-pattern>/EditUserAdminServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ViewAdminsServlet</servlet-name>
-        <servlet-class>uts.isd.controller.ViewAdminsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ViewAdminsServlet</servlet-name>
-        <url-pattern>/ViewAdminsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AccessLogsServlet</servlet-name>
-        <url-pattern>/AccessLogsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminAccessLogsServlet</servlet-name>
-        <url-pattern>/AdminAccessLogsServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditUserServlet</servlet-name>
-        <url-pattern>/EditUserServlet</url-pattern>
-    </servlet-mapping>
-    
-     <servlet>
-        <servlet-name>OrderServlet</servlet-name>
-        <servlet-class>uts.isd.controller.OrderServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CartServlet</servlet-name>
-        <servlet-class>IoTBay.model.controller.CartServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>OrderLineServlet</servlet-name>
-        <servlet-class>uts.isd.controller.OrderLineServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>QuantityUp</servlet-name>
-        <servlet-class>uts.isd.controller.QuantityUp</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>QuantityDown</servlet-name>
-        <servlet-class>uts.isd.controller.QuantityDown</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShippingServlet</servlet-name>
-        <servlet-class>uts.isd.controller.ShippingServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FinishOrderServlet</servlet-name>
-        <servlet-class>uts.isd.controller.FinishOrderServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>OrderHistory</servlet-name>
-        <servlet-class>uts.isd.controller.OrderHistory</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetOrderLines</servlet-name>
-        <servlet-class>uts.isd.controller.GetOrderLines</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteOrder</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteOrder</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/OrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CartServlet</servlet-name>
-        <url-pattern>/CartServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>OrderLineServlet</servlet-name>
-        <url-pattern>/OrderLineServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>QuantityUp</servlet-name>
-        <url-pattern>/QuantityUp</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>QuantityDown</servlet-name>
-        <url-pattern>/QuantityDown</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShippingServlet</servlet-name>
-        <url-pattern>/ShippingServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FinishOrderServlet</servlet-name>
-        <url-pattern>/FinishOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>OrderHistory</servlet-name>
-        <url-pattern>/OrderHistory</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GetOrderLines</servlet-name>
-        <url-pattern>/GetOrderLines</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteOrder</servlet-name>
-        <url-pattern>/DeleteOrder</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HomePageServlet</servlet-name>
-        <url-pattern>/HomePageServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserOrderServlet</servlet-name>
-        <url-pattern>/UserOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserCartServlet</servlet-name>
-        <url-pattern>/UserCartServlet</url-pattern>
-    </servlet-mapping>
-    <session-config>
-        <session-timeout>
+<servlet>
+<servlet-name>ConnServlet</servlet-name>
+<servlet-class>uts.isd.controller.ConnServlet</servlet-class>
+<load-on-startup>0</load-on-startup>
+</servlet>
+<servlet>
+<servlet-name>AdminLoginServlet</servlet-name>
+<servlet-class>uts.isd.controller.AdminLoginServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>EditAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.EditAdminServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>UpdateAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.UpdateAdminServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>RegisterAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.RegisterAdminServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>DeleteServlet</servlet-name>
+<servlet-class>uts.isd.controller.DeleteServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>DeleteAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.DeleteAdminServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>CatalogueViewServlet</servlet-name>
+<servlet-class>uts.isd.controller.CatalogueViewServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>CatalogueSearchServlet</servlet-name>
+<servlet-class>uts.isd.controller.CatalogueSearchServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>AddDeviceServlet</servlet-name>
+<servlet-class>uts.isd.controller.AddDeviceServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>AccessLogsServlet</servlet-name>
+<servlet-class>uts.isd.controller.AccessLogsServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>AdminAccessLogsServlet</servlet-name>
+<servlet-class>uts.isd.controller.AdminAccessLogsServlet</servlet-class>
+</servlet>
+<servlet>
+<servlet-name>EditUserServlet</servlet-name>
+<servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ConnServlet</servlet-name>
+<url-pattern>/ConnServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>LoginServlet</servlet-name>
+<servlet-class>uts.isd.controller.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>LoginServlet</servlet-name>
+<url-pattern>/LoginServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>EditServlet</servlet-name>
+<servlet-class>uts.isd.controller.EditServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>EditServlet</servlet-name>
+<url-pattern>/EditServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>UpdateServlet</servlet-name>
+<servlet-class>uts.isd.controller.UpdateServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>UpdateServlet</servlet-name>
+<url-pattern>/UpdateServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>MainServlet</servlet-name>
+<servlet-class>uts.isd.controller.MainServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>MainServlet</servlet-name>
+<url-pattern>/MainServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>RegisterServlet</servlet-name>
+<servlet-class>uts.isd.controller.RegisterServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>RegisterServlet</servlet-name>
+<url-pattern>/RegisterServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>CancelServlet</servlet-name>
+<servlet-class>uts.isd.controller.CancelServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CancelServlet</servlet-name>
+<url-pattern>/CancelServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>LogoutServlet</servlet-name>
+<servlet-class>uts.isd.controller.LogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>LogoutServlet</servlet-name>
+<url-pattern>/LogoutServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>AdminLoginServlet</servlet-name>
+<url-pattern>/AdminLoginServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>EditAdminServlet</servlet-name>
+<url-pattern>/EditAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>UpdateAdminServlet</servlet-name>
+<url-pattern>/UpdateAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>RegisterAdminServlet</servlet-name>
+<url-pattern>/RegisterAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>DeleteServlet</servlet-name>
+<url-pattern>/DeleteServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>DeleteAdminServlet</servlet-name>
+<url-pattern>/DeleteAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>CatalogueViewServlet</servlet-name>
+<url-pattern>/CatalogueViewServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>CatalogueSearchServlet</servlet-name>
+<url-pattern>/CatalogueSearchServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>AddDeviceServlet</servlet-name>
+<url-pattern>/AddDeviceServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>SystemLoginServlet</servlet-name>
+<servlet-class>uts.isd.controller.SystemLoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>SystemLoginServlet</servlet-name>
+<url-pattern>/SystemLoginServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>CreateUserServlet</servlet-name>
+<servlet-class>uts.isd.controller.CreateUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CreateUserServlet</servlet-name>
+<url-pattern>/CreateUserServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>CreateAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.CreateAdminServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CreateAdminServlet</servlet-name>
+<url-pattern>/CreateAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ViewUsersServlet</servlet-name>
+<servlet-class>uts.isd.controller.ViewUsersServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ViewUsersServlet</servlet-name>
+<url-pattern>/ViewUsersServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>DeleteUserServlet</servlet-name>
+<servlet-class>uts.isd.controller.DeleteUserServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>DeleteUserServlet</servlet-name>
+<url-pattern>/DeleteUserServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>DeleteUserAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.DeleteUserAdminServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>DeleteUserAdminServlet</servlet-name>
+<url-pattern>/DeleteUserAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>EditUserAdminServlet</servlet-name>
+<servlet-class>uts.isd.controller.EditUserAdminServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>EditUserAdminServlet</servlet-name>
+<url-pattern>/EditUserAdminServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ViewAdminsServlet</servlet-name>
+<servlet-class>uts.isd.controller.ViewAdminsServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ViewAdminsServlet</servlet-name>
+<url-pattern>/ViewAdminsServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>AccessLogsServlet</servlet-name>
+<url-pattern>/AccessLogsServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>AdminAccessLogsServlet</servlet-name>
+<url-pattern>/AdminAccessLogsServlet</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+<servlet-name>EditUserServlet</servlet-name>
+<url-pattern>/EditUserServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>OrderServlet</servlet-name>
+<servlet-class>uts.isd.controller.OrderServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>OrderServlet</servlet-name>
+<url-pattern>/OrderServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>CartServlet</servlet-name>
+<servlet-class>uts.isd.controller.CartServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CartServlet</servlet-name>
+<url-pattern>/CartServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>OrderLineServlet</servlet-name>
+<servlet-class>uts.isd.controller.OrderLineServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>OrderLineServlet</servlet-name>
+<url-pattern>/OrderLineServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>QuantityUp</servlet-name>
+<servlet-class>uts.isd.controller.QuantityUp</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>QuantityUp</servlet-name>
+<url-pattern>/QuantityUp</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>QuantityDown</servlet-name>
+<servlet-class>uts.isd.controller.QuantityDown</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>QuantityDown</servlet-name>
+<url-pattern>/QuantityDown</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>ShippingServlet</servlet-name>
+<servlet-class>uts.isd.controller.ShippingServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>ShippingServlet</servlet-name>
+<url-pattern>/ShippingServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>FinishOrderServlet</servlet-name>
+<servlet-class>uts.isd.controller.FinishOrderServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>FinishOrderServlet</servlet-name>
+<url-pattern>/FinishOrderServlet</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>OrderHistory</servlet-name>
+<servlet-class>uts.isd.controller.OrderHistory</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>OrderHistory</servlet-name>
+<url-pattern>/OrderHistory</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>GetOrderLines</servlet-name>
+<servlet-class>uts.isd.controller.GetOrderLines</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>GetOrderLines</servlet-name>
+<url-pattern>/GetOrderLines</url-pattern>
+</servlet-mapping>
+<servlet>
+<servlet-name>DeleteOrder</servlet-name>
+<servlet-class>uts.isd.controller.DeleteOrder</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>DeleteOrder</servlet-name>
+<url-pattern>/DeleteOrder</url-pattern>
+</servlet-mapping>
+<session-config>
+<session-timeout>
             30
-        </session-timeout>
-    </session-config>
+</session-timeout>
+</session-config>
 </web-app>
