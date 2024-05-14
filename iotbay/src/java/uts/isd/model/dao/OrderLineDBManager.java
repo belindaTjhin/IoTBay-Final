@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class OrderLineDBManager {
-    private Statement st; //used to execute SQL queries within java code
+    private Statement st; 
     
     public OrderLineDBManager(Connection conn) throws SQLException {
         st = conn.createStatement();
@@ -18,7 +18,7 @@ public class OrderLineDBManager {
         String fetch = "select * from IOTBAY.ORDERLINE where orderID = " + oID + " and productID="+pID+"";
         ResultSet rs = st.executeQuery(fetch);
         
-        while (rs.next()) {  // reads every row in USERS table and gets the result by index and stores them into Strings
+        while (rs.next()) { 
             
             int orderID = rs.getInt(2);
             int productID = rs.getInt(4);

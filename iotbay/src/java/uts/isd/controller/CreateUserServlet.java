@@ -27,25 +27,23 @@ public class CreateUserServlet extends HttpServlet {
         String address = request.getParameter("address");
 
         try {
-            // Check if user already exists to avoid duplicate entries
+            
             User exist = manager.findUser(email, password);
             if (exist != null) {
                 session.setAttribute("existErr", "User already exists in the database.");
-                response.sendRedirect("system_index.jsp"); // Redirect back to the form with an error message
+                response.sendRedirect("system_index.jsp"); 
             } else {
-                // No existing user found, proceed to add new user
+                
                 manager.addUser(email, name, password, gender, address);
                 User newUser = new User(email, name, password, gender, address);
                 session.setAttribute("userCreated", "New user created successfully!");
-                response.sendRedirect("system_index.jsp"); // Redirect to a list showing all users or confirmation page
+                response.sendRedirect("system_index.jsp"); 
             }
         } catch (SQLException ex) {
-            // Log and handle exception
+           
             session.setAttribute("createErr", "Failed to create user: " + ex.getMessage());
-            response.sendRedirect("system_index.jsp"); // Redirect back to the form with an error message
+            response.sendRedirect("system_index.jsp"); 
         }
     }
-
-    // If required, implement doGet for form presentation or redirect
     
 }
