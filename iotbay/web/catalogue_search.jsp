@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="uts.isd.model.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uts.isd.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,21 +16,68 @@
         <link rel="stylesheet" href="css/democss.css">
     </head>
     <% 
-        ArrayList<Product> catalogue = (ArrayList<Product>) session.getAttribute("catalogue");
         Product product = (Product) session.getAttribute("product");
         String found = (String) session.getAttribute("found");
+        Admin admin = (Admin) session.getAttribute("admin");
     %>
     <body>
         <div class="form-container">
             <div class='login-box'>
                 <h1>Search:</h1>
-                <form action="CatalogueSearchServlet" method='get' autocomplete="off">
+                <form action="CatalogueSearchServlet" method='post'>
                     <input type='text'name="deviceName">
                     <input type="submit" value="Search Item">
                 </form>
                 <br>
-                <span><%=(found != null ? found : "")%></span>
+                <span class="message"><%=(found != null ? found : "")%></span>
+                
+                <% if(product != null) {%>
+        
+                <table>
+                   <tr>
+                       <td>
+                           <b>Product ID: </b>
+                       </td>
+                       <td>
+                           <p><%=product.getId()%></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <b>Product Name: </b>
+                       </td>
+                       <td>
+                           <p><%=product.getName()%></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <b>Description: </b>
+                       </td>
+                       <td>
+                           <p><%=product.getDescription()%></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <b>Price: </b>
+                       </td>
+                       <td>
+                           <p><%=product.getPrice()%></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <b>Supplier: </b>
+                       </td>
+                       <td>
+                           <p><%=product.getSupplier()%></p>
+                       </td>
+                   </tr>
+               </table>
+                    
+            <%} %> 
             </div>
-        </div>
+        </div> 
     </body>
 </html>

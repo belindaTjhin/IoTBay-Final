@@ -53,6 +53,10 @@
         <servlet-name>EditUserServlet</servlet-name>
         <servlet-class>uts.isd.controller.EditUserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteDeviceServlet</servlet-name>
+        <servlet-class>uts.isd.controller.DeleteDeviceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -224,6 +228,10 @@
     <servlet-mapping>
         <servlet-name>EditUserServlet</servlet-name>
         <url-pattern>/EditUserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDeviceServlet</servlet-name>
+        <url-pattern>/DeleteDeviceServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

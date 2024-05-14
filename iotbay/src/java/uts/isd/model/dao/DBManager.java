@@ -258,7 +258,7 @@ public class DBManager {
         ResultSet rs = st.executeQuery(fetch); 
 
         while(rs.next()){ 
-            String deviceName = rs.getString(1);  
+            String deviceName = rs.getString(2);  
             if(deviceName.equals(name)){ 
                 return true; 
             } 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.*;
 import uts.isd.model.AccessLog;
+import uts.isd.model.Product;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DBManager;
@@ -45,7 +46,7 @@ public class TestDB {
                     testAdd();
                     break;
                 case 'R':
-                    testRead();
+                    testReadDevice();
                     break;
                 case 'U':
                     testUpdate();
@@ -112,6 +113,19 @@ public class TestDB {
             System.out.println("User " + user.getName() + " exists in the database.");
         } else {
             System.out.println("User does not exist.");
+        }
+    }
+    
+    private void testReadDevice() throws SQLException{
+        System.out.print("Device name: ");
+        String name = in.nextLine();
+//        Product product = db.findDevice(name);
+        boolean check = db.checkDevice(name);
+        
+        if(check){
+            System.out.println("Product exists in the database.");
+        } else {
+            System.out.println("Device does not exist.");
         }
     }
     
