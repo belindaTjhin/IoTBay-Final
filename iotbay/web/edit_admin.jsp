@@ -1,10 +1,5 @@
-<%-- 
-    Document   : edit_user
-    Created on : 05/04/2024, 11:32:28 AM
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="uts.isd.model.Admin"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="uts.isd.model.Admin" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,5 +96,6 @@
         <a class="button" href="admin_index.jsp">Main Page</a>
         </div> 
     </div>
+    <jsp:include page="/ConnServlet" flush="true"/> 
 </body>
 </html>

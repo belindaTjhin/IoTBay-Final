@@ -49,7 +49,9 @@ public class UpdateServlet extends HttpServlet {
             session.setAttribute("emailErr", "Error: Email is either already in the database or format is incorrect.");
             request.getRequestDispatcher("edit_user.jsp").include(request, response);
         } else if (!validator.validateName(name)) {
+
             session.setAttribute("nameErr", "Error: First and last names need to be capitalised.");
+
             request.getRequestDispatcher("edit_user.jsp").include(request, response);
         } else if (!validator.validatePassword(newPassword)) {
             session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
@@ -71,7 +73,9 @@ public class UpdateServlet extends HttpServlet {
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("update_user.jsp").include(request, response);
                 } else {
-                    session.setAttribute("updated", "Error: Update was not successful");
+
+                    session.setAttribute("updated", "Error: Update was not successful. Email is already in the database.");
+
                     request.getRequestDispatcher("edit_user.jsp").include(request,response);
                 }
             } catch (SQLException ex) {

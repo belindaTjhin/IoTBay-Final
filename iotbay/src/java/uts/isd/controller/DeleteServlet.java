@@ -21,10 +21,10 @@ public class DeleteServlet extends HttpServlet{
        
        if(!validator.validateEmail(email)){
            session.setAttribute("emailErr", "Error: Email format incorrect");
-           request.getRequestDispatcher("login.jsp").include(request, response);
+           request.getRequestDispatcher("delete_user.jsp").include(request, response);
        } else if (!validator.validatePassword(password)){
            session.setAttribute("passErr", "Error: Password format incorrect");
-           request.getRequestDispatcher("login.jsp").include(request, response);
+           request.getRequestDispatcher("delete_user.jsp").include(request, response);
        } else {
            try{
                user = manager.findUser(email, password);
@@ -36,7 +36,7 @@ public class DeleteServlet extends HttpServlet{
                    request.getRequestDispatcher("logout.jsp").include(request, response);
                } else {
                    session.setAttribute("existErr", "User does not exist in the Database!");
-                   request.getRequestDispatcher("index.jsp").include(request, response);
+                   request.getRequestDispatcher("delete_user.jsp").include(request, response);
                } 
            } catch (SQLException | NullPointerException ex){
                System.out.println(ex.getMessage() == null ? "User does not exist" : "welcome");

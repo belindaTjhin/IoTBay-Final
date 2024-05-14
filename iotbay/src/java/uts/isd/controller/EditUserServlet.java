@@ -19,10 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-/**
- *
- * @author zoe10
- */
 @WebServlet(name = "EditUserServlet", urlPatterns = {"/EditUserServlet"})
 public class EditUserServlet extends HttpServlet {
     @Override
@@ -42,7 +38,7 @@ public class EditUserServlet extends HttpServlet {
         DBManager manager = (DBManager) session.getAttribute("manager");
         try{
             User user = manager.findUser(oldEmail, oldPassword);
-            // System.out.println(user);
+
             if(user != null){
                 // Update user details in the database
                 manager.updateUser(oldEmail, email, name, oldPassword, password, gender, address); // Pass old and new email

@@ -19,10 +19,10 @@ public class OrderServlet extends HttpServlet{
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
         HttpSession session = request.getSession();
-        String useremail = request.getParameter("email"); // Get the userID
+        String useremail = request.getParameter("email"); // Get the useremail
         
         OrderDBManager manager = (OrderDBManager) session.getAttribute("orderManager");
-        Orders order = new Orders(useremail); //Use the userID to create a unique orderID
+        Orders order = new Orders(useremail); 
         int orderID = order.getOrderID();
         try {
             manager.addOrder(orderID, useremail);

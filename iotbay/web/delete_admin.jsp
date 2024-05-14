@@ -19,7 +19,7 @@
             String passErr = (String) session.getAttribute("PassErr");
         %>
         <div class="login-box">
-            <h1>Please enter your login details: <span> <%=(existErr != null ? existErr : "")%></span></h1>
+            <h1>Enter your login details to confirm deletion: <span> <%=(existErr != null ? existErr : "")%></span></h1>
             <div class="form-container"> <!-- Use this to wrap your form and center its contents -->
                 <form action="DeleteAdminServlet" method="post">
                     <table>

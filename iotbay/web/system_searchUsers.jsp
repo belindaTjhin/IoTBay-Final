@@ -73,11 +73,9 @@
             color: black;
         }
     </style>
-
     
     <!-- JavaScript function to open edit modal -->
     <script>
-
     function openEditModal(email, name, gender, address, password) {
         // Display the modal
         document.getElementById('editUserModal').style.display = 'block';
@@ -93,9 +91,7 @@
         document.getElementById('oldEmail').value = email;
         document.getElementById('oldPassword').value = password;
     }
-
     </script>
-
 
 </head>
 <body>
@@ -112,38 +108,32 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Address</th>
-
                 <th>Password</th>
-
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             <% // Java code for iterating over users and populating the table
-                ArrayList<User> users = (ArrayList<User>) session.getAttribute("usersList");
+                ArrayList<User> users = (ArrayList<User>) session.getAttribute("searchResults");
                 if (users != null && !users.isEmpty()) {
                     for (User user : users) {
                         out.println("<tr><td>" + user.getEmail() + "</td>"
                             + "<td>" + user.getName() + "</td>"
                             + "<td>" + user.getGender() + "</td>"
                             + "<td>" + user.getAddress() + "</td>"
-
                             + "<td>" + user.getPassword() + "</td>"
                             + "<td><button onclick=\"openEditModal('" + user.getEmail()
                             + "', '" + user.getName().replace("'", "\\'")
                             + "', '" + user.getGender()
                             + "', '" + user.getAddress().replace("'", "\\'")
                             + "', '" + user.getPassword().replace("'", "\\'")
-
                             + "')\">Edit</button></td>"
                             + "<td><a href='DeleteUserServlet?email=" + user.getEmail()
                             + "' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a></td></tr>");
                     }
                 } else {
-
                     out.println("<tr><td colspan='7'>No users found.</td></tr>");
-
                 }
             %>
         </tbody>
@@ -178,7 +168,6 @@
             <form action="EditUserServlet" method="post">
                 <input type="hidden" id="oldEmail" name="oldEmail">
                 <input type="hidden" id="oldPassword" name="oldPassword">
-
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="userEmail" name="email" required>
@@ -201,7 +190,6 @@
                 </div>
                 <button type="submit" class="button">Save Changes</button>
             </form>
-
         </div>
     </div>
 </body>

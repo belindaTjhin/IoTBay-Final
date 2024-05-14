@@ -23,13 +23,31 @@ CREATE TABLE ADMIN (EMAIL VARCHAR(50) NOT NULL,
   ADDRESS VARCHAR(50), 
   PRIMARY KEY (EMAIL));
 
+-- Create SYSTEM table:
+CREATE TABLE SYSTEMADMIN (EMAIL VARCHAR(50) NOT NULL, 
+  PASSWORD VARCHAR(20),  
+  PRIMARY KEY (EMAIL));
 
 -- Create ORDERS table:
-
--- Create ORDERLINES table:
+CREATE TABLE ORDERS (
+  ORDERID INT PRIMARY KEY,
+  useremail VARCHAR(100),
+  orderdate DATE,
+  price  DECIMAL(10, 2),
+  shippingaddress VARCHAR(50);
+);
+-- Create ORDERLINE table:
+CREATE TABLE ORDERLINE (
+ ORDERLINEID INT PRIMARY KEY,
+ orderid int,
+ quantity int,
+ productid int,
+ productname VARCHAR(100),
+ totalprice DECIMAL(10,2),
+ price DECIMAL(10,2); 
+);
 
 -- Create DEVICES table:
-
 CREATE TABLE devices (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -39,7 +57,20 @@ CREATE TABLE devices (
     stock INT
 );
 
--- Create PAYMENTMETHODS table:
+-- Create PAYMENTS table:
+CREATE TABLE PAYMENTS (
+  paymentID INT NOT NULL, 
+  orderID INT NOT NULL, 
+  date DATE, 
+  cardHolderName VARCHAR(50), 
+  cardNumber VARCHAR(50), 
+  cardCVC VARCHAR(50), 
+  cardExpiryMM VARCHAR(50), 
+  cardExpiryYY VARCHAR(50), 
+  PRIMARY KEY (paymentID),
+  FOREIGN KEY (orderID) REFERENCES ORDERS(orderID)
+);
+
 
 -- Create PRODUCTCATEGORIES table:
 
