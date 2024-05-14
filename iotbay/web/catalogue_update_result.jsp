@@ -18,13 +18,13 @@
             <h1>Updated Device Details</h1>
             
             <% 
-                String id = request.getParameter("id");
+                int id = Integer.parseInt(request.getParameter("id"));
                 String name = request.getParameter("newName");
                 String description = request.getParameter("description");
-                String price = request.getParameter("price");
+                double price = Double.parseDouble(request.getParameter("price"));
                 String supplier = request.getParameter("supplier");
-                String stock = request.getParameter("stock");
-                Product product = (Product) session.getAttribute("admin");
+                int stock = Integer.parseInt(request.getParameter("stock"));
+                Product product = (Product) session.getAttribute("product");
             %>
             <p>Product details updated successfully.</p>
             <p>Product id is: <%= id %>.</p>

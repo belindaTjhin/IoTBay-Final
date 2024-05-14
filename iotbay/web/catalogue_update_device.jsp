@@ -29,12 +29,11 @@
     </style>
     <body>
         <% 
-            Admin admin = (Admin) session.getAttribute("admin");
             String updated = (String) session.getAttribute("updated");
             Product product = (Product) session.getAttribute("product");
         %>
         <div class="login-box">
-            <h1>Edit Device details: <span> <%=(updated != null ? updated : "")%></span></h1>
+            <h1>Edit Device details: <span class="message"> <%=(updated != null ? updated : "")%></span></h1>
             <form action="UpdateDeviceServlet" method="post">
                 <div class="form-group">
                     <label for="id">ID:</label>

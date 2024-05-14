@@ -25,13 +25,12 @@ import uts.isd.model.dao.DBManager;
  */
 @WebServlet(name = "UpdateDeviceServlet", urlPatterns = {"/UpdateDeviceServlet"})
 public class UpdateDeviceServlet extends HttpServlet {
-    private DBManager manager = null;
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        manager = (DBManager) session.getAttribute("manager");
+        DBManager manager = (DBManager) session.getAttribute("manager");
         
         int id;
         double price;
@@ -67,24 +66,15 @@ public class UpdateDeviceServlet extends HttpServlet {
                 product.setSupplier(supplier);
                 product.setStock(stock);
                 session.setAttribute("product", product);
-                response.sendRedirect("catalogue_update_result.jsp");
+                request.getRequestDispatcher("catalogue_update_result.jsp").include(request, response);
             } else {
                 session.setAttribute("updated", "Error: Update was not successful");
+                request.getRequestDispatcher("catalogue_update_device.jsp").include(request, response);
             }
         } catch (SQLException ex){
             //Log SQL exception
             Logger.getLogger(UpdateDeviceServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
