@@ -7,6 +7,7 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -75,8 +76,23 @@ public class DeleteDeviceServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
+        String productName = request.getParameter("productName");
         Product product = null;
         
+        try{
+            product = manager.findDevice(productName);
+            if(product != null){
+                manager.deleteDevice(productName);
+                // set update attribute
+                session.setAttribute("updated", "Product was deleted.");
+                request.getRequestDispatcher("catalogue_delete_device.jsp").include(request, response);
+            } else {
+                session.setAttribute("existErr", "Device does not exist in database.");
+                request.getRequestDispatcher("catalogue_delete_device.jsp").include(request, response);
+            }
+        } catch (SQLException | NullPointerException ex){
+            System.out.println(ex.getMessage() == null ? "Device does not exist" : "welcome");
+        }
     }
 
     /**
