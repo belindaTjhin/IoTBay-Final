@@ -305,6 +305,24 @@
 <servlet-name>DeleteOrder</servlet-name>
 <url-pattern>/DeleteOrder</url-pattern>
 </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchUserServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchUserServlet</servlet-name>
+        <url-pattern>/SearchUserServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SearchAdminServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchAdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchAdminServlet</servlet-name>
+        <url-pattern>/SearchAdminServlet</url-pattern>
+    </servlet-mapping>
 <session-config>
 <session-timeout>
             30

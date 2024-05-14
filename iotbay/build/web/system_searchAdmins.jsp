@@ -1,11 +1,11 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="uts.isd.model.User"%>
+<%@page import="uts.isd.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>User Management</title>
+    <title>Admin Management</title>
     <!-- Internal CSS styles -->
     <style>
         /* Table styles */
@@ -34,6 +34,7 @@
             width: 30%; /* Restrict modal width for better aesthetics */
         }
 
+        /* Form styles */
         .form-group {
             margin-bottom: 15px; /* Uniform margin for visual spacing between form groups */
         }
@@ -48,6 +49,7 @@
             padding: 10px;
         }
 
+        /* Button styles */
         .button {
             padding: 10px 20px;
             background-color: #4CAF50; /* A more visible color */
@@ -62,6 +64,7 @@
             background-color: #45a049; /* Darker shade on hover */
         }
 
+        /* Close button styles */
         .close {
             color: #aaa;
             float: right;
@@ -74,11 +77,11 @@
         }
     </style>
     
-    <!-- JavaScript function to open edit modal -->
+    <!-- JavaScript function to open edit modal and set existing user information -->
     <script>
     function openEditModal(email, name, gender, address, password) {
         // Display the modal
-        document.getElementById('editUserModal').style.display = 'block';
+        document.getElementById('editAdminModal').style.display = 'block';
 
         // Set existing user information in the form
         document.getElementById('userEmail').value = email;
@@ -91,16 +94,15 @@
         document.getElementById('oldEmail').value = email;
         document.getElementById('oldPassword').value = password;
     }
-    </script>
+</script>
 
 </head>
 <body>
-    <!-- Back to Home button -->
+    <!-- Button to go back to home page -->
     <button class="button" onclick="window.location.href='system_index.jsp';">Back to Home</button>
-    <!-- User List heading with Search Users button -->
-    <h1>User List</h1>
-    <button class="button" onclick="document.getElementById('searchUserModal').style.display='block'">Search Users</button>
-    <!-- User table -->
+    <!-- Title for Admin List and button to search admins -->
+    <h1>Admin List</h1> <button class="button" onclick="document.getElementById('searchAdminModal').style.display='block'">Search Admins</button>
+    <!-- Table to display admin information -->
     <table>
         <thead>
             <tr>
@@ -114,38 +116,41 @@
             </tr>
         </thead>
         <tbody>
-            <% // Java code for iterating over users and populating the table
-                ArrayList<User> users = (ArrayList<User>) session.getAttribute("usersList");
-                if (users != null && !users.isEmpty()) {
-                    for (User user : users) {
-                        out.println("<tr><td>" + user.getEmail() + "</td>"
-                            + "<td>" + user.getName() + "</td>"
-                            + "<td>" + user.getGender() + "</td>"
-                            + "<td>" + user.getAddress() + "</td>"
-                            + "<td>" + user.getPassword() + "</td>"
-                            + "<td><button onclick=\"openEditModal('" + user.getEmail()
-                            + "', '" + user.getName().replace("'", "\\'")
-                            + "', '" + user.getGender()
-                            + "', '" + user.getAddress().replace("'", "\\'")
-                            + "', '" + user.getPassword().replace("'", "\\'")
+            <%
+                // Retrieve admin search results from session
+                ArrayList<Admin> admins = (ArrayList<Admin>) session.getAttribute("searchResults");
+                if (admins != null && !admins.isEmpty()) {
+                    // Iterate through each admin and display their information in a table row
+                    for (Admin admin : admins) {
+                        out.println("<tr><td>" + admin.getEmail() + "</td>"
+                            + "<td>" + admin.getName() + "</td>"
+                            + "<td>" + admin.getGender() + "</td>"
+                            + "<td>" + admin.getAddress() + "</td>"
+                            + "<td>" + admin.getPassword() + "</td>"
+                            + "<td><button onclick=\"openEditModal('" + admin.getEmail()
+                            + "', '" + admin.getName().replace("'", "\\'")
+                            + "', '" + admin.getGender()
+                            + "', '" + admin.getAddress().replace("'", "\\'")
+                            + "', '" + admin.getPassword().replace("'", "\\'")
                             + "')\">Edit</button></td>"
-                            + "<td><a href='DeleteUserServlet?email=" + user.getEmail()
-                            + "' onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</a></td></tr>");
+                            + "<td><a href='DeleteUserAdminServlet?email=" + admin.getEmail()
+                            + "' onclick='return confirm(\"Are you sure you want to delete this admin?\");'>Delete</a></td></tr>");
                     }
                 } else {
-                    out.println("<tr><td colspan='7'>No users found.</td></tr>");
+                    // Display message if no admins found
+                    out.println("<tr><td colspan='7'>No admins found.</td></tr>");
                 }
             %>
         </tbody>
     </table>
 
-    <!-- The Modal for Search User -->
-    <div id="searchUserModal" class="modal">
+    <!-- The Modal for Search Admin -->
+    <div id="searchAdminModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="document.getElementById('searchUserModal').style.display='none'">&times;</span>
-            <h2>Search User</h2>
-            <!-- Form to search for users -->
-            <form action="SearchUserServlet" method="post">
+            <span class="close" onclick="document.getElementById('searchAdminModal').style.display='none'">&times;</span>
+            <h2>Search Admin</h2>
+            <!-- Form to search for admins -->
+            <form action="SearchAdminServlet" method="post">
                 <div class="form-group">
                     <label>Name:</label>
                     <input type="text" name="name" required>
@@ -159,13 +164,13 @@
         </div>
     </div>
 
-    <!-- The Modal for Edit User -->
-    <div id="editUserModal" class="modal">
+    <!-- The Modal for Edit Admin -->
+    <div id="editAdminModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="document.getElementById('editUserModal').style.display='none'">&times;</span>
-            <h2>Edit User</h2>
-            <!-- Form to edit user information -->
-            <form action="EditUserServlet" method="post">
+            <span class="close" onclick="document.getElementById('editAdminModal').style.display='none'">&times;</span>
+            <h2>Edit Admin</h2>
+            <!-- Form to edit admin information -->
+            <form action="EditUserAdminServlet" method="post">
                 <input type="hidden" id="oldEmail" name="oldEmail">
                 <input type="hidden" id="oldPassword" name="oldPassword">
                 <div class="form-group">

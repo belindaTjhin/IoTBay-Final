@@ -7,33 +7,42 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Main Page</title>
+    <!-- External CSS file -->
     <link rel="stylesheet" href="css/democss.css">
     <style>
-        /* Style for Modal */
+        /* Internal CSS styles */
+        /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            /* Hidden by default */
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
             padding-top: 50px;
         }
 
-        /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto; /* 15% from the top and centered */
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 40%; /* Adjust for better spacing */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            animation: animatetop 0.4s;
         }
 
-        /* Close Button */
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px; /* Space between inputs */
+            box-sizing: border-box; /* Border and padding included in width */
+        }
+
         .close {
             color: #aaa;
             float: right;
@@ -47,26 +56,55 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 20px;
+            text-align: center;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Animation for modal appearance */
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
     </style>
-    
-    
 </head>
 <body>
-    <% System system = (System) session.getAttribute("system"); %>
-    <% if (system != null) { %>
-    <div class="login-box"> <!-- Apply the light blue box styling when system is logged in -->
+    <div class="login-box">
         <h1>Welcome!</h1>
         <div class="system-info">
+            <% 
+                // Accessing System information from session
+                System system = (System) session.getAttribute("system");
+            %>
             <p>Your email is <%= system.getEmail() %></p>
+            <!-- Buttons for various actions -->
             <div class="buttons">
-                <!-- Button to open the modal form -->
+                <!-- Button to open Create User modal -->
                 <button onclick="document.getElementById('createUserModal').style.display='block'">Create User</button>
+                <!-- Button to open Create Admin modal -->
                 <button onclick="document.getElementById('createAdminModal').style.display='block'">Create Admin</button>
+                <!-- Button to view users -->
                 <button onclick="window.location.href='/iotbay/ViewUsersServlet';">View Users</button>
-
+                <!-- Button to view admins -->
                 <button onclick="window.location.href='/iotbay/ViewAdminsServlet';">View Admins</button>
-                
-                <!-- Add other buttons as needed -->
             </div>
         </div>
     </div>
@@ -76,14 +114,14 @@
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('createUserModal').style.display='none'">&times;</span>
             <h2>Create User Form</h2>
-            <!-- Form for creating user -->
             <form action="CreateUserServlet" method="post">
-                Email: <input type="email" name="email"><br>
-                Password: <input type="password" name="password"><br>
-                name: <input type="name:" name="name:"><br>
-                gender: <input type="gender:" name="gender:"><br>
-                address: <input type="address:" name="address:"><br>
-                <input type="submit" value="Submit">
+                <!-- Input fields for user information -->
+                <input type="email" class="form-input" id="email" name="email" placeholder="Email" required><br>
+                <input type="password" class="form-input" id="password" name="password" placeholder="Password" required pattern=".{6,}" title="Password must be at least 6 characters long"><br>
+                <input type="text" class="form-input" id="name" name="name" placeholder="Name" required><br>
+                <input type="text" class="form-input" id="gender" name="gender" placeholder="Gender" required><br>
+                <input type="text" class="form-input" id="address" name="address" placeholder="Address" required><br>
+                <input type="submit" class="button" value="Submit">
             </form>
         </div>
     </div>
@@ -92,54 +130,21 @@
     <div id="createAdminModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="document.getElementById('createAdminModal').style.display='none'">&times;</span>
-            <h2>Create User Form</h2>
-            <!-- Form for creating user -->
+            <h2>Create Admin Form</h2>
             <form action="CreateAdminServlet" method="post">
-                Email: <input type="email" name="email"><br>
-                Password: <input type="password" name="password"><br>
-                name: <input type="name:" name="name:"><br>
-                gender: <input type="gender:" name="gender:"><br>
-                address: <input type="address:" name="address:"><br>
-                <input type="submit" value="Submit">
+                <!-- Input fields for admin information -->
+                <input type="email" class="form-input" name="email" placeholder="Email" required><br>
+                <input type="password" class="form-input" name="password" placeholder="Password" required pattern=".{6,}" title="Password must be at least 6 characters long"><br>
+                <input type="text" class="form-input" name="name" placeholder="Name" required><br>
+                <input type="text" class="form-input" name="gender" placeholder="Gender" required><br>
+                <input type="text" class="form-input" name="address" placeholder="Address" required><br>
+                <input type="submit" class="button" value="Submit">
             </form>
         </div>
     </div>
-    
-       <!-- The Modal -->
-    <div id="viewUsersModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('viewUsersModal').style.display='none'">&times;</span>
-            <h2>User List</h2>
-            <table>
-                <tr>
-                    <th>Email</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                <% 
-                ArrayList<User> users = (ArrayList<User>) session.getAttribute("usersList");
-                if (users != null) {
-                    for (User user : users) {
-                        out.println("<tr><td>" + user.getEmail() + "</td><td>" + user.getName() + "</td><td>" + user.getGender() + "</td><td>" + user.getAddress() + "</td><td><a href='EditUserServlet?email=" + user.getEmail() + "'>Edit</a> | <a href='DeleteUserServlet?email=" + user.getEmail() + "' onclick='return confirm(\"Are you sure?\");'>Delete</a></td></tr>");
-                    }
-                }
-                %>
-            </table>
-        </div>
-    </div>
 
-
-    <% } else { %>
-    <div class="login-box">
-        <p>Please log in to view your details.</p>
-        <a class="button" href="system_login.jsp">Login</a>
-    </div>
-    <% } %>
-
+    <!-- JavaScript to close modal when clicking outside -->
     <script>
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
                 event.target.style.display = "none";
