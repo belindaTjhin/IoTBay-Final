@@ -39,11 +39,11 @@ public class AdminLoginServlet extends HttpServlet{
 
                    request.getRequestDispatcher("admin_index.jsp").include(request, response);
                } else {
-                   session.setAttribute("existErr", "Admin does not exist in the Database!");
+                   session.setAttribute("existErr", "Staff account does not exist in the Database!");
                    request.getRequestDispatcher("admin_login.jsp").include(request, response);
                } 
            } catch (SQLException | NullPointerException ex){
-               System.out.println(ex.getMessage() == null ? "Admin does not exist" : "welcome");
+               System.out.println(ex.getMessage() == null ? "Staff does not exist" : "welcome");
            }
        }
     }

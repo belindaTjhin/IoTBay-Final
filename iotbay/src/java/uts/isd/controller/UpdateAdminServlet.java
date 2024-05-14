@@ -29,6 +29,8 @@ public class UpdateAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Validator validator = new Validator();
+
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -39,29 +41,45 @@ public class UpdateAdminServlet extends HttpServlet {
         String oldPassword = request.getParameter("oldPassword"); // Retrieve old email parameter
         String newPassword = request.getParameter("newPassword"); // Retrieve new email parameter
         DBManager manager = (DBManager) session.getAttribute("manager");
-        try{
-            Admin admin = manager.findAdmin(email, password);
-            if(admin != null){
-                // Update admin details in the database
-                manager.updateAdmin(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
-                
-                // Update admin object in the session
-                admin.setName(name);
-                admin.setEmail(newEmail);
-                admin.setPassword(password);
-                admin.setGender(gender);
-                admin.setAddress(address);
-                session.setAttribute("admin", admin);
-                
-                session.setAttribute("updated", "");
-                request.getRequestDispatcher("update_admin.jsp").include(request, response);
-            } else{
-                session.setAttribute("updated", "Error: Update was not successful");
-                request.getRequestDispatcher("edit_admin.jsp").include(request,response);
+        
+        // Clear previous error messages
+        validator.clear(session);
+        // Validate staff input
+        if (!validator.validateEmail(newEmail)) {
+            session.setAttribute("emailErr", "Error: Email is either already in the database or format is incorrect.");
+            request.getRequestDispatcher("edit_admin.jsp").include(request, response);
+        } else if (!validator.validateName(name)) {
+            session.setAttribute("nameErr", "Error: Name needs to be capitalised.");
+            request.getRequestDispatcher("edit_admin.jsp").include(request, response);
+        } else if (!validator.validatePassword(newPassword)) {
+            session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
+            request.getRequestDispatcher("edit_admin.jsp").include(request, response);
+        } else {
+            try {
+                Admin admin = manager.findAdmin(email, password);
+                if (admin != null) {
+                    // Update admin details in the database
+                    manager.updateAdmin(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
+                    // Redirect admin to update page after successful update
+                    session.setAttribute("updated", "");
+                    // Update admin object in the session
+                    admin.setName(name);
+                    admin.setEmail(newEmail);
+                    admin.setPassword(newPassword);
+                    admin.setGender(gender);
+                    admin.setAddress(address);
+                    session.setAttribute("admin", admin);
+                    request.getRequestDispatcher("update_admin.jsp").include(request, response);
+                } else {
+                    session.setAttribute("updated", "Error: Update was not successful");
+                    request.getRequestDispatcher("edit_admin.jsp").include(request,response);
+                }
+            } catch (SQLException ex) {
+                // Log SQL exceptions
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch(SQLException ex){
-            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     @Override

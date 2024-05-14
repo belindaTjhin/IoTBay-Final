@@ -39,7 +39,7 @@ public class LoginServlet extends HttpServlet{
 
                     request.getRequestDispatcher("index.jsp").include(request, response);
                } else {
-                   session.setAttribute("existErr", "User does not exist in the Database!");
+                   session.setAttribute("existErr", "User does not exist, or either email or password is incorrect.");
                    request.getRequestDispatcher("login.jsp").include(request, response);
                } 
            } catch (SQLException | NullPointerException ex){

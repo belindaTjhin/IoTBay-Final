@@ -29,6 +29,8 @@ public class UpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        Validator validator = new Validator();
+
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -39,29 +41,45 @@ public class UpdateServlet extends HttpServlet {
         String oldPassword = request.getParameter("oldPassword"); // Retrieve old email parameter
         String newPassword = request.getParameter("newPassword"); // Retrieve new email parameter
         DBManager manager = (DBManager) session.getAttribute("manager");
-        try{
-            User user = manager.findUser(email, password);
-            if(user != null){
-                // Update user details in the database
-                manager.updateUser(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
-                
-                // Update user object in the session
-                user.setName(name);
-                user.setEmail(newEmail);
-                user.setPassword(password);
-                user.setGender(gender);
-                user.setAddress(address);
-                session.setAttribute("user", user);
-                
-                session.setAttribute("updated", "");
-                request.getRequestDispatcher("update_user.jsp").include(request, response);
-            } else{
-                session.setAttribute("updated", "Error: Update was not successful");
-                request.getRequestDispatcher("edit_user.jsp").include(request,response);
+        
+        // Clear previous error messages
+        validator.clear(session);
+        // Validate user input
+        if (!validator.validateEmail(newEmail)) {
+            session.setAttribute("emailErr", "Error: Email is either already in the database or format is incorrect.");
+            request.getRequestDispatcher("edit_user.jsp").include(request, response);
+        } else if (!validator.validateName(name)) {
+            session.setAttribute("nameErr", "Error: Name needs to be capitalised.");
+            request.getRequestDispatcher("edit_user.jsp").include(request, response);
+        } else if (!validator.validatePassword(newPassword)) {
+            session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
+            request.getRequestDispatcher("edit_user.jsp").include(request, response);
+        } else {
+            try {
+                User user = manager.findUser(email, password);
+                if (user != null) {
+                    // Update user details in the database
+                    manager.updateUser(oldEmail, newEmail, name, oldPassword, newPassword, gender, address); // Pass old and new email
+                    // Redirect user to update page after successful update
+                    session.setAttribute("updated", "");
+                    // Update user object in the session
+                    user.setName(name);
+                    user.setEmail(newEmail);
+                    user.setPassword(newPassword);
+                    user.setGender(gender);
+                    user.setAddress(address);
+                    session.setAttribute("user", user);
+                    request.getRequestDispatcher("update_user.jsp").include(request, response);
+                } else {
+                    session.setAttribute("updated", "Error: Update was not successful");
+                    request.getRequestDispatcher("edit_user.jsp").include(request,response);
+                }
+            } catch (SQLException ex) {
+                // Log SQL exceptions
+                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch(SQLException ex){
-            Logger.getLogger(UpdateServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
     @Override

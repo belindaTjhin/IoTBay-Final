@@ -84,9 +84,9 @@ public class RegisterServlet extends HttpServlet {
         if (!validator.validateEmail(email)) {
             session.setAttribute("emailErr", "Error: Email format is incorrect.");
         } else if (!validator.validateName(name)) {
-            session.setAttribute("nameErr", "Error: Name format is incorrect.");
+            session.setAttribute("nameErr", "Error: Name needs to be capitalised.");
         } else if (!validator.validatePassword(password)) {
-            session.setAttribute("passErr", "Error: Password format is incorrect.");
+            session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
         } else {
             try {
                 User exist = manager.findUser(email, password);
@@ -111,14 +111,13 @@ public class RegisterServlet extends HttpServlet {
             } catch (SQLException ex) {
                 // Log SQL exceptions
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                // Redirect user to an error page
-                response.sendRedirect("Registration_error.jsp");
-                return; // Exit method after redirecting
             }
         }
 
         // If any validation or database error occurs, forward back to registration page
+        session.setAttribute("existErr", "Email already exists in database.");
         request.getRequestDispatcher("one.jsp").include(request, response);
+
     }
 
 
