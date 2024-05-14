@@ -227,7 +227,12 @@ public class DBManager {
     public void updateDevice(int id, String name, String description, double price, String supplier, int stock) throws SQLException {        
        //code for update-operation  
        st.executeUpdate("UPDATE IOTUSER.DEVICES SET ID='" + id + "', DESCRIPTION='" + description + "', PRICE='" + price + "', SUPPLIER='" + supplier + "', STOCK=" + stock + "' WHERE NAME='" + name + "'"); 
-    }        
+    }
+    
+    public void updateDevice(int id, String oldName, String newName, String description, double price, String supplier, int stock) throws SQLException {        
+        //code for update-operation  
+        st.executeUpdate("UPDATE IOTUSER.DEVICES SET ID='" + id + "', NAME='" + newName + "', DESCRIPTION='" + description + "', PRICE='" + price + "', SUPPLIER='" + supplier + "', STOCK='" + stock + "' WHERE NAME='" + oldName + "'"); 
+    }
 
     //delete a PRODUCT from the database    
     public void deleteDevice(String name) throws SQLException{        

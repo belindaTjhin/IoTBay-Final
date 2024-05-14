@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="uts.isd.model.Product"%>
 <%@page import="uts.isd.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,35 +12,63 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/democss.css">
-        <title>Delete Device</title>
+        <title>Update Device</title>
     </head>
+    <style>
+        .form-group {
+            margin-bottom: 15px; 
+        }
+        label, input, .button {
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input, .button {
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+    </style>
     <body>
         <% 
             Admin admin = (Admin) session.getAttribute("admin");
-            String existErr = (String) session.getAttribute("existErr");
-            String emailErr = (String) session.getAttribute("emailErr");
-            String passErr = (String) session.getAttribute("PassErr");
+            String updated = (String) session.getAttribute("updated");
+            Product product = (Product) session.getAttribute("product");
         %>
         <div class="login-box">
-            <h1>Please enter your login details: <span> <%=(existErr != null ? existErr : "")%></span></h1>
-            <div class="form-container">
-                <form>
-                    <table>
-                        <tr>
-                            <td>Email:</td>
-                            <td><input type="text" placeholder="<%=(emailErr != null ? emailErr: "Enter email")%>" name="email" required></td>
-                        </tr>
-                        <tr>
-                            <td>Password:</td>
-                            <td><input type="password" placeholder="<%=(passErr != null ? passErr : "Enter password")%>" name="password" required></td>
-                        </tr>
-                    </table>
-                    <div class="buttons">
-                        <input class="button" type="submit" value="Delete Device">
-                        <a class="button" href="catalogue_search.jsp">Cancel</a>
-                    </div>
-                </form>
-            </div>
+            <h1>Edit Device details: <span> <%=(updated != null ? updated : "")%></span></h1>
+            <form action="UpdateDeviceServlet" method="post">
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" value="${product.id}" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" value="${product.description}">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" value="${product.price}">
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock:</label>
+                    <input type="text" id="stock" name="stock" value="${product.stock}">
+                </div>
+                <!-- New inputs for old and new email -->
+                <div class="form-group">
+                    <label for="name">Current Name:</label>
+                    <input type="text" id="name" name="name" value="${product.name}" required>
+                </div>
+                <div class ="form-group">
+                    <label for="name">New Name:</label>
+                    <input type="hidden" id="oldName" name="oldName" value="${product.name}" required>
+                    <input type="text" id="newName" name="newName" value="${product.name}" required>
+                </div>
+                
+                <input type="submit" class="button" value="Update">
+            </form>
+            <br>
+            <div class ="panel_div">
+                <a class="button" href="catalogue.jsp">Back to Catalogue</a>
+            </div>   
         </div>
     </body>
 </html>

@@ -33,9 +33,6 @@
                 <a href="catalogue_delete_device.jsp">
                     <button class="button">Delete Device</button>
                 </a>
-                <a href="catalogue_update_device.jsp">
-                    <button class="button">Update Device</button>
-                </a>
                 <%} %>
                 <a href="index.html">
                     <button class="button">Back</button>

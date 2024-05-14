@@ -75,7 +75,11 @@
                        </td>
                    </tr>
                </table>
-                    
+               <%if (admin != null) {%>
+                    <a href="catalogue_update_device.jsp">
+                        <button class="button">Update Device</button>
+                    </a>
+               <% } %>   
             <%} %> 
                 <a class="button" href="catalogue.jsp">Cancel</a>
             </div>
