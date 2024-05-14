@@ -35,6 +35,8 @@ public class CatalogueSearchServlet extends HttpServlet {
         manager = (DBManager) session.getAttribute("manager");
         
         String deviceName = request.getParameter("deviceName");
+        session.setAttribute("product", null);
+        session.setAttribute("found", null);
         
         try{
             boolean check = manager.checkDevice(deviceName);
@@ -44,6 +46,7 @@ public class CatalogueSearchServlet extends HttpServlet {
                 session.setAttribute("found", "Item was found");
             } else {
                 session.setAttribute("found", "Item does NOT exist in the Inventory");
+                session.setAttribute("product", null);
             }
         } catch (SQLException ex){
             Logger.getLogger(CatalogueSearchServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -4,6 +4,7 @@
     Author     : btjhi
 --%>
 
+<%@page import="uts.isd.model.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="uts.isd.model.Product"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,6 +18,7 @@
     <% 
         Product product = (Product) session.getAttribute("product");
         String found = (String) session.getAttribute("found");
+        Admin admin = (Admin) session.getAttribute("admin");
     %>
     <body>
         <div class="form-container">
