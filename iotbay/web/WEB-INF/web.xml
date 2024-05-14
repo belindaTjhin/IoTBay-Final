@@ -30,6 +30,14 @@
 <servlet-class>uts.isd.controller.DeleteAdminServlet</servlet-class>
 </servlet>
 <servlet>
+<servlet-name>DeleteDeviceServlet</servlet-name>
+<servlet-class>uts.isd.controller.DeleteDeviceServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>DeleteDeviceServlet</servlet-name>
+<url-pattern>/DeleteDeviceServlet</url-pattern>
+</servlet-mapping>
+<servlet>
 <servlet-name>CatalogueViewServlet</servlet-name>
 <servlet-class>uts.isd.controller.CatalogueViewServlet</servlet-class>
 </servlet>

@@ -9,9 +9,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="css/democss.css">
+        <title>Delete Device</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <% 
+            String existErr = (String) session.getAttribute("existErr");
+            String updated = (String) session.getAttribute("updated");
+        %>
+        <div class="login-box">
+            <h1>Enter device name to delete: <span> <%=(existErr != null ? existErr : "")%></span></h1>
+            <div class="form-container">
+                <form action="DeleteDeviceServlet" method="post">
+                    <table>
+                        <tr>
+                            <td>Product name:</td>
+                            <td><input type="text" placeholder="Enter device name" name="productName"></td>
+                        </tr>
+                    </table>
+                    <span class="message"> <%=(updated != null ? updated : "")%></span>
+                    <br>
+                    <div class="buttons">
+                        <input class="button" type="submit" value="Delete Device">
+                        <a class="button" href="catalogue_main.jsp">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
