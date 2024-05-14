@@ -51,6 +51,11 @@ INSERT INTO ADMIN(email, name, password, gender, address) VALUES
 ('steven_taylor@gmail.com', 'Steven Taylor', 'steven789', 'Male', '1212 Elm St'),
 ('jessica_adams@example.com', 'Jessica Adams', 'jessica1234', 'Female', '1313 Cedar St');
 
+
+-- Add data to SYSTEM table:
+INSERT INTO SYSTEMADMIN(email, password)
+VALUES 
+('admin@admin.com', 'admin');
 -- Add data to ORDERS table:
 
 -- Add data to ORDERLINES table:
