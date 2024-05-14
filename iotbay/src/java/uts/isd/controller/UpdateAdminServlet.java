@@ -49,7 +49,7 @@ public class UpdateAdminServlet extends HttpServlet {
             session.setAttribute("emailErr", "Error: Email is either already in the database or format is incorrect.");
             request.getRequestDispatcher("edit_admin.jsp").include(request, response);
         } else if (!validator.validateName(name)) {
-            session.setAttribute("nameErr", "Error: Name needs to be capitalised.");
+            session.setAttribute("nameErr", "Error: First name needs to be capitalised and/or need to enter a last name.");
             request.getRequestDispatcher("edit_admin.jsp").include(request, response);
         } else if (!validator.validatePassword(newPassword)) {
             session.setAttribute("passErr", "Error: Password needs to be more than 3 characters long.");
