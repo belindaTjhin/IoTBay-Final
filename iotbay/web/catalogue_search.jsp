@@ -77,7 +77,9 @@
                </table>
                     
             <%} %> 
+                <a class="button" href="catalogue.jsp">Cancel</a>
             </div>
+            <br>
         </div> 
     </body>
 </html>
