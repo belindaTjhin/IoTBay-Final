@@ -25,6 +25,7 @@
             background-color: rgba(0,0,0,0.5);
             padding-top: 100px; /* Increased padding to push the modal down a bit */
         }
+
         .modal-content {
             background-color: #fefefe;
             margin: auto;
@@ -32,36 +33,73 @@
             border: 1px solid #888;
             width: 30%; /* Restrict modal width for better aesthetics */
         }
-        /* Additional styles */
+
+        .form-group {
+            margin-bottom: 15px; /* Uniform margin for visual spacing between form groups */
+        }
+
+        .form-group label {
+            display: block; /* Make labels block to align with the input */
+            margin-bottom: 5px; /* Space between label and input */
+        }
+
+        .form-group input {
+            width: calc(100% - 20px); /* Full width minus padding */
+            padding: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* A more visible color */
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%; /* Full width buttons */
+            box-shadow: 0px 1px 2px grey; /* Adds a subtle shadow to button */
+        }
+
+        .button:hover {
+            background-color: #45a049; /* Darker shade on hover */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
     </style>
     
     <!-- JavaScript function to open edit modal -->
     <script>
-        function openEditModal(email, name, gender, address, password) {
-            // Display the modal
-            document.getElementById('editUserModal').style.display = 'block';
+    function openEditModal(email, name, gender, address, password) {
+        // Display the modal
+        document.getElementById('editUserModal').style.display = 'block';
 
-            // Set existing user information in the form
-            document.getElementById('userEmail').value = email;
-            document.getElementById('userName').value = name;
-            document.getElementById('userGender').value = gender;
-            document.getElementById('userAddress').value = address;
-            document.getElementById('userPassword').value = password;
+        // Set existing user information in the form
+        document.getElementById('userEmail').value = email;
+        document.getElementById('userName').value = name;
+        document.getElementById('userGender').value = gender;
+        document.getElementById('userAddress').value = address;
+        document.getElementById('userPassword').value = password;
 
-            // Set old email and password in hidden fields for comparison
-            document.getElementById('oldEmail').value = email;
-            document.getElementById('oldPassword').value = password;
-        }
+        // Set old email and password in hidden fields for comparison
+        document.getElementById('oldEmail').value = email;
+        document.getElementById('oldPassword').value = password;
+    }
     </script>
+
 </head>
 <body>
     <!-- Back to Home button -->
     <button class="button" onclick="window.location.href='system_index.jsp';">Back to Home</button>
-    
     <!-- User List heading with Search Users button -->
     <h1>User List</h1>
     <button class="button" onclick="document.getElementById('searchUserModal').style.display='block'">Search Users</button>
-    
     <!-- User table -->
     <table>
         <thead>
