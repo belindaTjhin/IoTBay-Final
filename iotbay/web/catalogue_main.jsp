@@ -26,10 +26,10 @@
                 <a href="CatalogueViewServlet">
                     <button class="button">View Catalogue</button>
                 </a>
+                <%if(admin != null) {%>
                 <a href="catalogue_add_device.jsp">
                     <button class="button">Add Device</button>
                 </a>
-                <%if(admin != null) {%>
                 <a href="catalogue_delete_device.jsp">
                     <button class="button">Delete Device</button>
                 </a>
