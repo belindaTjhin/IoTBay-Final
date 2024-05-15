@@ -18,21 +18,16 @@
             <h1>Updated Device Details</h1>
             
             <% 
-                int id = Integer.parseInt(request.getParameter("id"));
-                String name = request.getParameter("newName");
-                String description = request.getParameter("description");
-                double price = Double.parseDouble(request.getParameter("price"));
-                String supplier = request.getParameter("supplier");
-                int stock = Integer.parseInt(request.getParameter("stock"));
                 Product product = (Product) session.getAttribute("product");
+                String updated = (String) session.getAttribute("updated");
             %>
-            <p>Product details updated successfully.</p>
-            <p>Product id is: <%= id %>.</p>
-            <p>Product name is: <%= name %>.</p>
-            <p>Product description is: <%= description %>.</p>
-            <p>Product price is: <%= price %>.</p>
-            <p>Product supplier is: <%= supplier %>.</p>
-            <p>Product stock is: <%= stock %>.</p>
+            <p><%= session.getAttribute("updated") %></p>
+            <p>Product id is: <%= product.getId() %>.</p>
+            <p>Product name is: <%= product.getName() %>.</p>
+            <p>Product description is: <%= product.getDescription() %>.</p>
+            <p>Product price is: <%= product.getPrice() %>.</p>
+            <p>Product supplier is: <%= product.getSupplier() %>.</p>
+            <p>Product stock is: <%= product.getStock() %>.</p>
             
             <br>
             <div class="button-group">
