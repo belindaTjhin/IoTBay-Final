@@ -11,6 +11,7 @@ import uts.isd.model.Admin;
 import uts.isd.model.System;
 import uts.isd.model.Product;
 import uts.isd.model.AccessLog;
+import uts.isd.model.Payment;
 
 /*  
 * DBManager is the primary DAO class to interact with the database.  
@@ -335,5 +336,24 @@ public class DBManager {
        } 
        //search the ResultSet for a admin using the parameters                
        return null;    
-    } 
+    }
+    //find payment history
+    public ArrayList<Payment> fetchPayment(String useremail) throws SQLException {
+        String fetch = "select * from IOTUSER.Payments where email='"+ useremail + "'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<Payment> temp = new ArrayList<Payment>();
+        
+        while (rs.next()) {
+            int paymentID = rs.getInt("paymentID");
+            int orderID = rs.getInt("orderID");
+            String email = rs.getString("email");
+            java.util.Date date = rs.getDate("date");
+            String cHName = rs.getString("cHName");
+            String cNumber = rs.getString("cNumber");
+            String cCVC = rs.getString("cCVC");
+            String cExMMYY = rs.getString("cExMMYY");
+            temp.add(new Payment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY));
+        }
+        return temp;
+    }
 }

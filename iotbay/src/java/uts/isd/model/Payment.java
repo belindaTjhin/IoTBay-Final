@@ -6,43 +6,34 @@
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author Shirley Yi
  */
 public class Payment implements Serializable {
-    private int orderID;
     private int paymentID;
-    private String date;
-    private String cardHolderName;
-    private String cardNumber;
-    private String cardCVC;
-    private String cardExpiryMM;
-    private String cardExpiryYY;
-    private boolean isFinalised;
+    private int orderID;
+    private String email;
+    private Date date;
+    private String cHName;
+    private String cNumber;
+    private String cCVC;
+    private String cExMMYY;
 
     public Payment() {
     }
 
-    public Payment(int orderID, int paymentID, String date, String cardHolderName, String cardNumber, String cardCVC, String cardExpiryMM, String cardExpiryYY, boolean isFinalised) {
-        this.orderID = orderID;
+    public Payment(int paymentID, int orderID, String email, Date date, String cHName, String cNumber, String cCVC, String cExMMYY) {
         this.paymentID = paymentID;
-        this.date = date;
-        this.cardHolderName = cardHolderName;
-        this.cardNumber = cardNumber;
-        this.cardCVC = cardCVC;
-        this.cardExpiryMM = cardExpiryMM;
-        this.cardExpiryYY = cardExpiryYY;
-        this.isFinalised = isFinalised;
-    }
-
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
         this.orderID = orderID;
+        this.email = email;
+        this.date = date;
+        this.cHName = cHName;
+        this.cNumber = cNumber;
+        this.cCVC = cCVC;
+        this.cExMMYY = cExMMYY;
     }
 
     public int getPaymentID() {
@@ -53,60 +44,60 @@ public class Payment implements Serializable {
         this.paymentID = paymentID;
     }
 
-    public String getDate() {
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getCardHolderName() {
-        return cardHolderName;
+    public String getcHName() {
+        return cHName;
     }
 
-    public void setCardHolderName(String cardHolderName) {
-        this.cardHolderName = cardHolderName;
+    public void setcHName(String cHName) {
+        this.cHName = cHName;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getcNumber() {
+        return cNumber;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setcNumber(String cNumber) {
+        this.cNumber = cNumber;
     }
 
-    public String getCardCVC() {
-        return cardCVC;
+    public String getcCVC() {
+        return cCVC;
     }
 
-    public void setCardCVC(String cardCVC) {
-        this.cardCVC = cardCVC;
+    public void setcCVC(String cCVC) {
+        this.cCVC = cCVC;
     }
 
-    public String getCardExpiryMM() {
-        return cardExpiryMM;
+    public String getcExMMYY() {
+        return cExMMYY;
     }
 
-    public void setCardExpiryMM(String cardExpiryMM) {
-        this.cardExpiryMM = cardExpiryMM;
+    public void setcExMMYY(String cExMMYY) {
+        this.cExMMYY = cExMMYY;
     }
 
-    public String getCardExpiryYY() {
-        return cardExpiryYY;
-    }
-
-    public void setCardExpiryYY(String cardExpiryYY) {
-        this.cardExpiryYY = cardExpiryYY;
-    }
-
-    public boolean isIsFinalised() {
-        return isFinalised;
-    }
-
-    public void setIsFinalised(boolean isFinalised) {
-        this.isFinalised = isFinalised;
-    }
-    
-}    
+}
