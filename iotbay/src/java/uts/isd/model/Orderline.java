@@ -1,37 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uts.isd.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
-public class Orderline implements Serializable{
+public class Orderline implements Serializable {
     private int orderlineID;
     private int orderID;
     private int quantity;
     private int productID;
     private String productName;
-    private double totalPrice;
-    private double price;
-    
-    
+    private BigDecimal totalPrice;
+    private BigDecimal price;
+
     public Orderline() {
     }
 
-    public Orderline(int orderID, int quantity, int productID, String productName, double price) {
+    public Orderline(int orderID, int quantity, int productID, String productName, BigDecimal price) {
         this.orderID = orderID;
         this.quantity = quantity;
         this.productID = productID;
         this.productName = productName;
         this.price = price;
-        this.totalPrice = quantity * price;
+        this.totalPrice = price.multiply(BigDecimal.valueOf(quantity));
     }
-    
-    
-    
-    public Orderline(int orderlineID, int orderID, int quantity, int productID, String productName, double totalPrice, double price) {
+
+    public Orderline(int orderlineID, int orderID, int quantity, int productID, String productName, BigDecimal totalPrice, BigDecimal price) {
         this.orderlineID = orderlineID;
         this.orderID = orderID;
         this.quantity = quantity;
@@ -63,19 +56,20 @@ public class Orderline implements Serializable{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        this.totalPrice = this.price.multiply(BigDecimal.valueOf(this.quantity));
     }
-    
+
     public void upQuantity() {
         this.quantity++;
-        this.totalPrice = this.totalPrice + (quantity*price);
+        this.totalPrice = this.price.multiply(BigDecimal.valueOf(this.quantity));
     }
 
     public int downQuantity() {
         this.quantity--;
-        this.totalPrice = this.totalPrice - (quantity*price);
+        this.totalPrice = this.price.multiply(BigDecimal.valueOf(this.quantity));
         return this.quantity;
     }
-    
+
     public int getProductID() {
         return productID;
     }
@@ -92,22 +86,19 @@ public class Orderline implements Serializable{
         this.productName = productName;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice() {
-        this.totalPrice = this.price * this.quantity;
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
-
-    
-    
 }

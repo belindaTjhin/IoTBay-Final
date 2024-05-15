@@ -248,87 +248,7 @@
     <servlet-mapping>
         <servlet-name>EditUserServlet</servlet-name>
         <url-pattern>/EditUserServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>OrderServlet</servlet-name>
-        <servlet-class>uts.isd.controller.OrderServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/OrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CartServlet</servlet-name>
-        <servlet-class>uts.isd.controller.CartServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CartServlet</servlet-name>
-        <url-pattern>/CartServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>OrderLineServlet</servlet-name>
-        <servlet-class>uts.isd.controller.OrderLineServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderLineServlet</servlet-name>
-        <url-pattern>/OrderLineServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>QuantityUp</servlet-name>
-        <servlet-class>uts.isd.controller.QuantityUp</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>QuantityUp</servlet-name>
-        <url-pattern>/QuantityUp</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>QuantityDown</servlet-name>
-        <servlet-class>uts.isd.controller.QuantityDown</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>QuantityDown</servlet-name>
-        <url-pattern>/QuantityDown</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ShippingServlet</servlet-name>
-        <servlet-class>uts.isd.controller.ShippingServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ShippingServlet</servlet-name>
-        <url-pattern>/ShippingServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>FinishOrderServlet</servlet-name>
-        <servlet-class>uts.isd.controller.FinishOrderServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FinishOrderServlet</servlet-name>
-        <url-pattern>/FinishOrderServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>OrderHistory</servlet-name>
-        <servlet-class>uts.isd.controller.OrderHistory</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderHistory</servlet-name>
-        <url-pattern>/OrderHistory</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>GetOrderLines</servlet-name>
-        <servlet-class>uts.isd.controller.GetOrderLines</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetOrderLines</servlet-name>
-        <url-pattern>/GetOrderLines</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>DeleteOrder</servlet-name>
-        <servlet-class>uts.isd.controller.DeleteOrder</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteOrder</servlet-name>
-        <url-pattern>/DeleteOrder</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>  
     <servlet>
         <servlet-name>SearchUserServlet</servlet-name>
         <servlet-class>uts.isd.controller.SearchUserServlet</servlet-class>
@@ -357,9 +277,29 @@
         <servlet-name>PaymentCreateServlet</servlet-name>
         <url-pattern>/PaymentCreateServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>OrderServlet</servlet-name>
+    <servlet-class>uts.isd.controller.OrderServlet</servlet-class>   
+    </servlet>
     <servlet-mapping>
-        <servlet-name>PaymentSearchServlet</servlet-name>
-        <url-pattern>/PaymentSearchServlet</url-pattern>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>SubmitOrderServlet</servlet-name>
+    <servlet-class>uts.isd.controller.SubmitOrderServlet</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <url-pattern>/SubmitOrder</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>SubmitOrderLineServlet</servlet-name>
+    <servlet-class>uts.isd.controller.SubmitOrderLineServlet</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitOrderLineServlet</servlet-name>
+        <url-pattern>/SubmitOrderLine</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

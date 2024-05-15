@@ -1,73 +1,78 @@
 package uts.isd.model.dao;
 
 import uts.isd.model.Orderline;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class OrderLineDBManager {
-    private Statement st; 
-    
+    private Connection conn;
+
     public OrderLineDBManager(Connection conn) throws SQLException {
-        st = conn.createStatement();
+        this.conn = conn;
     }
-    
-    public Orderline findOrderLine(int oID, int pID) throws SQLException {
-        String fetch = "select * from IOTBAY.ORDERLINE where orderID = " + oID + " and productID="+pID+"";
-        ResultSet rs = st.executeQuery(fetch);
-        
-        while (rs.next()) { 
-            
-            int orderID = rs.getInt(2);
-            int productID = rs.getInt(4);
-            if (orderID == oID && productID==pID) {
-                
-                int orderLineID = rs.getInt(1);
-                int quantity = rs.getInt(3);
-                String productName = rs.getString(5);
-                double totalPrice = rs.getDouble(6);
-                double price = rs.getDouble(7);
+
+    public Orderline findOrderLine(int orderID, int productID) throws SQLException {
+        String fetch = "SELECT * FROM isd.Orderline WHERE orderID = ? AND productID = ?";
+        try (PreparedStatement statement = conn.prepareStatement(fetch)) {
+            statement.setInt(1, orderID);
+            statement.setInt(2, productID);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                int orderLineID = rs.getInt("orderLineID");
+                int quantity = rs.getInt("quantity");
+                String productName = rs.getString("productName");
+                BigDecimal totalPrice = rs.getBigDecimal("totalPrice");
+                BigDecimal price = rs.getBigDecimal("price");
                 return new Orderline(orderLineID, orderID, quantity, productID, productName, totalPrice, price);
-                
             }
-            
         }
         return null;
     }
-    
-    public void addOrderLine(int orderLineID, int orderID, int quantity, int productID, String productName, double totalPrice, double price) throws SQLException {
-        st.executeUpdate("INSERT INTO IOTBAY.ORDERLINE " + "VALUES (" +orderLineID+", " +orderID+", "+quantity+", "+productID+", '"+productName+"', "+totalPrice+", "+ price+")");
+
+    public void addOrderLine(Orderline orderLine) throws SQLException {
+        String query = "INSERT INTO isd.Orderline (orderLineID, orderID, quantity, productID, productName, totalPrice, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, orderLine.getOrderlineID());
+            pstmt.setInt(2, orderLine.getOrderID());
+            pstmt.setInt(3, orderLine.getQuantity());
+            pstmt.setInt(4, orderLine.getProductID());
+            pstmt.setString(5, orderLine.getProductName());
+            pstmt.setBigDecimal(6, orderLine.getTotalPrice());
+            pstmt.setBigDecimal(7, orderLine.getPrice());
+            pstmt.executeUpdate();
+        }
     }
-    
-    public void updateOrder(int orderLineID, int orderID, int quantity, int productID, String productName, double totalPrice, double price) throws SQLException {
-        st.executeUpdate("UPDATE IOTBAY.ORDERLINE SET orderID="+orderID+",quantity="+quantity+",productID="+productID+",productName='"+
-                productName+"',totalPrice="+totalPrice+", price="+price+" WHERE orderLineID="+orderLineID+"");
+
+    public int getNextOrderlineID() throws SQLException {
+        String query = "SELECT MAX(orderLineID) FROM isd.Orderline";
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt(1) + 1;
+            }
+        }
+        return 1; // Default starting ID
     }
-    
-    public void deleteOrder(int orderLineID) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTBAY.ORDERLINE WHERE orderLineID=" +orderLineID+"");
-    }
-    
-    public ArrayList<Orderline> fetchOrders(int orderID) throws SQLException {
-        String fetch = "select * from IOTBAY.ORDERLINE where orderID="+orderID+"";
-        ResultSet rs = st.executeQuery(fetch);
-        ArrayList<Orderline> temp = new ArrayList<Orderline>();
-        
-        while (rs.next()) {
-            int orderLineID = rs.getInt(1);
-            int quantity = rs.getInt(3);                
-            int productID = rs.getInt(4);
-            String productName = rs.getString(5);
-            double totalPrice = rs.getDouble(6);
-            double price = rs.getDouble(7);
-            temp.add(new Orderline(orderLineID, orderID, quantity, productID, productName, totalPrice, price));
+
+    public ArrayList<Orderline> fetchOrderLines(int orderID) throws SQLException {
+        String fetch = "SELECT * FROM isd.Orderline WHERE orderID = ?";
+        ArrayList<Orderline> temp = new ArrayList<>();
+        try (PreparedStatement pstmt = conn.prepareStatement(fetch)) {
+            pstmt.setInt(1, orderID);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int orderLineID = rs.getInt("orderLineID");
+                int quantity = rs.getInt("quantity");
+                int productID = rs.getInt("productID");
+                String productName = rs.getString("productName");
+                BigDecimal totalPrice = rs.getBigDecimal("totalPrice");
+                BigDecimal price = rs.getBigDecimal("price");
+                temp.add(new Orderline(orderLineID, orderID, quantity, productID, productName, totalPrice, price));
+            }
         }
         return temp;
     }
-    public void delete(int orderID) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTBAY.ORDERLINE WHERE ORDERID="+orderID);
-    }
 }
-

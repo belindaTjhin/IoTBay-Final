@@ -1,69 +1,54 @@
 package uts.isd.model.dao;
 
 import uts.isd.model.Orders;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.sql.*;
+import java.math.BigDecimal;
 
 public class OrderDBManager {
-    private Statement st; //used to execute SQL queries within java code
-    
+    private Connection conn;
+
     public OrderDBManager(Connection conn) throws SQLException {
-        st = conn.createStatement();
+        this.conn = conn;
     }
-    
-    public Orders findOrder(int oID, String uE) throws SQLException {
-        String fetch = "select * from isd.ORDERS where orderID = " + oID + " and userEmail='" + uE + "'";
-        ResultSet rs = st.executeQuery(fetch);
-        
-        while (rs.next()) {  // reads every row in USERS table and gets the result by index and stores them into Strings
-            int orderID = rs.getInt(1);
-            String useremail = rs.getString(2);
-            if (orderID == oID && useremail == uE) {
-                String orderDate = rs.getString(3);
-                double totalPrice = rs.getDouble(5);
-                String shippingAddress = rs.getString(6);
-                return new Orders(orderID, useremail, orderDate,totalPrice, shippingAddress);
-                
+
+    public Orders findOrder(int orderID) throws SQLException {
+        String fetch = "SELECT * FROM orders WHERE orderID = ?";
+        try (PreparedStatement statement = conn.prepareStatement(fetch)) {
+            statement.setInt(1, orderID);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                int oID = rs.getInt("orderID");
+                String userEmail = rs.getString("userEmail");
+                Date orderDate = rs.getDate("orderDate");
+                BigDecimal price = rs.getBigDecimal("price");
+                String shippingAddress = rs.getString("shippingAddress");
+                return new Orders(oID, userEmail, orderDate, price, shippingAddress);
             }
-            
         }
         return null;
     }
-    
-    public void addOrder(int orderID, String useremail) throws SQLException {
-        st.executeUpdate("INSERT INTO IOTBAY.ORDERS VALUES ("+orderID+", '" +useremail+"', null, null, null, null, null)");
-              
-        
-          
-    }
-    
-    public void updateOrder(int orderID, String useremail, String orderDate, double totalPrice, String shippingAddress) throws SQLException {
-        st.executeUpdate("UPDATE IOTBAY.ORDERS SET ORDERDATE='"+orderDate+"',TOTALPRICE="+totalPrice+",SHIPPINGADDRESS='"+
-                shippingAddress+"' WHERE ORDERID="+orderID + " AND USERID='"+useremail+"'");
-    }
-    
-    public void deleteOrder(int orderID) throws SQLException {
-        st.executeUpdate("DELETE FROM IOTBAY.ORDERS WHERE ORDERID=" +orderID+"");
-    }
-    
-    public ArrayList<Orders> fetchOrders(String useremail) throws SQLException {
-        String fetch = "select * from ORDERS where USEREMAIL='"+useremail+"'";
-        ResultSet rs = st.executeQuery(fetch);
-        ArrayList<Orders> temp = new ArrayList();
-        
-        while (rs.next()) {
-            int orderID = rs.getInt(1);
-            String orderDate = rs.getString(3);
-            double totalPrice = rs.getDouble(5);
-            String shippingAddress = rs.getString(6);
-            temp.add(new Orders(orderID, useremail, orderDate, totalPrice, shippingAddress));
+
+    public void addOrder(Orders order) throws SQLException {
+        String sql = "INSERT INTO orders (orderID, userEmail, orderDate, price, shippingAddress) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, order.getOrderID());
+            pstmt.setString(2, order.getUserEmail());
+            pstmt.setDate(3, new java.sql.Date(order.getOrderDate().getTime()));
+            pstmt.setBigDecimal(4, order.getPrice());
+            pstmt.setString(5, order.getShippingAddress());
+            pstmt.executeUpdate();
         }
-        return temp;
     }
-    
-    
-    
+
+    public int getNextOrderID() throws SQLException {
+        String query = "SELECT MAX(orderID) FROM orders";
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt(1) + 1;
+            }
+        }
+        return 1; // Default starting ID
+    }
 }
