@@ -1,6 +1,6 @@
 <%-- 
-    Document   : payment_list
-    Created on : 15/05/2024, 9:44:29 AM
+    Document   : payment_search_result
+    Created on : 15/05/2024, 4:29:13 PM
     Author     : yixia
 --%>
 
@@ -27,12 +27,14 @@
     </head>
     <body>
         <%
-            ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
+            Payment p = (Payment) session.getAttribute("payment");
         %>
         <div class="login-box">
-            <h1>Your Payment History</h1> 
-            <div class="buttons">
-                <a class="button" href="payment_search.jsp">Search</a></div>
+            <h1>Search Result</h1> 
+            <%
+                if (p != null) {
+            %>
+
             <table>
                 <tr>
                     <th>Payment ID</th>
@@ -45,11 +47,6 @@
                     <th>Finalised</th>
 
                 </tr>
-                <%
-                    if (payments != null) {
-                        for (Payment p : payments) {
-
-                %>
                 <tr>
                     <td><p><%=p.getPaymentID()%></p></td>
                     <td><p><%=p.getOrderID()%></p></td>
@@ -61,21 +58,23 @@
                     <td><p><%=p.isFinalised()%></p></td>
 
                 </tr>
-                <%      }
-
+                <%
                 } else {
                 %>
                 <tr>
-                    <td colspan="7">No payment history to show.</td>
+                    <td colspan="7">No payment matching the id and date found.</td>
                 </tr>
-                <%  }%>
             </table>
-            <div class="button-group">
+            <%
+                }
+            %>
 
-                <a href="index.jsp">
-                    <button class="button">Back</button>
-                </a>
-            </div>
+        <div class="button-group">
+            <br>
+            <a href="payment_search.jsp">
+                <button class="button">Back</button>
+            </a>
+        </div>
         </div>
     </body>
 </html>
