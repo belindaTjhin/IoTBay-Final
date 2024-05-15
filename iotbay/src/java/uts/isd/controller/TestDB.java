@@ -49,7 +49,7 @@ public class TestDB {
                     testReadDevice();
                     break;
                 case 'U':
-                    testUpdate();
+                    testUpdateDevice();
                     break;
                 case 'D':
                     testDelete();
@@ -155,6 +155,38 @@ public class TestDB {
         } catch (SQLException ex){
             Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void testUpdateDevice(){
+        System.out.print("Old name: ");
+        String oldName = in.nextLine();
+        
+        try{
+          if(db.checkDevice(oldName)){
+              System.out.print("New Name: ");
+              String newName = in.nextLine();
+              System.out.print("Description: ");
+              String description = in.nextLine();
+              System.out.print("Supplier: ");
+              String supplier = in.nextLine();
+  
+          } else {
+              System.out.println("Device does not exist.");
+          }
+        } catch (SQLException | NumberFormatException ex){
+            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        try{
+//            System.out.print("Product ID: ");
+//            int id = in.nextInt();
+//            System.out.print("Price: ");
+//            double price = in.nextDouble();
+//            System.out.print("Stock: ");
+//            int stock = in.nextInt();
+//            
+//            db.updateDevice(id, oldName, newName, description, price, supplier, stock);
+//        }
     }
     
     private void testDelete(){

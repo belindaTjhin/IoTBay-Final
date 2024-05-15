@@ -23,7 +23,7 @@ import uts.isd.model.dao.DBManager;
  *
  * @author btjhi
  */
-@WebServlet(name = "UpdateDeviceServlet", urlPatterns = {"/UpdateDeviceServlet"})
+
 public class UpdateDeviceServlet extends HttpServlet {
     
     @Override
@@ -32,19 +32,9 @@ public class UpdateDeviceServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
         
-        int id;
-        double price;
-        int stock;
-        try {
-            id = Integer.parseInt(request.getParameter("id"));
-            price = Double.parseDouble(request.getParameter("price"));
-            stock = Integer.parseInt(request.getParameter("stock"));
-        } catch (NumberFormatException ex) {
-            //Handle invalid number format
-            session.setAttribute("added", "Error: Invalid number format.");
-            response.sendRedirect("catalogue_update_device.jsp");
-            return;
-        }
+        int id = Integer.parseInt(request.getParameter("id"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        int stock = Integer.parseInt(request.getParameter("stock"));
         
         String name = request.getParameter("name");
         String description = request.getParameter("description");
@@ -53,11 +43,9 @@ public class UpdateDeviceServlet extends HttpServlet {
         String newName = request.getParameter("newName");
         
         try{
-            Product product = manager.findDevice(name);
+            Product product = (Product) session.getAttribute("product");
             if(product != null){
                 manager.updateDevice(id, oldName, newName, description, price, supplier, stock);
-                // Redirect product to update page after successful update
-                session.setAttribute("updated", "");
                 // Update product object in the session
                 product.setId(id);
                 product.setName(newName);
@@ -66,10 +54,10 @@ public class UpdateDeviceServlet extends HttpServlet {
                 product.setSupplier(supplier);
                 product.setStock(stock);
                 session.setAttribute("product", product);
-                request.getRequestDispatcher("catalogue_update_result.jsp").include(request, response);
+                session.setAttribute("updated", "Device details were successfully updated.");
+                request.getRequestDispatcher("catalogue_update_result.jsp").forward(request, response);
             } else {
                 session.setAttribute("updated", "Error: Update was not successful");
-                request.getRequestDispatcher("catalogue_update_device.jsp").include(request, response);
             }
         } catch (SQLException ex){
             //Log SQL exception
