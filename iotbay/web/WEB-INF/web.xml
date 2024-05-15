@@ -69,6 +69,10 @@
         <servlet-name>PaymentHistoryServlet</servlet-name>
         <servlet-class>uts.isd.controller.PaymentHistoryServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentCreateServlet</servlet-name>
+        <servlet-class>uts.isd.controller.PaymentCreateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -344,6 +348,10 @@
     <servlet-mapping>
         <servlet-name>PaymentHistoryServlet</servlet-name>
         <url-pattern>/PaymentHistoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentCreateServlet</servlet-name>
+        <url-pattern>/PaymentCreateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

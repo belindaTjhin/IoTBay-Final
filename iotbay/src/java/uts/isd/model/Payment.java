@@ -21,11 +21,9 @@ public class Payment implements Serializable {
     private String cNumber;
     private String cCVC;
     private String cExMMYY;
+    private boolean Finalised;
 
-    public Payment() {
-    }
-
-    public Payment(int paymentID, int orderID, String email, Date date, String cHName, String cNumber, String cCVC, String cExMMYY) {
+    public Payment(int paymentID, int orderID, String email, Date date, String cHName, String cNumber, String cCVC, String cExMMYY, boolean Finalised) {
         this.paymentID = paymentID;
         this.orderID = orderID;
         this.email = email;
@@ -34,7 +32,10 @@ public class Payment implements Serializable {
         this.cNumber = cNumber;
         this.cCVC = cCVC;
         this.cExMMYY = cExMMYY;
+        this.Finalised = Finalised;
     }
+
+
 
     public int getPaymentID() {
         return paymentID;
@@ -99,5 +100,14 @@ public class Payment implements Serializable {
     public void setcExMMYY(String cExMMYY) {
         this.cExMMYY = cExMMYY;
     }
+
+    public boolean isFinalised() {
+        return Finalised;
+    }
+
+    public void setFinalised(boolean Finalised) {
+        this.Finalised = Finalised;
+    }
+    
 
 }

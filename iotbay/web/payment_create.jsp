@@ -16,7 +16,7 @@
         <div class="login-box">
             <h1>Create Payment</h1> 
             <!--<div class="form-container">--> 
-                <form action="paymentCreateServlet">
+                <form action="paymentCreateServlet" method="post">
                     <label for="orderID">Order ID: </label><br>
                     <input type="text" id="orderID" name="orderID" required><br><br>
                     <label for="cardHolderName">Cardholder Name:</label><br>

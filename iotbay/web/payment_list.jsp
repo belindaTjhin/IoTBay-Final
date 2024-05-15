@@ -40,6 +40,7 @@
                     <th>Card Number</th>
                     <th>ExpiryDDMM</th>
                     <th>CVC</th>
+                    <th>Finalised</th>
 
                 </tr>
                 <%
@@ -54,6 +55,7 @@
                     <td><p><%=p.getcNumber()%></p></td>
                     <td><p><%=p.getcExMMYY()%></p></td>
                     <td><p><%=p.getcCVC()%></p></td>
+                    <td><p><%=p.isFinalised()%></p></td>
 
                 </tr>
                 <%      }

@@ -352,7 +352,8 @@ public class DBManager {
             String cNumber = rs.getString("cNumber");
             String cCVC = rs.getString("cCVC");
             String cExMMYY = rs.getString("cExMMYY");
-            temp.add(new Payment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY));
+            boolean isFinalised = rs.getBoolean("isFinalised");
+            temp.add(new Payment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, isFinalised));
         }
         return temp;
     }
