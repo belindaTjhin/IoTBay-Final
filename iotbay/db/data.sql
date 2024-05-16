@@ -79,7 +79,12 @@ VALUES
   (17, 'mia.thompson@example.com', '2024-06-01', 185.99, '24 Ocean Drive, Byron Bay, NSW'),
   (18, 'ethan.harris@example.com', '2024-06-02', 195.99, '101 Harbour Street, Darling Harbour, NSW'),
   (19, 'ava.jackson@example.com', '2024-06-03', 205.99, '69 Hillside Avenue, Noosa Heads, QLD'),
-  (20, 'noah.martin@example.com', '2024-06-04', 215.99, '456 Lakeside Drive, Lake Macquarie, NSW');
+  (20, 'noah.martin@example.com', '2024-06-04', 215.99, '456 Lakeside Drive, Lake Macquarie, NSW'),
+  (21, 'aaa@aaa.com', '2024-06-05', 225.99, '118 Park Road, St Kilda, VIC'),
+  (22, 'aaa@aaa.com', '2024-06-06', 235.99, '118 Park Road, St Kilda, VIC'),
+  (23, 'aaa@aaa.com', '2024-06-07', 245.99, '118 Park Road, St Kilda, VIC'),
+  (24, '', '2024-06-08', 255.99, '118 Park Road, St Kilda, VIC'),
+  (25, '', '2024-06-09', 265.99, '118 Park Road, St Kilda, VIC');
 
 -- Add data to ORDERLINES table:
 INSERT INTO ORDERLINE (ORDERLINEID, orderid, quantity, productid, productname, totalprice, price)
