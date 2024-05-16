@@ -42,7 +42,7 @@
             </tbody>
         </table>
         <div class="buttons">
-            <a class="button" href="index.jsp">Home page</a>
+            <a class="button" href="index.jsp">Back to home page</a>
         </div>
     </div>
 </body>

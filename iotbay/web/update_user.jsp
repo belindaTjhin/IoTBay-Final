@@ -45,7 +45,7 @@
             <button class="button">Main Page</button>
         </a>
         <a href="edit_user.jsp" class="button-link">
-            <button class="button">Edit Account</button>
+            <button class="button">Edit Account Again</button>
         </a>
     </div>
     </div>

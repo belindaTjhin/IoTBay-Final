@@ -88,13 +88,18 @@
                 
                 <input type="submit" class="button" value="Update">
             </form>
+            <a href="delete_admin.jsp" class="button-link">
+                <button class="button">Delete Account</button>
+            </a>
         <% } else { %>
             <p>No staff account logged in.</p>
         <% } %>
         
+
+
         <div class ="panel_div">
-        <a class="button" href="admin_index.jsp">Main Page</a>
-        </div> 
+            <a class="button" href="admin_index.jsp">Main Page</a>
+        </div>
     </div>
     <jsp:include page="/ConnServlet" flush="true"/> 
 </body>
