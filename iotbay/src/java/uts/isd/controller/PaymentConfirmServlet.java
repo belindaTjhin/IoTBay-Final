@@ -55,6 +55,7 @@ public class PaymentConfirmServlet extends HttpServlet {
             switch (buttonValue) {
                 case "Pay Now":
                     manager.finalisePayment(payment.getPaymentID());
+                    session.setAttribute("updatedPayment", null);
                     request.getRequestDispatcher("payment_complete.jsp").forward(request, response);
                     break;
                 case "Edit Payment Details":

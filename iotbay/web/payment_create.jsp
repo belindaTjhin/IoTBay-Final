@@ -42,7 +42,11 @@
             <% String createPaymentErr = (String) session.getAttribute("createPaymentErr"); %>
             <% String paymentErr = (String) session.getAttribute("paymentErr"); %>
 
-            <% Payment updatedPayment = (Payment) session.getAttribute("updatedPayment"); %>
+            <% Payment updatedPayment = (Payment) session.getAttribute("updatedPayment");
+//                if(updatedPayment.isFinalised()){
+//                    updatedPayment = null;
+//                }
+            %>
 
 
             <% if (createPaymentErr != null && !createPaymentErr.equals("")) {%>
