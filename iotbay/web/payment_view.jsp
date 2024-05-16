@@ -13,6 +13,13 @@
         <link rel="stylesheet" href="css/democss.css">
         <title>Create Payment</title>
         <style>
+            .nav {
+                position: absolute;
+                top:20px;
+                left:20px;
+            }
+        </style>
+        <style>
             .text-align-left {
                 text-align: left;
             }
@@ -32,6 +39,9 @@
         </style>
     </head>
     <body>
+        <div class="nav">
+            <a class="button" style="color:white" href="index.jsp">Back to Main Page</a>
+        </div>
         <%
             Payment p = (Payment) session.getAttribute("updatedPayment");
             String total = (String) session.getAttribute("paymentTotal");

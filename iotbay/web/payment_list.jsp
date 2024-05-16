@@ -24,8 +24,18 @@
                 border-collapse: collapse;
             }
         </style>
+                <style>
+            .nav {
+                position: absolute;
+                top:20px;
+                left:20px;
+            }
+        </style>
     </head>
     <body>
+                <div class="nav">
+            <a class="button" style="color:white" href="index.jsp">Back to Main Page</a>
+        </div>
         <%
             ArrayList<Payment> payments = (ArrayList<Payment>) session.getAttribute("payments");
         %>

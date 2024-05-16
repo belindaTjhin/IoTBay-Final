@@ -16,9 +16,21 @@
                 font-size: 8pt;
                 block:inline-text;
             }
+            
+        </style>
+                <style>
+            .nav {
+                position: absolute;
+                top:20px;
+                left:20px;
+            }
         </style>
     </head>
+
     <body>
+        <div class="nav">
+            <a class="button" style="color:white" href="index.jsp">Back to Main Page</a>
+        </div>
         <div class="login-box">
             <h1>Create Payment</h1> 
             <%-- Display error messages --%>

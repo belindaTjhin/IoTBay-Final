@@ -14,6 +14,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/democss.css">
         <title>Create Payment</title>
+                <style>
+            .nav {
+                position: absolute;
+                top:20px;
+                left:20px;
+            }
+        </style>
         <style>
             table, td, th {
                 border: 1px solid;
@@ -26,6 +33,9 @@
         </style>
     </head>
     <body>
+        <div class="nav">
+            <a class="button" style="color:white" href="index.jsp">Back to Main Page</a>
+        </div>
         <%
             Payment p = (Payment) session.getAttribute("payment");
         %>
