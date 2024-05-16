@@ -156,6 +156,51 @@ VALUES
 
 
 
--- Add data to PRODUCTCATEGORIES table:
+-- Add data to USER ACCESS LOG table:
+INSERT INTO IOTUSER.USER_ACCESS_LOG (EMAIL, LOGIN_TIME, LOGOUT_TIME) 
+VALUES 
+('user1@example.com', '2024-05-16 14:25:00', '2024-05-16 15:30:00'),
+('user2@example.com', '2024-05-16 13:45:00', '2024-05-16 14:50:00'),
+('user3@example.com', '2024-05-16 12:55:00', '2024-05-16 13:55:00'),
+('user4@example.com', '2024-05-16 11:30:00', '2024-05-16 12:45:00'),
+('user5@example.com', '2024-05-16 10:15:00', '2024-05-16 11:25:00'),
+('john.smith@uts.edu.au', '2024-05-16 09:40:00', '2024-05-16 10:55:00'),
+('jane.doe@uts.edu.au', '2024-05-16 08:50:00', '2024-05-16 09:50:00'),
+('tim.lee@uts.edu.au', '2024-05-16 07:35:00', '2024-05-16 08:45:00'),
+('gerald.roger@uts.edu.au', '2024-05-16 06:25:00', '2024-05-16 07:35:00'),
+('tiffany.topsy@uts.edu.au', '2024-05-16 05:10:00', '2024-05-16 06:25:00'),
+('biggie.smalls@uts.edu.au', '2024-05-16 04:20:00', '2024-05-16 05:30:00'),
+('emily.johnson@example.com', '2024-05-16 03:15:00', '2024-05-16 04:30:00'),
+('michael.brown@example.com', '2024-05-16 02:30:00', '2024-05-16 03:40:00'),
+('sarah.wilson@example.com', '2024-05-16 01:40:00', '2024-05-16 02:50:00'),
+('david.lee@example.com', '2024-05-16 00:55:00', '2024-05-16 02:05:00'),
+('aaa@aaa.com', '2024-05-15 23:45:00', '2024-05-16 00:55:00'),
+('mia.thompson@example.com', '2024-05-15 22:30:00', '2024-05-15 23:40:00'),
+('ethan.harris@example.com', '2024-05-15 21:15:00', '2024-05-15 22:25:00'),
+('ava.jackson@example.com', '2024-05-15 20:25:00', '2024-05-15 21:35:00'),
+('noah.martin@example.com', '2024-05-15 19:35:00', '2024-05-15 20:45:00');
 
--- Set up FOREIGNKEYS:
+-- Add data to ADMIN ACCESS LOG table:
+INSERT INTO IOTUSER.ADMIN_ACCESS_LOG (EMAIL, LOGIN_TIME, LOGOUT_TIME) 
+VALUES 
+('john.doe@example.com', '2024-05-16 14:25:00', '2024-05-16 15:30:00'),
+('jane_smith12@gmail.com', '2024-05-16 13:45:00', '2024-05-16 14:50:00'),
+('mike_smith@gmail.com', '2024-05-16 12:55:00', '2024-05-16 13:55:00'),
+('sara_jones22@hotmail.com', '2024-05-16 11:30:00', '2024-05-16 12:45:00'),
+('chris123@yahoo.com', '2024-05-16 10:15:00', '2024-05-16 11:25:00'),
+('amy.roberts34@gmail.com', '2024-05-16 09:40:00', '2024-05-16 10:55:00'),
+('mark.thomas@example.com', '2024-05-16 08:50:00', '2024-05-16 09:50:00'),
+('lisa_johnson@gmail.com', '2024-05-16 07:35:00', '2024-05-16 08:45:00'),
+('kevin_smith23@yahoo.com', '2024-05-16 06:25:00', '2024-05-16 07:35:00'),
+('emily.davis@example.com', '2024-05-16 05:10:00', '2024-05-16 06:25:00'),
+('matt.robinson@gmail.com', '2024-05-16 04:20:00', '2024-05-16 05:30:00'),
+('sophia.james@yahoo.com', '2024-05-16 03:15:00', '2024-05-16 04:30:00'),
+('david.brown@example.com', '2024-05-16 02:30:00', '2024-05-16 03:40:00'),
+('olivia_wilson@hotmail.com', '2024-05-16 01:40:00', '2024-05-16 02:50:00'),
+('jason.smith@example.com', '2024-05-16 00:55:00', '2024-05-16 02:05:00'),
+('mia_johnson@gmail.com', '2024-05-15 23:45:00', '2024-05-16 00:55:00'),
+('ryan.miller@yahoo.com', '2024-05-15 22:30:00', '2024-05-15 23:40:00'),
+('kelly_williams@example.com', '2024-05-15 21:15:00', '2024-05-15 22:25:00'),
+('steven_taylor@gmail.com', '2024-05-15 20:25:00', '2024-05-15 21:35:00'),
+('jessica_adams@example.com', '2024-05-15 19:35:00', '2024-05-15 20:45:00');
+
