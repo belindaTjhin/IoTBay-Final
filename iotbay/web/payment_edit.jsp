@@ -3,7 +3,7 @@
     Created on : 14/05/2024, 10:24:55 AM
     Author     : yixia
 --%>
-<%@page import="uts.isd.model.Payment"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,6 @@
             <% String createPaymentErr = (String) session.getAttribute("createPaymentErr"); %>
             <% String paymentErr = (String) session.getAttribute("paymentErr"); %>
 
-            <% Payment updatedPayment = (Payment) session.getAttribute("updatedPayment"); %>
 
 
             <% if (createPaymentErr != null && !createPaymentErr.equals("")) {%>
@@ -47,7 +46,7 @@
             <!--<div class="form-container">--> 
             <form action="PaymentCreateServlet" method="post">
                 <label for="orderID">Order ID: </label><br>
-                <input type="text" id="orderID" name="orderID" value="<%= (updatedPayment != null) ? updatedPayment.getOrderID() : "" %>"required>
+                <input type="text" id="orderID" name="orderID" required>
                 <% if (orderIDFErr != null && !orderIDFErr.equals("")) {%>
                 <br><span class="error-message"><%= orderIDFErr%></span>
                 <% }%>
@@ -55,29 +54,29 @@
                 <br> <span class="error-message"><%= orderNotExistErr%></span>
                 <% } %><br><br>
                 <label for="cardHolderName">Cardholder Name:</label><br>
-                <input type="text" id="cardHolderName" name="cardHolderName" value="<%= (updatedPayment != null) ? updatedPayment.getcHName() : "" %>" required>
+                <input type="text" id="cardHolderName" name="cardHolderName" required>
                 <% if (cardHNameFErr != null && !cardHNameFErr.equals("")) {%>
                 <br><span class="error-message"><%= cardHNameFErr%></span>
                 <% } %><br><br>
                 <label for="cardNumber">Card Number:</label><br>
-                <input type="text" id="cardNumber" name="cardNumber" value="<%= (updatedPayment != null) ? updatedPayment.getcNumber() : "" %>" required>
+                <input type="text" id="cardNumber" name="cardNumber" required>
                 <% if (cardNumberFErr != null && !cardNumberFErr.equals("")) {%>
                 <br><span class="error-message"><%= cardNumberFErr%></span>
                 <% } %><br><br>
                 <label for="cardExpiryMMYY">Expiry Date(MM/YY):</label><br>
-                <input type="text" id="cardExpiryMMYY" name="cardExpiryMMYY" value="<%= (updatedPayment != null) ? updatedPayment.getcExMMYY() : "" %>" required>
+                <input type="text" id="cardExpiryMMYY" name="cardExpiryMMYY" required>
                 <% if (expiryFError != null && !expiryFError.equals("")) {%>
                 <br><span class="error-message"><%= expiryFError%></span>
                 <% } %><br><br>
 
                 <label for="cardCVC">CVC:</label><br>
-                <input type="text" id="cardCVC" name="cardCVC" value="<%= (updatedPayment != null) ? updatedPayment.getcCVC() : "" %>" required>
+                <input type="text" id="cardCVC" name="cardCVC" required>
                 <% if (cvvErr != null && !cvvErr.equals("")) {%>
                 <br><span class="error-message"><%= cvvErr%></span>
                 <% }%><br><br>
                 <div class="buttons">
                     <input class="button" type="submit" value="Next">
-                    <a class="button" href="index.jsp">Cancel</a>
+                    <a class="button" href="index.html">Cancel</a>
                 </div>
             </form> 
             <!--</div>-->

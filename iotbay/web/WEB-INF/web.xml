@@ -70,6 +70,10 @@
         <servlet-class>uts.isd.controller.PaymentHistoryServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>PaymentConfirmServlet</servlet-name>
+        <servlet-class>uts.isd.controller.PaymentConfirmServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PaymentCreateServlet</servlet-name>
         <servlet-class>uts.isd.controller.PaymentCreateServlet</servlet-class>
     </servlet>
@@ -274,6 +278,10 @@
         <url-pattern>/PaymentHistoryServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>PaymentConfirmServlet</servlet-name>
+        <url-pattern>/PaymentConfirmServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>PaymentCreateServlet</servlet-name>
         <url-pattern>/PaymentCreateServlet</url-pattern>
     </servlet-mapping>
@@ -284,6 +292,10 @@
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentSearchServlet</servlet-name>
+        <url-pattern>/PaymentSearchServlet</url-pattern>
     </servlet-mapping>
     <servlet>
     <servlet-name>SubmitOrderServlet</servlet-name>
@@ -303,8 +315,7 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-
             30
-</session-timeout>
+        </session-timeout>
     </session-config>
 </web-app>

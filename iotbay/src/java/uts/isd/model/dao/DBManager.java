@@ -1,6 +1,7 @@
 package uts.isd.model.dao;
 
 import static java.lang.String.format;
+import java.math.BigDecimal;
 import uts.isd.model.User;
 
 import java.sql.*;
@@ -10,6 +11,7 @@ import uts.isd.model.Admin;
 import uts.isd.model.System;
 import uts.isd.model.Product;
 import uts.isd.model.AccessLog;
+import uts.isd.model.Orders;
 import uts.isd.model.Payment;
 
 /*  
@@ -325,15 +327,14 @@ public class DBManager {
     }
 
     //Add a payment into the database    
-    public void addPayment(int paymentID, int orderID, String email, Date date, String cHName, String cNumber, String cCVC, String cExMMYY, boolean isFinalised) throws SQLException {
-        //code for add-operation
+    public void addPayment(int paymentID, int orderID, String email, java.util.Date date, String cHName, String cNumber, String cCVC, String cExMMYY, boolean isFinalised) throws SQLException {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        st.executeUpdate("INSERT INTO PAYMENTS (paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, isFinalised) VALUES (" + paymentID + ", " + orderID + ", '" + email + "', '" + sqlDate + "', '" + cHName + "', '" + cNumber + "', '" + cCVC + "', '" + cExMMYY + "', " + isFinalised + ")");
-
+        String query = "INSERT INTO PAYMENTS (paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, isFinalised) VALUES (" + paymentID + ", " + orderID + ", '" + email + "', '" + sqlDate + "', '" + cHName + "', '" + cNumber + "', '" + cCVC + "', '" + cExMMYY + "', " + isFinalised + ")";
+        st.executeUpdate(query);
     }
     //update a payment details in the database    
 
-    public void updatePayment(int paymentID, int orderID, String email, Date date, String cHName, String cNumber, String cCVC, String cExMMYY, boolean isFinalised) throws SQLException {
+    public void updatePayment(int paymentID, int orderID, String email, java.util.Date date, String cHName, String cNumber, String cCVC, String cExMMYY, boolean isFinalised) throws SQLException {
 
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         //code for update-operation
@@ -342,16 +343,20 @@ public class DBManager {
 
     //delete a Payment Record from the database    
     public void deletePayment(int paymentID) throws SQLException {
-        //code for delete-operation    
-        st.executeUpdate("DELETE FROM IOTUSER.PAYMENTS WHERE paymentID='" + paymentID + "'");
-
+        String query = "DELETE FROM IOTUSER.PAYMENTS WHERE paymentID=" + paymentID;
+        st.executeUpdate(query);
     }
 
-    //find payment history
+    //delete a Payment Record from the database    
+    public void finalisePayment(int paymentID) throws SQLException {
+        st.executeUpdate("UPDATE PAYMENTS SET isFinalised=" + true + " WHERE paymentID=" + paymentID);
+    }
+
+    //find payment history with paymentID and date
     public Payment findPayment(int paymentID, java.util.Date date) throws SQLException {
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-        String fetch = "SELECT * FROM IOTUSER.Payments WHERE paymentID=" + paymentID + " AND date='" + sqlDate + "'";
-        ResultSet rs = st.executeQuery(fetch);
+        String query = "SELECT * FROM IOTUSER.Payments WHERE paymentID=" + paymentID + " AND date='" + sqlDate + "'";
+        ResultSet rs = st.executeQuery(query);
 
         while (rs.next()) {
             paymentID = rs.getInt("paymentID");
@@ -367,11 +372,41 @@ public class DBManager {
         }
         return null;
     }
+    //check if payment exists with orderID
+
+    public boolean orderExist(int orderID) throws SQLException {
+        String query = "SELECT * FROM IOTUSER.Orders WHERE orderID=" + orderID;
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {
+            return true;
+        }
+        return false;
+    }
+    //check if payment exists with orderID
+
+    public Payment findPayment(int orderID) throws SQLException {
+        String query = "SELECT * FROM IOTUSER.Payments WHERE orderID=" + orderID;
+        ResultSet rs = st.executeQuery(query);
+
+        while (rs.next()) {
+            int paymentID = rs.getInt("paymentID");
+            orderID = rs.getInt("orderID");
+            String email = rs.getString("email");
+            java.util.Date date = rs.getDate("date");
+            String cHName = rs.getString("cHName");
+            String cNumber = rs.getString("cNumber");
+            String cCVC = rs.getString("cCVC");
+            String cExMMYY = rs.getString("cExMMYY");
+            boolean isFinalised = rs.getBoolean("isFinalised");
+            return new Payment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, isFinalised);
+        }
+        return null;
+    }
 
     //find payment history
     public ArrayList<Payment> fetchPayment(String useremail) throws SQLException {
-        String fetch = "select * from IOTUSER.Payments where email='" + useremail + "'";
-        ResultSet rs = st.executeQuery(fetch);
+        String query = "select * from IOTUSER.Payments where email='" + useremail + "'";
+        ResultSet rs = st.executeQuery(query);
         ArrayList<Payment> temp = new ArrayList<Payment>();
 
         while (rs.next()) {

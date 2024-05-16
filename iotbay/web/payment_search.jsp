@@ -25,7 +25,11 @@
                         <input class="button" type="submit" value="Search">
                         <a class="button" href="payment_list.jsp">Cancel</a>
                     </div>
+                            <div class="button-group">
+
+            </div>
             </form>
         </div>
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>

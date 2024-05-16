@@ -4,8 +4,8 @@
     Author     : yixia
 --%>
 
-<%@page import="uts.isd.model.Admin"%>
-<%@page import="java.util.ArrayList"%>
+
+
 <%@page import="uts.isd.model.Payment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,17 +64,16 @@
                 <tr>
                     <td colspan="7">No payment matching the id and date found.</td>
                 </tr>
-            </table>
+            </table> <br>
             <%
                 }
             %>
-
-        <div class="button-group">
-            <br>
-            <a href="payment_search.jsp">
-                <button class="button">Back</button>
-            </a>
+            <div class="button-group">
+                <a href="payment_search.jsp">
+                    <button class="button">Back</button>
+                </a>
+            </div>
         </div>
-        </div>
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>
