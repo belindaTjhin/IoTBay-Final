@@ -62,6 +62,7 @@ public class PaymentConfirmServlet extends HttpServlet {
                     break;
                 case "Cancel Payment":
                     manager.deletePayment(payment.getPaymentID());
+                    session.setAttribute("updatedPayment", null);
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
             }
