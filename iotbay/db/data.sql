@@ -53,9 +53,28 @@ INSERT INTO ADMIN(email, name, password, gender, address) VALUES
 
 
 -- Add data to SYSTEM table:
-INSERT INTO SYSTEMADMIN(email, password)
-VALUES 
-('admin@admin.com', 'admin');
+INSERT INTO SYSTEMADMIN (email, password) VALUES 
+('admin@admin.com', 'admin'),
+('admin2@admin.com', 'password2'),
+('admin3@admin.com', 'password3'),
+('admin4@admin.com', 'password4'),
+('admin5@admin.com', 'password5'),
+('admin6@admin.com', 'password6'),
+('admin7@admin.com', 'password7'),
+('admin8@admin.com', 'password8'),
+('admin9@admin.com', 'password9'),
+('admin10@admin.com', 'password10'),
+('admin11@admin.com', 'password11'),
+('admin12@admin.com', 'password12'),
+('admin13@admin.com', 'password13'),
+('admin14@admin.com', 'password14'),
+('admin15@admin.com', 'password15'),
+('admin16@admin.com', 'password16'),
+('admin17@admin.com', 'password17'),
+('admin18@admin.com', 'password18'),
+('admin19@admin.com', 'password19'),
+('admin20@admin.com', 'password20');
+
 
 -- Add data to ORDERS table:
 INSERT INTO ORDERS (ORDERID, useremail, orderdate, price, shippingaddress)
