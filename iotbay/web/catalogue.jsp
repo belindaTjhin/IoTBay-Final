@@ -28,7 +28,7 @@
         <% 
             ArrayList<Product> catalogue = (ArrayList<Product>) session.getAttribute("catalogue");
             String show = (String) session.getAttribute("show");
-            Admin admin = (Admin) session.getAttribute("user");
+            Admin admin = (Admin) session.getAttribute("admin");
         %>
         <div class="centered-content">
             <div class='login-box'>
