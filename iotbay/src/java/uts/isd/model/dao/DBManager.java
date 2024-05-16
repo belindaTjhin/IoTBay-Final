@@ -374,6 +374,16 @@ public class DBManager {
     }
     //check if payment exists with orderID
 
+    public BigDecimal findTotal(int orderID) throws SQLException {
+        String query = "SELECT * FROM IOTUSER.Orders WHERE orderID=" + orderID;
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {
+            BigDecimal price = rs.getBigDecimal("price");
+            return price;
+        }
+        return null;
+    }
+    
     public boolean orderExist(int orderID) throws SQLException {
         String query = "SELECT * FROM IOTUSER.Orders WHERE orderID=" + orderID;
         ResultSet rs = st.executeQuery(query);

@@ -111,6 +111,8 @@ public class PaymentCreateServlet extends HttpServlet {
                     } else {
                         manager.updatePayment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, false);
                         Payment updatedPayment = manager.findPayment(orderID);
+                        String total = manager.findTotal(orderID) + "";
+                        session.setAttribute("paymentTotal", total);
                         session.setAttribute("updatedPayment", updatedPayment);
                         request.getRequestDispatcher("payment_view.jsp").forward(request, response); // Redirect to a list showing all admin or confirmation page
                     }
@@ -118,6 +120,8 @@ public class PaymentCreateServlet extends HttpServlet {
                 } else {
                     manager.addPayment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, false);
                     Payment newPayment = new Payment(paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, false);
+                    String total = manager.findTotal(orderID) + "";
+                    session.setAttribute("paymentTotal", total);
                     session.setAttribute("updatedPayment", newPayment);
                     request.getRequestDispatcher("payment_view.jsp").forward(request, response); // Redirect to a list showing all admin or confirmation page
                 }
