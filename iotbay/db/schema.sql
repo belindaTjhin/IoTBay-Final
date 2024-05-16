@@ -29,13 +29,14 @@ CREATE TABLE SYSTEMADMIN (EMAIL VARCHAR(50) NOT NULL,
   PRIMARY KEY (EMAIL));
 
 -- Create ORDERS table:
-CREATE TABLE ORDERS (
-  ORDERID INT PRIMARY KEY,
+CREATE TABLE ORDERS (ORDERID INT,
   useremail VARCHAR(100),
   orderdate DATE,
   price  DECIMAL(10, 2),
-  shippingaddress VARCHAR(50);
+  shippingaddress VARCHAR(50),
+  PRIMARY KEY(ORDERID)
 );
+
 -- Create ORDERLINE table:
 CREATE TABLE ORDERLINE (
  ORDERLINEID INT PRIMARY KEY,
@@ -44,7 +45,7 @@ CREATE TABLE ORDERLINE (
  productid int,
  productname VARCHAR(100),
  totalprice DECIMAL(10,2),
- price DECIMAL(10,2); 
+ price DECIMAL(10,2) 
 );
 
 -- Create DEVICES table:
