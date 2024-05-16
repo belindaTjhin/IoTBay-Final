@@ -61,12 +61,13 @@ CREATE TABLE devices (
 CREATE TABLE PAYMENTS (
   paymentID INT NOT NULL, 
   orderID INT NOT NULL, 
+  email VARCHAR(50),
   date DATE, 
-  cardHolderName VARCHAR(50), 
-  cardNumber VARCHAR(50), 
-  cardCVC VARCHAR(50), 
-  cardExpiryMM VARCHAR(50), 
-  cardExpiryYY VARCHAR(50), 
+  cHName VARCHAR(50), 
+  cNumber VARCHAR(16), 
+  cCVC VARCHAR(3), 
+  cExMMYY VARCHAR(5), 
+  isFinalised Boolean,
   PRIMARY KEY (paymentID),
   FOREIGN KEY (orderID) REFERENCES ORDERS(orderID)
 );
