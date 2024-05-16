@@ -1,10 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 05/04/2024, 10:33:48 AM
---%>
-
-<%@page import="java.util.ArrayList"%>
-<%@page import="uts.isd.model.Product"%>
 <%@page import="uts.isd.model.Admin"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,30 +5,149 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Main Page</title>
-        <link rel="stylesheet" href="css/democss.css">
+        <!--<link rel="stylesheet" href="css/democss.css">-->
+        <link rel="stylesheet" href="css/HomePage.css"> 
+        <style>
+            table .button {
+                width:90%;
+            }
+            .top-right {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 200px; /* Set the width to your desired value */
+                background-color: #ADD8E6; 
+                border-radius: 10px; /* Add a background color if needed */
+                padding: 10px; /* Add padding to give some space inside the table */
+                overflow: auto; 
+            }
+            .button-table {
+                width: 100%; /* Set the table width to 100% */
+                border-collapse: collapse; /* Collapse table borders for better layout */
+            }
+            .button-table td {
+                padding: 0; /* Remove padding to align buttons properly */
+                border-bottom: none; /* Add bottom border to separate rows */
+            }
+            .button-table td a {
+                display: block; /* Make buttons fill the whole cell */
+
+                /*padding: 6px 20px;  Adjust padding to make buttons slightly smaller */
+
+                text-align: center; /* Center align button text */
+                /*background-color: #00008B;  Dark blue background for the button */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                text-decoration: none; /* Remove underline */
+                font-size: 14px; /* Optionally adjust font size */
+            }
+
+/*            .button-table td a:hover {
+                background-color: #003366;  Darker shade of blue on hover 
+            }*/
+            /* Set color of h1 and label to white */
+            h1 {
+                color: white;
+            }
+        </style>
     </head>
-       <% Admin admin = (Admin) session.getAttribute("admin"); 
-          ArrayList<Product> catalogue = (ArrayList<Product>) session.getAttribute("catalogue");
-       %>
+    <body>
+        <% Admin admin = (Admin) session.getAttribute("admin"); %>
         <% if (admin != null) {%>
-        <div class="login-box"> <!-- Apply the light blue box styling when admin is logged in -->
-            <h1>Welcome, <%= admin.getName()%>!</h1>
-            <div class="admin-info">
-                <div class="buttons">                    
-                    <a href="LogoutServlet" class="button">Logout</a>
-                    <a class="button" href="edit_admin.jsp">Edit Account</a>
-                    <a class="button" href="catalogue_main.jsp">IoT Catalogue</a>
-                    <a href="delete_admin.jsp" class="button">Delete Account</a>
-                    <a href="admin_access_logs.jsp" class="button">View Access Logs</a>
-                    <a href="admin_one.jsp" class="button">Create Staff Account</a>
-                </div>  
-            </div>
+        <div class="top-right">
+            <table class="button-table">
+                <tr>
+                    <td style="text-align: center;">
+                        <label style="display: block;">My Account</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                        <a class="button" href="edit_admin.jsp">Edit Account</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="admin_access_logs.jsp" class="button">View Access Logs</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="LogoutServlet" class="button">Logout</a>
+                    </td>
+                </tr>
+            </table>
         </div>
         <% } else { %>
-        <div class="login-box"> <!-- You can also apply the styling for consistency even if not logged in -->
-            <p>Please log in to view your details.</p>
-            <a class="button" href="admin_login.jsp">Login</a>
+        <div class="top-right">
+            <!--<div class="button-group">-->
+                <table class="button-table" style="background-color: #ADD8E6; border-radius: 10px;">
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <label style="display: block;">Customer:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="admin_one.jsp">
+                                <button class="button">Customer Register</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="admin_login.jsp">
+                                <button class="button">Customer Login</button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="button-table" style="background-color: #ADD8E6; border-radius: 10px;">
+                    <tr>
+                        <td colspan="2" style="text-align: center;">
+                            <label style="display: block;">Admin:</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="admin_login.jsp">
+                                <button class="button">Staff Login</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="system_login.jsp">
+                                <button class="button">System Admin Login</button>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            <!--</div>-->
         </div>
         <% }%>
+        <div class="login-box" style="text-align:center;">
+            <% if (admin != null) {%>
+            <h1>Welcome, <%= admin.getName()%>!</h1>
+            <% } else { %>
+            <h1>IoTBay</h1>   
+            <% }%>
+            <div class="button-group">
+                <a href="catalogue_main.jsp">
+                    <button class="button">Device Catalogue</button>
+                </a>
+                <a href="admin_one.jsp">
+                    <button class ="button">Create Staff Account</button>
+                </a> 
 
+            </div>
+        </div>
+
+    </body>
 </html>
