@@ -70,7 +70,7 @@
                                     <td><p><%=p.getSupplier()%></p></td>
                                     <td><p><%=p.getStock()%></p></td>
                                 </tr>
-                            <%}%>
+                     <%}%>
                 </table>
                 <br>
                 <a href="catalogue_main.jsp">
