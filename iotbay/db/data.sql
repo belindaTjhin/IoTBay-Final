@@ -131,28 +131,29 @@ VALUES
 (20, 'Smart Ceiling Fan', 'A ceiling fan that can be controlled via smartphone or voice commands', 129.99, 'BreezeTech Co.', 65);
 
 -- Add data to PAYMENTS table:
-INSERT INTO PAYMENTS (paymentID, orderID, date, cardHolderName, cardNumber, cardCVC, cardExpiryMM, cardExpiryYY)
+INSERT INTO PAYMENTS (paymentID, orderID, email, date, cHName, cNumber, cCVC, cExMMYY, isFinalised)
 VALUES
-(1, 1, '2022-10-10', 'John Doe', '1234567812345678', '123', '05', '25'),
-(2, 2, '2022-11-01', 'Jane Smith', '8765432187654321', '456', '06', '26'),
-(3, 3, '2022-12-02', 'Alice Johnson', '9876543298765432', '789', '07', '27'),
-(4, 4, '2023-01-03', 'Bob Brown', '3456789034567890', '321', '08', '28'),
-(5, 5, '2023-02-05', 'Charlie Davis', '2345678923456789', '654', '09', '25'),
-(6, 6, '2023-03-12', 'Eve Wilson', '4567890145678901', '987', '10', '26'),
-(7, 7, '2023-04-17', 'Grace Lee', '5678901256789012', '234', '11', '27'),
-(8, 8, '2023-05-21', 'David Martinez', '6789012367890123', '567', '12', '28'),
-(9, 9, '2023-06-30', 'Frank Adams', '7890123478901234', '890', '01', '25'),
-(10, 10, '2023-07-24', 'Helen Clark', '8901234589012345', '123', '02', '26'),
-(11, 11, '2023-08-12', 'Ivy White', '9012345690123456', '456', '03', '27'),
-(12, 12, '2023-09-01', 'Jack Green', '1234567812345678', '789', '04', '28'),
-(13, 13, '2023-10-05', 'Kelly Black', '2345678923456789', '012', '05', '25'),
-(14, 14, '2023-11-11', 'Mike Grey', '3456789034567890', '345', '06', '26'),
-(15, 15, '2023-12-20', 'Nancy Brown', '4567890145678901', '678', '07', '27'),
-(16, 16, '2024-01-15', 'Oliver Davis', '5678901256789012', '901', '08', '28'),
-(17, 17, '2024-02-03', 'Pamela White', '6789012367890123', '234', '09', '25'),
-(18, 18, '2024-03-17', 'Quincy Smith', '7890123478901234', '567', '10', '26'),
-(19, 19, '2024-04-25', 'Ryan Adams', '8901234589012345', '890', '11', '27'),
-(20, 20, '2024-05-10', 'Sarah Clark', '9012345690123456', '123', '12', '28');
+(1, 1, 'user1@example.com', '2022-01-01', 'John Doe', '4539244541637526', '123', '05/25', true),
+(2, 2, 'user2@example.com', '2022-01-02', 'Jane Smith', '5276992518950471', '456', '06/26', true),
+(3, 3, 'user3@example.com', '2022-01-03', 'Michael Johnson', '5231234567889012', '789', '07/27', true),
+(4, 4, 'user4@example.com', '2022-01-04', 'Emily Davis', '5541675863401313', '321', '08/28', true),
+(5, 5, 'user5@example.com', '2022-01-05', 'Chris Lee', '4026526350483328', '654', '09/25', true),
+(6, 6, 'john.smith@uts.edu.au', '2022-01-06', 'John Smith', '5256625712567939', '987', '10/26', true),
+(7, 7, 'jane.doe@uts.edu.au', '2022-01-07', 'Jane Doe', '5290827256196603', '234', '11/27', true),
+(8, 8, 'tim.lee@uts.edu.au', '2022-01-08', 'Tim Lee', '5281191745009197', '567', '12/28', true),
+(9, 9, 'gerald.roger@uts.edu.au', '2022-01-09', 'Gerald Roger', '5243123456789012', '890', '01/25', true),
+(10, 10, 'tiffany.topsy@uts.edu.au', '2022-01-10', 'Tiffany Topsy', '5578901234567890', '123', '02/26', true),
+(11, 11, 'biggie.smalls@uts.edu.au', '2022-01-11', 'Biggie Smalls', '5258901234567890', '456', '03/27', true),
+(12, 12, 'emily.johnson@example.com', '2022-01-12', 'Emily Johnson', '512345678912345', '789', '04/28', true),
+(13, 13, 'michael.brown@example.com', '2022-01-13', 'Michael Brown', '5478901234567890', '012', '05/25', true),
+(14, 14, 'sarah.wilson@example.com', '2022-01-14', 'Sarah Wilson', '5267890123456789', '345', '06/26', true),
+(15, 15, 'david.lee@example.com', '2022-01-15', 'David Lee', '5134567890123456', '678', '07/27', true),
+(16, 16, 'aaa@aaa.com', '2022-01-15', 'Liam Anderson', '5256901234567890', '901', '08/28', true),
+(17, 17, 'aaa@aaa.com', '2022-01-16', 'Liam Anderson', '5256901234567890', '901', '08/28', true),
+(18, 18, 'aaa@aaa.com', '2022-01-17', 'Liam Anderson', '5256901234567890', '901', '08/28', true),
+(19, 19, 'aaa@aaa.com', '2022-01-18', 'Liam Anderson', '5256901234567890', '901', '08/28', false),
+(20, 20, 'aaa@aaa.com', '2022-01-20', 'Liam Anderson', '5256901234567890', '901', '08/28', false);
+
 
 
 -- Add data to PRODUCTCATEGORIES table:
