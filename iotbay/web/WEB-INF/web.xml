@@ -355,6 +355,14 @@
         <servlet-name>OrderView</servlet-name>
         <url-pattern>/OrderView</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>OrderLineHistoryServlet</servlet-name>
+    <servlet-class>uts.isd.controller.OrderLineHistoryServlet</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderLineHistoryServlet</servlet-name>
+        <url-pattern>/OrderLineHistoryServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

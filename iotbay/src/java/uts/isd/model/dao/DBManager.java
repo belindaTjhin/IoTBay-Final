@@ -8,6 +8,7 @@ import uts.isd.model.User;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import uts.isd.model.Admin;
 import uts.isd.model.System;
 import uts.isd.model.Product;
@@ -566,4 +567,21 @@ public class DBManager {
     }
     return null;
     } 
+   public ArrayList<Orderline> fetchOrderLine(int orderlineID) throws SQLException{
+    String query = "select * from IOTUSER.ORDERLINE where orderlineid='" + orderlineID + "'";
+        ResultSet rs = st.executeQuery(query);
+        ArrayList<Orderline> temp = new ArrayList<Orderline>();
+        
+        while (rs.next()){
+        int orderlineid = rs.getInt("orderlineID");     
+        int orderID = rs.getInt("orderID");
+        int quantity  = rs.getInt("quantity");
+        int productID = rs.getInt("productID");
+        String productName = rs.getString("productName");
+        BigDecimal totalPrice = rs.getBigDecimal("totalPrice");
+        BigDecimal price  = rs.getBigDecimal("price");
+        temp.add(new Orderline(orderlineid, orderID, quantity, productID, productName, totalPrice, price));
+        }
+        return temp;
+   }
 }

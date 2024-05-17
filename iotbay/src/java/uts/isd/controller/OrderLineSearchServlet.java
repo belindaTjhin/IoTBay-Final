@@ -2,6 +2,7 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -10,42 +11,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import uts.isd.model.Orderline;
+import uts.isd.model.Orders;
 import uts.isd.model.dao.DBManager;
+import java.util.List;
 
-public class OrderLineSearchServlet extends HttpServlet {
-    private DBManager manager = null;
-     
+public class OrderLineSearchServlet extends HttpServlet {    
+    
+    
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        manager = (DBManager) session.getAttribute("manager");
-
-        if (manager == null) {
-            System.err.println("DBManager is not set in the session.");
-            request.setAttribute("found", "DBManager is not set in the session.");
-            request.getRequestDispatcher("OrderLineSearch.jsp").forward(request, response);
-            return;
-        }
-
+              
+        int orderlineid = 0;
         try {
-            int orderlineid = Integer.parseInt(request.getParameter("orderlineID"));
-            
-            boolean check = manager.checkorderline(orderlineid);
-            if (check) {
-                Orderline orderline = manager.findorderline(orderlineid);
-                request.setAttribute("orderline", orderline);
-                request.setAttribute("found", "Item was found");
-            } else {
-                request.setAttribute("found", "Item does NOT exist in the Inventory");
-                request.setAttribute("orderline", null);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(OrderLineSearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-            request.setAttribute("found", "SQL Error: " + ex.getMessage());
-        } catch (NumberFormatException ex) {
-            request.setAttribute("found", "Invalid Orderline ID format.");
+            orderlineid = Integer.parseInt(request.getParameter("orderlineid"));
+        } catch (NumberFormatException e) {
+          Logger.getLogger(PaymentSearchServlet.class.getName()).log(Level.SEVERE, null, e);  
         }
-        request.getRequestDispatcher("OrderLineSearch.jsp").forward(request, response);
-    }
+        request.setAttribute("orderlineid", orderlineid);
+         
+        HttpSession session = request.getSession();
+        DBManager manager = (DBManager) session.getAttribute("manager");
+         
+        Orders orders = (Orders)session.getAttribute("orders");
+        try {
+            Orderline orderline = manager.findorderline(orderlineid);
+            session.setAttribute("orderlineid", orderlineid);
+            request.getRequestDispatcher("OrderLineSearch_result.jsp").include(request, response);
+            response.sendRedirect("OrderLineSearch_result.jsp");
+        } catch (SQLException ex) {
+          Logger.getLogger(PaymentHistoryServlet.class.getName()).log(Level.SEVERE, null, ex);  
+        }
+    } 
 }

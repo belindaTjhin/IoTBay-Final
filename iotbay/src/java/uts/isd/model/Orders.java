@@ -78,4 +78,5 @@ public class Orders implements Serializable {
     public BigDecimal getPrice() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }
