@@ -8,6 +8,7 @@
 
     <title>Admin Management</title>
     <!-- Internal CSS styles -->
+
     <style>
         /* Table styles */
         table { width: 100%; border-collapse: collapse; }
@@ -74,6 +75,7 @@
             color: black;
         }
     </style>
+    
     <!-- JavaScript function to open edit modal -->
     <script>
     function openEditModal(email, name, gender, address, password) {
@@ -92,7 +94,9 @@
         document.getElementById('oldEmail').value = email;
         document.getElementById('oldPassword').value = password;
     }
+
     </script>
+
 
 </head>
 <body>
@@ -145,6 +149,8 @@
             %>
         </tbody>
     </table>
+
+
     <!-- The Modal for Search Admin -->
     <div id="searchAdminModal" class="modal">
         <div class="modal-content">
@@ -196,6 +202,7 @@
                 </div>
                 <button type="submit" class="button">Save Changes</button>
             </form>
+
         </div>
     </div>
 </body>

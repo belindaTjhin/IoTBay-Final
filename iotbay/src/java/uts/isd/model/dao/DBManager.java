@@ -12,6 +12,7 @@ import uts.isd.model.System;
 import uts.isd.model.Product;
 import uts.isd.model.AccessLog;
 import uts.isd.model.Customer;
+import uts.isd.model.Orderline;
 import uts.isd.model.Orders;
 import uts.isd.model.Payment;
 
@@ -514,4 +515,36 @@ public class DBManager {
         }
         return temp;
     }
+        public boolean checkorderline(int orderlineid) throws SQLException{ 
+    String fetch = "select * from IOTUSER.orderline where orderlineid= '" + orderlineid + "'";
+    ResultSet rs = st.executeQuery(fetch);
+
+    while(rs.next()){
+        String Orderlineid = rs.getString(1);
+        if(Orderlineid.equals(orderlineid)){
+            return true;
+        } else {
+        }
+    }
+    return false;
+ }
+   public Orderline findorderline(int orderlineid) throws SQLException {
+    String fetch = "select * from IOTUSER.orderline where Orderlineid = '" + orderlineid + "'";    
+    ResultSet rs = st.executeQuery(fetch);
+    
+    while(rs.next()){
+    int orderLineid = rs.getInt(1);
+    
+    if(orderLineid == (orderlineid)){
+        int orderID = rs.getInt(2);
+        int quantity = rs.getInt(3);
+        int productID = rs.getInt(4);
+        String Productname = rs.getString(5);
+        BigDecimal Totalprice = rs.getBigDecimal(6);
+        BigDecimal price = rs.getBigDecimal(7);
+        return new Orderline (orderLineid,orderID, quantity, productID, Productname, Totalprice, price );
+    }
+    }
+    return null;
+    } 
 }

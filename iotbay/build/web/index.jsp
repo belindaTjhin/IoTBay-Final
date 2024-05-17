@@ -154,9 +154,6 @@
                 </a>
             </div>
         </div>
-        <!--        <div class="login-box">
-                    <p>Please log in to view your details.</p>
-                    <a href="login.jsp" class="button">Login</a>
-                </div>-->
+
     </body>
 </html>

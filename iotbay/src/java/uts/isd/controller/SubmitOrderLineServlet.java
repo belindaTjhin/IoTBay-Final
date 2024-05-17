@@ -11,6 +11,7 @@ import uts.isd.model.Orderline;
 import uts.isd.model.dao.OrderLineDBManager;
 import uts.isd.model.dao.DBConnector;
 import java.sql.Connection;
+import uts.isd.model.Product;
 
 @WebServlet("/SubmitOrderLineServlet")
 public class SubmitOrderLineServlet extends HttpServlet {

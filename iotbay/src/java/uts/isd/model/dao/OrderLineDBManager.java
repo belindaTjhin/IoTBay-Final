@@ -13,7 +13,7 @@ public class OrderLineDBManager {
     }
 
     public Orderline findOrderLine(int orderID, int productID) throws SQLException {
-        String fetch = "SELECT * FROM isd.Orderline WHERE orderID = ? AND productID = ?";
+        String fetch = "SELECT * FROM IOTUSER.Orderline WHERE orderID = ? AND productID = ?";
         try (PreparedStatement statement = conn.prepareStatement(fetch)) {
             statement.setInt(1, orderID);
             statement.setInt(2, productID);
@@ -32,7 +32,7 @@ public class OrderLineDBManager {
     }
 
     public void addOrderLine(Orderline orderLine) throws SQLException {
-        String query = "INSERT INTO isd.Orderline (orderLineID, orderID, quantity, productID, productName, totalPrice, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO IOTUSER.Orderline (orderLineID, orderID, quantity, productID, productName, totalPrice, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setInt(1, orderLine.getOrderlineID());
             pstmt.setInt(2, orderLine.getOrderID());
@@ -57,7 +57,7 @@ public class OrderLineDBManager {
     }
 
     public ArrayList<Orderline> fetchOrderLines(int orderID) throws SQLException {
-        String fetch = "SELECT * FROM isd.Orderline WHERE orderID = ?";
+        String fetch = "SELECT * FROM IOTUSER.Orderline WHERE orderID = ?";
         ArrayList<Orderline> temp = new ArrayList<>();
         try (PreparedStatement pstmt = conn.prepareStatement(fetch)) {
             pstmt.setInt(1, orderID);

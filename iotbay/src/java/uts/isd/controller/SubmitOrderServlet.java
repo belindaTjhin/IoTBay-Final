@@ -14,6 +14,7 @@ import uts.isd.model.Orders;
 import uts.isd.model.dao.OrderDBManager;
 import uts.isd.model.dao.DBConnector;
 import java.sql.Connection;
+import uts.isd.model.Product;
 
 @WebServlet("/SubmitOrderServlet")
 public class SubmitOrderServlet extends HttpServlet {
