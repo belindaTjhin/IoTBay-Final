@@ -5,12 +5,13 @@ import java.math.BigDecimal;
 import uts.isd.model.User;
 
 import java.sql.*;
-
+import java.util.List;
 import java.util.ArrayList;
 import uts.isd.model.Admin;
 import uts.isd.model.System;
 import uts.isd.model.Product;
 import uts.isd.model.AccessLog;
+import uts.isd.model.Customer;
 import uts.isd.model.Orders;
 import uts.isd.model.Payment;
 
@@ -25,6 +26,7 @@ public class DBManager {
     public DBManager(Connection conn) throws SQLException {
         st = conn.createStatement();
     }
+
 
     //Find user by email and password in the database    
     public User findUser(String email, String password) throws SQLException {
@@ -245,6 +247,81 @@ public class DBManager {
             temp.add(new Product(id, name, description, price, supplier, stock));
         }
         return temp;
+    
+        public List<Customer> findAllCustomers() throws SQLException {
+            String query = "SELECT * FROM IOTUSER.USERS";
+            PreparedStatement ps = st.getConnection().prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            List<Customer> customers = new ArrayList<>();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String email = rs.getString("email");
+                String name = rs.getString("name");
+                String password = rs.getString("password");
+                String gender = rs.getString("gender");
+                String address = rs.getString("address");
+                String type = rs.getString("type");
+                customers.add(new Customer(id, email, name, password, gender, address, type));
+            }
+
+            return customers;
+        }
+        
+        public void addCustomer(String email, String name, String password, String gender, String address, String type) throws SQLException {
+        String query = "INSERT INTO IOTUSER.USERS (email, name, password, gender, address, type) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, email);
+        pstmt.setString(2, name);
+        pstmt.setString(3, password);
+        pstmt.setString(4, gender);
+        pstmt.setString(5, address);
+        pstmt.setString(6, type);
+        pstmt.executeUpdate();
+    }
+        
+        public void deleteCustomer(int id) throws SQLException {
+        String query = "DELETE FROM IOTUSER.USERS WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, id);
+        pstmt.executeUpdate();
+    }
+    
+    public Customer findCustomer(int id) throws SQLException {
+        String query = "SELECT * FROM IOTUSER.USERS WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            String email = rs.getString("email");
+            String name = rs.getString("name");
+            String password = rs.getString("password");
+            String gender = rs.getString("gender");
+            String address = rs.getString("address");
+            String type = rs.getString("type");
+            return new Customer(id, email, name, password, gender, address, type);
+        }
+        return null;
+    }
+    
+    public void deleteCustomerRecord(int id) throws SQLException {
+        String query = "DELETE FROM IOTUSER.USERS WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, id);
+        pstmt.executeUpdate();
+    }
+
+    public void updateCustomer(Customer customer) throws SQLException {
+        String query = "UPDATE IOTUSER.USERS SET email = ?, name = ?, password = ?, gender = ?, address = ?, type = ? WHERE id = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setString(1, customer.getEmail());
+        pstmt.setString(2, customer.getName());
+        pstmt.setString(3, customer.getPassword());
+        pstmt.setString(4, customer.getGender());
+        pstmt.setString(5, customer.getAddress());
+        pstmt.setString(6, customer.getType());
+        pstmt.setInt(7, customer.getId());
+        pstmt.executeUpdate();
     }
 
     public boolean checkDevice(String name) throws SQLException {
