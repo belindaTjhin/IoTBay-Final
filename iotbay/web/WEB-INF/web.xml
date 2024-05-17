@@ -339,7 +339,22 @@
     <servlet-name>EditCustomerServlet</servlet-name>
     <url-pattern>/EditCustomerServlet</url-pattern>
 </servlet-mapping>
-
+<servlet>
+    <servlet-name>OrderLineSearchServlet</servlet-name>
+    <servlet-class>uts.isd.controller.OrderLineSearchServlet</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderLineSearchServlet</servlet-name>
+        <url-pattern>/OrderLineSearchServlet</url-pattern>
+    </servlet-mapping>
+<servlet>
+    <servlet-name>OrderView</servlet-name>
+    <servlet-class>uts.isd.controller.OrderView</servlet-class>   
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderView</servlet-name>
+        <url-pattern>/OrderView</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

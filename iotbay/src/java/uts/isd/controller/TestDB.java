@@ -10,6 +10,7 @@ import uts.isd.model.Product;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBConnector;
 import uts.isd.model.dao.DBManager;
+import uts.isd.model.Orders;
 
 public class TestDB {
 
@@ -59,6 +60,10 @@ public class TestDB {
                     break;
                 default:
                     System.out.println("Unknown Command");
+                
+                case 'V':
+                    testReadOrder();
+                    break;
             }
         }
     }
@@ -232,5 +237,17 @@ public class TestDB {
        } catch (SQLException ex){
            Logger.getLogger(TestDB.class.getName()).log(Level.SEVERE, null, ex);
        }
+    }
+    private void testReadOrder() throws SQLException{
+        System.out.print("Order ID: ");
+        int orderid = in.nextInt();
+        
+        boolean check = db.checkOrder(orderid);
+        
+        if(check){
+            System.out.println("Order ID exists in the database.");
+        } else{
+            System.out.println("Order does not exist.");
+        }
     }
 }

@@ -1,5 +1,6 @@
 package uts.isd.model.dao;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import static java.lang.String.format;
 import java.math.BigDecimal;
 import uts.isd.model.User;
@@ -528,6 +529,24 @@ public class DBManager {
     }
     return false;
  }
+  public void addOrder(int orderID, String useremail, Date orderDate, BigDecimal totalPrice, String shippingAddress) throws SQLException{
+    String query = "INSERT INTO ORDERS (orderID, useremail, orderDate, totalPrice, shippingAddress) VALUES (" + orderID + ", " + useremail + ", '" + orderDate + "', '" + totalPrice + "', '" + shippingAddress + "')";
+    st.executeUpdate(query);
+  }      
+        
+  public boolean checkOrder(int orderid) throws SQLException { 
+    String fetch = "SELECT * FROM IOTUSER.ORDERS WHERE orderid = " + orderid;
+    ResultSet rs = st.executeQuery(fetch);
+
+    while (rs.next()) {
+        int dbOrderId = rs.getInt("orderid"); // use column name for clarity
+        if (dbOrderId == orderid) {
+            return true;
+        }
+    }
+    return false;
+}
+
    public Orderline findorderline(int orderlineid) throws SQLException {
     String fetch = "select * from IOTUSER.orderline where Orderlineid = '" + orderlineid + "'";    
     ResultSet rs = st.executeQuery(fetch);
