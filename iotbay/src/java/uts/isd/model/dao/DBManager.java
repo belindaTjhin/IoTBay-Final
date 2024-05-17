@@ -22,9 +22,12 @@ import uts.isd.model.Payment;
 public class DBManager {
 
     private Statement st;
+    private Connection conn;
 
     public DBManager(Connection conn) throws SQLException {
         st = conn.createStatement();
+        this.conn = conn;
+        
     }
 
 
@@ -247,6 +250,7 @@ public class DBManager {
             temp.add(new Product(id, name, description, price, supplier, stock));
         }
         return temp;
+    }
     
         public List<Customer> findAllCustomers() throws SQLException {
             String query = "SELECT * FROM IOTUSER.USERS";
