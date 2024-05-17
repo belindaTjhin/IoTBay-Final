@@ -105,6 +105,9 @@
                 <button onclick="window.location.href='/iotbay/ViewUsersServlet';">View Users</button>
                 <!-- Button to view admins -->
                 <button onclick="window.location.href='/iotbay/ViewAdminsServlet';">View Admins</button>
+                <!-- Button to log out -->
+                <button onclick="window.location.href='/iotbay/LogoutServlet';">Logout</button>
+
             </div>
         </div>
     </div>
