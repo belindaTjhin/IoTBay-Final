@@ -3,32 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/index.html</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/payment_search.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/db/data.sql</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/payment_search_result.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/RegisterAdminServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/OrderServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/nbproject/build-impl.xml</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/DeleteAdminServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/one.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/RegisterServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/admin_login.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/admin_index.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/LoginServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/CreateUserServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/payment_list.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/delete_admin.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/WEB-INF/web.xml</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/vieworder.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/AdminLoginServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/catalogue.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/src/java/uts/isd/controller/PaymentHistoryServlet.java</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/login.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/order.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/nbproject/project.properties</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/index.jsp</file>
-            <file>file:/D:/ISD/IoTBay-Final/iotbay/web/payment_create.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_viewcustomers.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_createcustomer.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_index.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_searchAdmins.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/model/User.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/EditCustomerServlet.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/ViewCustomerServlet.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/model/Customer.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/edit_user.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_login.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/update_admin.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_searchcustomer.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_searchUsers.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_viewusers.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/SearchCustomerServlet.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/DeleteCustomerServlet.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/delete_user.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/ViewUsersServlet.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/model/dao/DBManager.java</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/update_user.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/web/system_editcustomer.jsp</file>
+            <file>file:/C:/Users/bname/OneDrive%20-%20UTS/Documents/IoTBay-Final/iotbay/src/java/uts/isd/controller/CreateCustomerServlet.java</file>
         </group>
     </open-files>
 </project-private>

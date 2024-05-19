@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package uts.isd.model;
 
 import java.io.Serializable;
@@ -13,6 +8,7 @@ public class User implements Serializable {
     private String password;
     private String gender;
     private String address;
+    private String type; // Added type field
 
     // Default constructor
     public User() {
@@ -26,6 +22,16 @@ public class User implements Serializable {
         this.password = password;
         this.gender = gender;
         this.address = address;
+    }
+    
+    // Overloaded constructor with type
+    public User(String email, String name, String password, String gender, String address, String type) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.gender = gender;
+        this.address = address;
+        this.type = type;
     }
 
     // Getters and setters for all properties
@@ -68,5 +74,12 @@ public class User implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+    
+    public String getType() {
+        return type;
+    }
+    
+    public void setType(String type) {
+        this.type = type;
+    }
 }
-

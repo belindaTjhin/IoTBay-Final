@@ -286,8 +286,8 @@
         <url-pattern>/PaymentCreateServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>OrderServlet</servlet-name>
-    <servlet-class>uts.isd.controller.OrderServlet</servlet-class>   
+        <servlet-name>OrderServlet</servlet-name>
+        <servlet-class>uts.isd.controller.OrderServlet</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
@@ -298,66 +298,80 @@
         <url-pattern>/PaymentSearchServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>SubmitOrderServlet</servlet-name>
-    <servlet-class>uts.isd.controller.SubmitOrderServlet</servlet-class>   
+        <servlet-name>SubmitOrderServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SubmitOrderServlet</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>SubmitOrderServlet</servlet-name>
         <url-pattern>/SubmitOrder</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>SubmitOrderLineServlet</servlet-name>
-    <servlet-class>uts.isd.controller.SubmitOrderLineServlet</servlet-class>   
+        <servlet-name>SubmitOrderLineServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SubmitOrderLineServlet</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>SubmitOrderLineServlet</servlet-name>
         <url-pattern>/SubmitOrderLine</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>CreateCustomerServlet</servlet-name>
-    <servlet-class>uts.isd.controller.CreateCustomerServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>CreateCustomerServlet</servlet-name>
-    <url-pattern>/CreateCustomerServlet</url-pattern>
-</servlet-mapping>
-
-<servlet>
-    <servlet-name>DeleteCustomerServlet</servlet-name>
-    <servlet-class>uts.isd.controller.DeleteCustomerServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>DeleteCustomerServlet</servlet-name>
-    <url-pattern>/DeleteCustomerServlet</url-pattern>
-</servlet-mapping>
-
-<servlet>
-    <servlet-name>EditCustomerServlet</servlet-name>
-    <servlet-class>uts.isd.controller.EditCustomerServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>EditCustomerServlet</servlet-name>
-    <url-pattern>/EditCustomerServlet</url-pattern>
-</servlet-mapping>
-<servlet>
-    <servlet-name>OrderLineSearchServlet</servlet-name>
-    <servlet-class>uts.isd.controller.OrderLineSearchServlet</servlet-class>   
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <servlet-class>uts.isd.controller.CreateCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCustomerServlet</servlet-name>
+        <url-pattern>/CreateCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>EditCustomerServlet</servlet-name>
+        <servlet-class>uts.isd.controller.EditCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditCustomerServlet</servlet-name>
+        <url-pattern>/EditCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <servlet-class>uts.isd.controller.DeleteCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCustomerServlet</servlet-name>
+        <url-pattern>/DeleteCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewCustomerServlet</servlet-name>
+        <servlet-class>uts.isd.controller.ViewCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewCustomerServlet</servlet-name>
+        <url-pattern>/ViewCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchCustomerServlet</servlet-name>
+        <servlet-class>uts.isd.controller.SearchCustomerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchCustomerServlet</servlet-name>
+        <url-pattern>/SearchCustomerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OrderLineSearchServlet</servlet-name>
+        <servlet-class>uts.isd.controller.OrderLineSearchServlet</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderLineSearchServlet</servlet-name>
         <url-pattern>/OrderLineSearchServlet</url-pattern>
     </servlet-mapping>
-<servlet>
-    <servlet-name>OrderView</servlet-name>
-    <servlet-class>uts.isd.controller.OrderView</servlet-class>   
+    <servlet>
+        <servlet-name>OrderView</servlet-name>
+        <servlet-class>uts.isd.controller.OrderView</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderView</servlet-name>
         <url-pattern>/OrderView</url-pattern>
     </servlet-mapping>
     <servlet>
-    <servlet-name>OrderLineHistoryServlet</servlet-name>
-    <servlet-class>uts.isd.controller.OrderLineHistoryServlet</servlet-class>   
+        <servlet-name>OrderLineHistoryServlet</servlet-name>
+        <servlet-class>uts.isd.controller.OrderLineHistoryServlet</servlet-class>   
     </servlet>
     <servlet-mapping>
         <servlet-name>OrderLineHistoryServlet</servlet-name>

@@ -255,81 +255,81 @@ public class DBManager {
         return temp;
     }
     
-        public List<Customer> findAllCustomers() throws SQLException {
-            String query = "SELECT * FROM IOTUSER.USERS";
-            PreparedStatement ps = st.getConnection().prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            List<Customer> customers = new ArrayList<>();
+    public User findUserByEmail(String email) throws SQLException {
+        String query = "SELECT * FROM IOTUSER.USERS WHERE EMAIL = ?";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setString(1, email);
+        ResultSet rs = statement.executeQuery();
 
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String email = rs.getString("email");
-                String name = rs.getString("name");
-                String password = rs.getString("password");
-                String gender = rs.getString("gender");
-                String address = rs.getString("address");
-                String type = rs.getString("type");
-                customers.add(new Customer(id, email, name, password, gender, address, type));
-            }
-
-            return customers;
-        }
-        
-        public void addCustomer(String email, String name, String password, String gender, String address, String type) throws SQLException {
-        String query = "INSERT INTO IOTUSER.USERS (email, name, password, gender, address, type) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setString(1, email);
-        pstmt.setString(2, name);
-        pstmt.setString(3, password);
-        pstmt.setString(4, gender);
-        pstmt.setString(5, address);
-        pstmt.setString(6, type);
-        pstmt.executeUpdate();
-    }
-        
-        public void deleteCustomer(int id) throws SQLException {
-        String query = "DELETE FROM IOTUSER.USERS WHERE id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setInt(1, id);
-        pstmt.executeUpdate();
-    }
-    
-    public Customer findCustomer(int id) throws SQLException {
-        String query = "SELECT * FROM IOTUSER.USERS WHERE id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setInt(1, id);
-        ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            String email = rs.getString("email");
-            String name = rs.getString("name");
-            String password = rs.getString("password");
-            String gender = rs.getString("gender");
-            String address = rs.getString("address");
-            String type = rs.getString("type");
-            return new Customer(id, email, name, password, gender, address, type);
+            String name = rs.getString("NAME");
+            String address = rs.getString("ADDRESS");
+            return new User(email, name, null, null, address, null);
         }
         return null;
     }
-    
-    public void deleteCustomerRecord(int id) throws SQLException {
-        String query = "DELETE FROM IOTUSER.USERS WHERE id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setInt(1, id);
-        pstmt.executeUpdate();
+
+    public ArrayList<User> fetchCustomer() throws SQLException {
+        String fetch = "SELECT * FROM CUSTOMERS";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<User> customers = new ArrayList<>();
+
+        while (rs.next()) {
+            String email = rs.getString("EMAIL");
+            String name = rs.getString("NAME");
+            String address = rs.getString("ADDRESS");
+            String type = rs.getString("TYPE");
+            customers.add(new User(email, name, null, null, address, type));
+        }
+        return customers;
     }
 
-    public void updateCustomer(Customer customer) throws SQLException {
-        String query = "UPDATE IOTUSER.USERS SET email = ?, name = ?, password = ?, gender = ?, address = ?, type = ? WHERE id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(query);
-        pstmt.setString(1, customer.getEmail());
-        pstmt.setString(2, customer.getName());
-        pstmt.setString(3, customer.getPassword());
-        pstmt.setString(4, customer.getGender());
-        pstmt.setString(5, customer.getAddress());
-        pstmt.setString(6, customer.getType());
-        pstmt.setInt(7, customer.getId());
-        pstmt.executeUpdate();
+    public void addCustomer(String email, String name, String address, String type) throws SQLException {
+        String query = "INSERT INTO CUSTOMERS (EMAIL, NAME, ADDRESS, TYPE) VALUES (?, ?, ?, ?)";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setString(1, email);
+        statement.setString(2, name);
+        statement.setString(3, address);
+        statement.setString(4, type);
+        statement.executeUpdate();
     }
+
+    public void updateCustomer(String oldEmail, String newEmail, String name, String address, String type) throws SQLException {
+        String query = "UPDATE CUSTOMERS SET EMAIL=?, NAME=?, ADDRESS=?, TYPE=? WHERE EMAIL=?";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setString(1, newEmail);
+        statement.setString(2, name);
+        statement.setString(3, address);
+        statement.setString(4, type);
+        statement.setString(5, oldEmail);
+        statement.executeUpdate();
+    }
+
+    public ArrayList<User> searchCustomer(String name, String type) throws SQLException {
+        String query = "SELECT * FROM CUSTOMERS WHERE NAME LIKE ? AND TYPE LIKE ?";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setString(1, "%" + name + "%");
+        statement.setString(2, "%" + type + "%");
+        ResultSet rs = statement.executeQuery();
+
+        ArrayList<User> customers = new ArrayList<>();
+        while (rs.next()) {
+            String email = rs.getString("EMAIL");
+            String customerName = rs.getString("NAME");
+            String address = rs.getString("ADDRESS");
+            String customerType = rs.getString("TYPE");
+            customers.add(new User(email, customerName, null, null, address, customerType));
+        }
+        return customers;
+    }
+
+    public void deleteCustomer(String email) throws SQLException {
+        String query = "DELETE FROM CUSTOMERS WHERE EMAIL=?";
+        PreparedStatement statement = conn.prepareStatement(query);
+        statement.setString(1, email);
+        statement.executeUpdate();
+    }
+        
 
     public boolean checkDevice(String name) throws SQLException {
         String fetch = "select * from IOTUSER.DEVICES where NAME= '" + name + "'";

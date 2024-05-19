@@ -98,16 +98,21 @@
             <!-- Buttons for various actions -->
             <div class="buttons">
                 <!-- Button to open Create User modal -->
-                <button onclick="document.getElementById('createUserModal').style.display='block'">Create User</button>
+                <button class="button" onclick="document.getElementById('createUserModal').style.display='block'">Create User</button>
                 <!-- Button to open Create Admin modal -->
-                <button onclick="document.getElementById('createAdminModal').style.display='block'">Create Admin</button>
+                <button class="button" onclick="document.getElementById('createAdminModal').style.display='block'">Create Admin</button>
                 <!-- Button to view users -->
-                <button onclick="window.location.href='/iotbay/ViewUsersServlet';">View Users</button>
+                <button class="button" onclick="window.location.href='/iotbay/ViewUsersServlet';">View Users</button>
                 <!-- Button to view admins -->
-                <button onclick="window.location.href='/iotbay/ViewAdminsServlet';">View Admins</button>
+                <button class="button" onclick="window.location.href='/iotbay/ViewAdminsServlet';">View Admins</button>
                 <!-- Button to log out -->
-                <button onclick="window.location.href='/iotbay/LogoutServlet';">Logout</button>
-
+                <button class="button" onclick="window.location.href='/iotbay/LogoutServlet';">Logout</button>
+                <!-- Button to open Create Customer modal -->
+                <button class="button" onclick="document.getElementById('createCustomerModal').style.display='block'">Create Customer</button>
+                <!-- Button to view customers -->
+                <button class="button" onclick="window.location.href='/iotbay/ViewCustomerServlet';">View Customers</button>
+                <!-- Button to search customers -->
+                <button class="button" onclick="document.getElementById('searchCustomerModal').style.display='block'">Search Customers</button>
             </div>
         </div>
     </div>
@@ -146,13 +151,44 @@
         </div>
     </div>
 
+    <!-- The Modal for Create Customer -->
+    <div id="createCustomerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('createCustomerModal').style.display='none'">&times;</span>
+            <h2>Create Customer Form</h2>
+            <form action="CreateCustomerServlet" method="post">
+                <!-- Input fields for customer information -->
+                <input type="hidden" name="action" value="create">
+                <input type="email" class="form-input" id="email" name="email" placeholder="Email" required><br>
+                <input type="text" class="form-input" id="name" name="name" placeholder="Name" required><br>
+                <input type="text" class="form-input" id="address" name="address" placeholder="Address" required><br>
+                <input type="text" class="form-input" id="type" name="type" placeholder="Type (company or individual)" required><br> <!-- New field for type -->
+                <input type="submit" class="button" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <!-- The Modal for Search Customer -->
+    <div id="searchCustomerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('searchCustomerModal').style.display='none'">&times;</span>
+            <h2>Search Customer Form</h2>
+            <form action="SearchCustomerServlet" method="post">
+                <!-- Input fields for searching customer -->
+                <input type="text" class="form-input" name="name" placeholder="Name" required><br>
+                <input type="text" class="form-input" name="type" placeholder="Type (company or individual)" required><br>
+                <input type="submit" class="button" value="Search">
+            </form>
+        </div>
+    </div>
+
     <!-- JavaScript to close modal when clicking outside -->
     <script>
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
                 event.target.style.display = "none";
             }
-        }
+        };
     </script>
 </body>
 </html>

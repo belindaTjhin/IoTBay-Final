@@ -14,19 +14,19 @@ import uts.isd.model.dao.DBManager;
 public class DeleteCustomerServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        DBManager manager = (DBManager) getServletContext().getAttribute("manager");
-        int customerId = Integer.parseInt(request.getParameter("id"));
+        DBManager manager = (DBManager) session.getAttribute("manager");
 
         try {
-            manager.deleteCustomerRecord(customerId);  // Assuming deleteCustomerRecord is the method that deletes only the customer record
-            session.setAttribute("customerDeleted", "Customer record deleted successfully!");
-            response.sendRedirect("customer_list.jsp");
-        } catch (SQLException ex) {
-            session.setAttribute("deleteErr", "Failed to delete customer record: " + ex.getMessage());
-            response.sendRedirect("customer_list.jsp");
+            String email = request.getParameter("email");
+            manager.deleteCustomer(email);
+            session.setAttribute("deleteMsg", "Customer with email " + email + " has been successfully deleted.");
+            response.sendRedirect("ViewCustomerServlet");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            session.setAttribute("errorMessage", "Error: " + e.getMessage());
+            response.sendRedirect("system_index.jsp");
         }
     }
 }
